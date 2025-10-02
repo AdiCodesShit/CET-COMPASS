@@ -34,7 +34,13 @@ export interface ILSRoundInfo {
   details: string;
 }
 
+export interface FormGuideDocumentItem {
+  id: string;
+  text: string;
+}
+
 export interface FormGuideSection {
   title: string;
-  content: string;
+  content?: string; // For general text content
+  documentItems?: FormGuideDocumentItem[]; // For structured document lists with checkboxes
 }

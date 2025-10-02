@@ -1,4 +1,4 @@
-import { College, ILSRoundInfo, FormGuideSection, CollegeType } from "@/lib/types";
+import { College, ILSRoundInfo, FormGuideSection, CollegeType, FormGuideDocumentItem } from "@/lib/types";
 
 export const mockColleges: College[] = [
   {
@@ -427,26 +427,22 @@ export const mockFormGuide: FormGuideSection[] = [
   },
   {
     title: "Required Documents for CAP Registration",
-    content: `
-      <p>Ensure you have the following documents ready in digital format (PDF/JPEG) for upload:</p>
-      <ul class="list-disc list-inside space-y-2">
-        <li>MHT-CET Score Card</li>
-        <li>MHT-CET Admit Card</li>
-        <li>SSC (10th) Mark Sheet</li>
-        <li>HSC (12th) Mark Sheet</li>
-        <li>School Leaving Certificate / Transfer Certificate</li>
-        <li>Domicile Certificate (for Maharashtra candidates)</li>
-        <li>Nationality Certificate (if not mentioned on Domicile/LC)</li>
-        <li>Caste Certificate (if applicable)</li>
-        <li>Caste Validity Certificate (if applicable)</li>
-        <li>Non-Creamy Layer Certificate (for OBC/VJ/NT/SBC categories, valid for the current financial year)</li>
-        <li>EWS Certificate (if applicable)</li>
-        <li>Aadhaar Card</li>
-        <li>Passport size photographs</li>
-        <li>Signature</li>
-      </ul>
-      <p class="mt-4 text-sm text-red-600"><strong>Note:</strong> Always refer to the official MHT-CET CAP brochure for the most up-to-date and complete list of documents.</p>
-    `,
+    documentItems: [
+      { id: "doc-1", text: "MHT-CET Score Card" },
+      { id: "doc-2", text: "MHT-CET Admit Card" },
+      { id: "doc-3", text: "SSC (10th) Mark Sheet" },
+      { id: "doc-4", text: "HSC (12th) Mark Sheet" },
+      { id: "doc-5", text: "School Leaving Certificate / Transfer Certificate" },
+      { id: "doc-6", text: "Domicile Certificate (for Maharashtra candidates)" },
+      { id: "doc-7", text: "Nationality Certificate (if not mentioned on Domicile/LC)" },
+      { id: "doc-8", text: "Caste Certificate (if applicable)" },
+      { id: "doc-9", text: "Caste Validity Certificate (if applicable)" },
+      { id: "doc-10", text: "Non-Creamy Layer Certificate (for OBC/VJ/NT/SBC categories, valid for the current financial year)" },
+      { id: "doc-11", text: "EWS Certificate (if applicable)" },
+      { id: "doc-12", text: "Aadhaar Card" },
+      { id: "doc-13", text: "Passport size photographs" },
+      { id: "doc-14", text: "Signature" },
+    ],
   },
   {
     title: "Important Processes and Tips",

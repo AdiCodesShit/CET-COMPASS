@@ -1,12 +1,13 @@
 "use client";
 
 import React from "react";
-import { College, CasteCategory } from "@/lib/data";
+import { College, CasteCategory } from "@/lib/types"; // Updated import from data to types
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
-import { MapPin, TrendingUp, Star } from "lucide-react";
+import { MapPin, TrendingUp, Star, Download } from "lucide-react"; // Added Download icon
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button"; // Import Button
 
 interface ShortlistedCollegesDisplayProps {
   shortlistedColleges: College[];
@@ -17,16 +18,51 @@ const ShortlistedCollegesDisplay: React.FC<ShortlistedCollegesDisplayProps> = ({
   shortlistedColleges,
   casteCategory,
 }) => {
+  const handleDownloadShortlist = () => {
+    if (shortlistedColleges.length === 0) {
+      alert("No colleges to download!");
+      return;
+    }
+
+    const header = `--- MHT-CET Shortlisted Colleges for Option Filling ---\n`;
+    const footer = `\n--- End of Shortlist ---\nGenerated on: ${new Date().toLocaleDateString()}`;
+
+    const collegeList = shortlistedColleges
+      .map((college, index) => {
+        return `${index + 1}. ${college.name} (${college.city}) - ID: ${college.id}`;
+      })
+      .join("\n");
+
+    const fileContent = `${header}\n${collegeList}\n${footer}`;
+    const blob = new Blob([fileContent], { type: "text/plain;charset=utf-8" });
+    const href = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = href;
+    link.download = "mht_cet_shortlist.txt";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(href);
+  };
+
   if (shortlistedColleges.length === 0) {
     return <p className="text-center text-muted-foreground p-8">No colleges have been shortlisted yet.</p>;
   }
 
   return (
     <ScrollArea className="h-[70vh] p-4">
-      <h3 className="text-2xl font-bold mb-4">Your Shortlisted Colleges for Option Filling</h3>
-      <p className="text-muted-foreground mb-6">
-        Based on your MHT-CET percentile and {casteCategory} category.
-      </p>
+      <div className="flex justify-between items-center mb-4">
+        <div>
+          <h3 className="text-2xl font-bold">Your Shortlisted Colleges for Option Filling</h3>
+          <p className="text-muted-foreground">
+            Based on your MHT-CET percentile and {casteCategory} category.
+          </p>
+        </div>
+        <Button onClick={handleDownloadShortlist} className="gradient-button flex items-center gap-2">
+          <Download className="h-4 w-4" /> Download Shortlist
+        </Button>
+      </div>
+      <Separator className="mb-6 bg-app-light-blue/50 dark:bg-app-blue/30" />
       <div className="grid gap-6">
         {shortlistedColleges.map((college) => (
           <Card key={college.id} className="shadow-md flex flex-col md:flex-row overflow-hidden">
