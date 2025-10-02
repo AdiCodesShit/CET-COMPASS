@@ -4,8 +4,11 @@ import React from "react";
 import { Link, Outlet } from "react-router-dom";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { Menu } from "lucide-react";
+import { Home, ListFilter, Menu, GraduationCap } from "lucide-react"; // Added Home and ListFilter icons
 import { MadeWithDyad } from "./made-with-dyad";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import ShortlistedCollegesDisplay from "./ShortlistedCollegesDisplay";
+import { mockColleges } from "@/lib/data"; // To get college data for shortlist display
 
 interface NavLinkProps {
   to: string;
@@ -23,20 +26,51 @@ const NavLink: React.FC<NavLinkProps> = ({ to, children }) => (
 
 const SidebarContent = () => (
   <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
-    <NavLink to="/college-finder">College Finder with Percentile</NavLink>
-    <NavLink to="/form-filling-guide">Form Filling Guide</NavLink>
-    <NavLink to="/ils-round">ILS Round</NavLink>
+    <NavLink to="/college-finder">
+      <GraduationCap className="h-4 w-4" />
+      College Finder
+    </NavLink>
+    <NavLink to="/form-filling-guide">
+      <ListFilter className="h-4 w-4" />
+      Form Filling Guide
+    </NavLink>
+    <NavLink to="/ils-round">
+      <Home className="h-4 w-4" /> {/* Using Home as a placeholder for a relevant icon */}
+      ILS Round
+    </NavLink>
   </nav>
 );
 
 const Layout = () => {
+  // This state would ideally come from a global context or prop
+  const [shortlistedCollegesCount, setShortlistedCollegesCount] = React.useState(0);
+  const [shortlistedCollegeIds, setShortlistedCollegeIds] = React.useState<string[]>([]);
+
+  // This is a temporary way to get the count for the header button
+  // In a real app, this would be managed by a global state (e.g., React Context)
+  React.useEffect(() => {
+    const storedShortlist = localStorage.getItem('shortlistedColleges');
+    if (storedShortlist) {
+      const ids = JSON.parse(storedShortlist);
+      setShortlistedCollegeIds(ids);
+      setShortlistedCollegesCount(ids.length);
+    }
+  }, []);
+
+  const finalShortlistedColleges = mockColleges.filter(college => shortlistedCollegeIds.includes(college.id));
+
+
   return (
     <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
       <div className="hidden border-r bg-sidebar md:block">
         <div className="flex h-full max-h-screen flex-col gap-2">
           <div className="flex h-14 items-center border-b border-sidebar-border px-4 lg:h-[60px] lg:px-6">
             <Link to="/" className="flex items-center gap-2 font-semibold text-sidebar-primary-foreground">
-              <span className="text-lg">MHT-CET Guide</span>
+              <GraduationCap className="h-6 w-6 text-app-purple" />
+              <div className="flex flex-col leading-tight">
+                <span className="text-lg font-bold text-app-purple">MHT-CET Predictor</span>
+                <span className="text-xs text-muted-foreground">Find Your Perfect College</span>
+              </div>
             </Link>
           </div>
           <div className="flex-1 py-2">
@@ -64,15 +98,45 @@ const Layout = () => {
                   to="/"
                   className="flex items-center gap-2 text-lg font-semibold text-sidebar-primary-foreground"
                 >
-                  <span>MHT-CET Guide</span>
+                  <GraduationCap className="h-6 w-6 text-app-purple" />
+                  <div className="flex flex-col leading-tight">
+                    <span className="text-lg font-bold text-app-purple">MHT-CET Predictor</span>
+                    <span className="text-xs text-muted-foreground">Find Your Perfect College</span>
+                  </div>
                 </Link>
                 <SidebarContent />
               </nav>
               <MadeWithDyad />
             </SheetContent>
           </Sheet>
-          <div className="w-full flex-1">
-            {/* Future: Add search or other header elements */}
+          <div className="w-full flex-1 flex items-center justify-between">
+            <div className="hidden md:flex items-center gap-4">
+              <Link to="/" className="text-sm font-medium text-muted-foreground hover:text-primary">Home</Link>
+            </div>
+            <div className="ml-auto">
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button variant="outline" className="relative">
+                    <ListFilter className="h-4 w-4 mr-2" />
+                    My Shortlist ({shortlistedCollegesCount})
+                    {shortlistedCollegesCount > 0 && (
+                      <span className="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-app-purple text-xs text-white">
+                        {shortlistedCollegesCount}
+                      </span>
+                    )}
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-[900px] p-0">
+                  <DialogHeader className="p-6 pb-0">
+                    <DialogTitle>Your Shortlisted Colleges</DialogTitle>
+                  </DialogHeader>
+                  <ShortlistedCollegesDisplay
+                    shortlistedColleges={finalShortlistedColleges}
+                    casteCategory={"OPEN"} // This might need to be dynamic if shortlist is global
+                  />
+                </DialogContent>
+              </Dialog>
+            </div>
           </div>
         </header>
         <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
