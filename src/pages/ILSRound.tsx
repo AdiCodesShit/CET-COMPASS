@@ -36,6 +36,15 @@ const ILSRound = () => {
           <p className="text-gray-700 dark:text-gray-300">
             It's crucial to regularly check the official websites of the colleges you are interested in for their specific ILS round announcements, dates, eligibility, and required documents.
           </p>
+          <div className="mt-6">
+            <video controls className="w-full rounded-lg shadow-md" poster="/placeholder.svg">
+              <source src="/The BEST 3D Explainer Video Example - Cargoz.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <p className="text-center text-sm text-muted-foreground mt-2">
+              Watch this video to understand the ILS Round process better.
+            </p>
+          </div>
         </CardContent>
       </Card>
 
