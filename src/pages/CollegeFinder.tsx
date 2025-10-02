@@ -18,8 +18,8 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { ScrollArea } from "@/components/ui/scroll-area";
 import ShortlistedCollegesDisplay from "@/components/ShortlistedCollegesDisplay";
 import { Badge } from "@/components/ui/badge";
-import { MapPin, TrendingUp, Star, Users, Lightbulb, CheckCircle, GraduationCap } from "lucide-react";
-import { Label } from "@/components/ui/label"; // Import Label component
+import { MapPin, TrendingUp, Star, Users, Lightbulb, CheckCircle, GraduationCap, ListFilter } from "lucide-react"; // Added ListFilter
+import { Label } from "@/components/ui/label";
 
 interface CollegeDetailProps {
   college: College;
@@ -189,7 +189,7 @@ const CollegeFinder = () => {
     // Sort by city preference first, then by cutoff
     results.sort((a, b) => {
       const aIsPreferredCity = cityPreferences.includes(a.city);
-      const bIsPreferredCity = cityPreferences.includes(b.city);
+      const bIsPreferredCity = b.city.toLowerCase() === cityPreferences.includes(b.city);
 
       if (aIsPreferredCity && !bIsPreferredCity) return -1;
       if (!aIsPreferredCity && bIsPreferredCity) return 1;
