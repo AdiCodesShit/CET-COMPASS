@@ -16,6 +16,7 @@ import { mockColleges, CasteCategory, College } from "@/lib/data";
 import { toast } from "sonner";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import ShortlistedCollegesDisplay from "@/components/ShortlistedCollegesDisplay"; // Import the new component
 
 interface CollegeDetailProps {
   college: College;
@@ -63,6 +64,7 @@ const CollegeFinder = () => {
   const [cityPreference, setCityPreference] = useState<string>("");
   const [filteredColleges, setFilteredColleges] = useState<College[]>([]);
   const [shortlistedColleges, setShortlistedColleges] = useState<string[]>([]);
+  const [showShortlistDialog, setShowShortlistDialog] = useState(false);
 
   const handleSearch = () => {
     const userPercentile = parseFloat(percentile);
@@ -104,18 +106,7 @@ const CollegeFinder = () => {
     );
   };
 
-  const handleShowShortlist = () => {
-    if (shortlistedColleges.length === 0) {
-      toast.info("Please shortlist some colleges first.");
-      return;
-    }
-    const finalShortlist = mockColleges.filter(college => shortlistedColleges.includes(college.id));
-    // In a real app, you'd likely display this in a new view or dialog
-    console.log("Final Shortlist for Option Filling:", finalShortlist);
-    toast.success(`Generated shortlist with ${finalShortlist.length} colleges.`);
-    // For now, we'll just show a toast and log to console.
-    // A more complete implementation would render a new component here.
-  };
+  const finalShortlistedColleges = mockColleges.filter(college => shortlistedColleges.includes(college.id));
 
   return (
     <div className="space-y-6">
@@ -210,7 +201,27 @@ const CollegeFinder = () => {
               ))}
             </div>
             <div className="mt-6 flex justify-end">
-              <Button onClick={handleShowShortlist}>Shortlist Options</Button>
+              <Dialog open={showShortlistDialog} onOpenChange={setShowShortlistDialog}>
+                <DialogTrigger asChild>
+                  <Button onClick={() => {
+                    if (shortlistedColleges.length === 0) {
+                      toast.info("Please shortlist some colleges first.");
+                      setShowShortlistDialog(false); // Keep dialog closed if no colleges
+                    } else {
+                      setShowShortlistDialog(true);
+                    }
+                  }}>Shortlist Options</Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-[900px] p-0">
+                  <DialogHeader className="p-6 pb-0">
+                    <DialogTitle>Your Shortlisted Colleges</DialogTitle>
+                  </DialogHeader>
+                  <ShortlistedCollegesDisplay
+                    shortlistedColleges={finalShortlistedColleges}
+                    casteCategory={casteCategory}
+                  />
+                </DialogContent>
+              </Dialog>
             </div>
           </CardContent>
         </Card>

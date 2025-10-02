@@ -4,8 +4,14 @@ import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { mockILSRounds } from "@/lib/data";
 import { Separator } from "@/components/ui/separator";
+import { Button } from "@/components/ui/button"; // Ensure Button is imported
 
 const ILSRound = () => {
+  const handleVisitWebsite = (collegeName: string) => {
+    const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(collegeName + " official website")}`;
+    window.open(searchUrl, "_blank");
+  };
+
   return (
     <div className="space-y-6">
       <h2 className="text-3xl font-bold">ILS Round Information</h2>
@@ -43,7 +49,9 @@ const ILSRound = () => {
                       <p className="text-muted-foreground">Estimated Fees: {ils.estimatedFees}</p>
                       <p className="text-sm mt-2">{ils.details}</p>
                     </div>
-                    <Button variant="outline" className="mt-2 md:mt-0">Visit College Website</Button> {/* Placeholder for actual link */}
+                    <Button variant="outline" className="mt-2 md:mt-0" onClick={() => handleVisitWebsite(ils.collegeName)}>
+                      Visit College Website
+                    </Button>
                   </div>
                   {index < mockILSRounds.length - 1 && <Separator />}
                 </React.Fragment>
