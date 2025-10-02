@@ -19,6 +19,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import ShortlistedCollegesDisplay from "@/components/ShortlistedCollegesDisplay";
 import { Badge } from "@/components/ui/badge";
 import { MapPin, TrendingUp, Star, Users, Lightbulb, CheckCircle, GraduationCap } from "lucide-react";
+import { Label } from "@/components/ui/label"; // Import Label component
 
 interface CollegeDetailProps {
   college: College;
