@@ -4,7 +4,7 @@ import React from "react";
 import { Link, Outlet } from "react-router-dom";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { Home, ListFilter, Menu, GraduationCap } from "lucide-react"; // Added Home and ListFilter icons
+import { Home, ListFilter, Menu, GraduationCap, FileText } from "lucide-react"; // Added FileText icon
 import { MadeWithDyad } from "./made-with-dyad";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import ShortlistedCollegesDisplay from "./ShortlistedCollegesDisplay";
@@ -33,6 +33,10 @@ const SidebarContent = () => (
     <NavLink to="/form-filling-guide">
       <ListFilter className="h-4 w-4" />
       Form Filling Guide
+    </NavLink>
+    <NavLink to="/prepare-documents"> {/* New NavLink for Prepare Documents */}
+      <FileText className="h-4 w-4" />
+      Prepare Your Documents
     </NavLink>
     <NavLink to="/ils-round">
       <Home className="h-4 w-4" /> {/* Using Home as a placeholder for a relevant icon */}
