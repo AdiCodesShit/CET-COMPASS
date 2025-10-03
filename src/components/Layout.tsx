@@ -5,7 +5,6 @@ import { Link, Outlet } from "react-router-dom";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Home, ListFilter, Menu, GraduationCap, FileText } from "lucide-react";
-import { MadeWithDyad } from "./made-with-dyad";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import ShortlistedCollegesDisplay from "./ShortlistedCollegesDisplay";
 import { mockColleges } from "@/lib/data";
@@ -76,7 +75,6 @@ const Layout = () => {
           <div className="flex-1 py-2">
             <SidebarContent />
           </div>
-          <MadeWithDyad />
         </div>
       </div>
       <div className="flex flex-col">
@@ -106,7 +104,6 @@ const Layout = () => {
                 </Link>
                 <SidebarContent />
               </nav>
-              <MadeWithDyad />
             </SheetContent>
           </Sheet>
           <div className="w-full flex-1 flex items-center justify-between">
