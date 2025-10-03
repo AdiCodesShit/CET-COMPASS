@@ -25,7 +25,7 @@ export const mockColleges: College[] = [
     cetCollegeCode: "EN6006",
     percentileCutoff: { OPEN: 99.5, OBC: 98.8, SC: 95.0, ST: 90.0, EWS: 99.0 }, // Highest cutoff for the college
     details: {
-      picture: "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1000&q=80", // Generic college building
+      picture: "/coep-main-building.png", // Updated to use the new image
       highlights: [
         "One of the oldest engineering colleges in India.",
         "Autonomous institute with strong academic freedom.",
@@ -3013,7 +3013,7 @@ export const mockFormGuide: FormGuideSection[] = [
         <li><strong>Option Form Filling:</strong> Research colleges and branches thoroughly. Fill as many options as possible in your true order of preference.</li>
         <li><strong>Freezing vs. Floating:</strong> If you are satisfied with an allotted seat, 'Freeze' it. If you want to try for a better option in subsequent rounds, 'Float' it.</li>
         <li><strong>Seat Acceptance Fee:</strong> Be prepared to pay a seat acceptance fee online if you accept a seat.</li>
-        <li><strong>Reporting to ARC/College:</strong> Adhere to the deadlines for reporting and document submission.</li>
+        <li><strong>Reporting to ARC/College:</b> Adhere to the deadlines for reporting and document submission.</li>
         <li><strong>Keep Copies:</strong> Always keep multiple copies of all your documents and receipts.</li>
         <li><strong>Stay Updated:</strong> Regularly check the official MHT-CET CAP website for announcements and schedule changes.</li>
       </ul>
