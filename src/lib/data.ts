@@ -166,7 +166,7 @@ export const mockColleges: College[] = [
     cetCollegeCode: "EN6175",
     percentileCutoff: { OPEN: 98.0, OBC: 96.5, SC: 91.0, ST: 86.0, EWS: 97.5 },
     details: {
-      picture: "/vit.jpg", // Updated to use the new JPG image
+      picture: "/vit-pune.jpg", // Updated to use the new JPG image
       highlights: [
         "Autonomous institute with a strong academic reputation.",
         "Focus on innovation, entrepreneurship, and research.",
@@ -293,7 +293,7 @@ export const mockColleges: College[] = [
     cetCollegeCode: "EN6174",
     percentileCutoff: { OPEN: 95.0, OBC: 93.0, SC: 88.0, ST: 83.0, EWS: 94.5 },
     details: {
-      picture: "https://images.unsplash.com/photo-1546410531-bb45ec799b92?auto=format&fit=crop&w=1000&q=80", // Classroom setting
+      picture: "/mit-alandi.jpg", // Updated to use the new JPG image
       highlights: ["Strong academic curriculum.", "Good infrastructure.", "Focus on research."],
       campusLife: "Active student clubs, technical events.",
       placementData: { averagePackage: "₹6.0L", highestPackage: "₹22L", topRecruiters: ["TCS", "Infosys"] },
@@ -339,7 +339,7 @@ export const mockColleges: College[] = [
     cetCollegeCode: "EN3182",
     percentileCutoff: { OPEN: 97.5, OBC: 95.5, SC: 90.5, ST: 85.5, EWS: 97.0 },
     details: {
-      picture: "https://images.unsplash.com/photo-1580582932707-5205c5f205a2?auto=format&fit=crop&w=1000&q=80", // Re-using another generic college building
+      picture: "/djsce.webp", // Updated to use the new WEBP image
       highlights: ["Prime location.", "Strong faculty.", "Good research output."],
       campusLife: "Urban campus, good exposure.",
       placementData: { averagePackage: "₹8.0L", highestPackage: "₹32L", topRecruiters: ["Infosys", "Accenture"] },
@@ -362,7 +362,7 @@ export const mockColleges: College[] = [
     cetCollegeCode: "EN6141",
     percentileCutoff: { OPEN: 97.0, OBC: 95.0, SC: 90.0, ST: 85.0, EWS: 96.5 },
     details: {
-      picture: "https://images.unsplash.com/photo-1541339907198-e0875663f9a1?auto=format&fit=crop&w=1000&q=80", // Re-using students on campus
+      picture: "/mit-pune.png", // Updated to use the new PNG image
       highlights: ["Good infrastructure.", "Diverse programs.", "Global exposure."],
       campusLife: "Large campus, many events.",
       placementData: { averagePackage: "₹6.5L", highestPackage: "₹28L", topRecruiters: ["TCS", "Wipro", "Infosys"] },
@@ -385,7 +385,7 @@ export const mockColleges: College[] = [
     cetCollegeCode: "EN3183",
     percentileCutoff: { OPEN: 96.0, OBC: 94.0, SC: 89.0, ST: 84.0, EWS: 95.5 },
     details: {
-      picture: "https://images.unsplash.com/photo-1560785477-80e9830c53f3?auto=format&fit=crop&w=1000&q=80", // Re-using modern building exterior
+      picture: "/tsec.jpeg", // Updated to use the new JPEG image
       highlights: ["Good infrastructure.", "Experienced faculty.", "Industry-oriented courses."],
       campusLife: "Active student body.",
       placementData: { averagePackage: "₹6.5L", highestPackage: "₹28L", topRecruiters: ["TCS", "Wipro"] },
@@ -792,7 +792,7 @@ export const mockColleges: College[] = [
     cetCollegeCode: "EN3184",
     percentileCutoff: { OPEN: 95.0, OBC: 93.0, SC: 88.0, ST: 83.0, EWS: 94.5 },
     details: {
-      picture: COLLEGE_PLACEHOLDER_IMAGE,
+      picture: "/vit-mumbai.png", // Updated to use the new PNG image
       highlights: ["Modern infrastructure.", "Good faculty.", "Industry exposure."],
       campusLife: "Active student clubs.",
       placementData: { averagePackage: "₹6.0L", highestPackage: "₹22L", topRecruiters: ["Accenture", "Capgemini"] },
@@ -1034,7 +1034,7 @@ export const mockColleges: College[] = [
     cetCollegeCode: "EN6180",
     percentileCutoff: { OPEN: 96.0, OBC: 94.0, SC: 89.0, ST: 84.0, EWS: 95.5 },
     details: {
-      picture: COLLEGE_PLACEHOLDER_IMAGE,
+      picture: "/dy-patil-akurdi.jpeg", // Updated to use the new JPEG image
       highlights: ["Good infrastructure.", "Decent placements.", "Research focus."],
       campusLife: "Vibrant campus.",
       placementData: { averagePackage: "₹6.5L", highestPackage: "₹25L", topRecruiters: ["TCS", "Infosys", "Wipro"] },
@@ -1190,7 +1190,7 @@ export const mockColleges: College[] = [
     cetCollegeCode: "EN4149",
     percentileCutoff: { OPEN: 88.0, OBC: 85.0, SC: 80.0, ST: 75.0, EWS: 87.0 },
     details: {
-      picture: COLLEGE_PLACEHOLDER_IMAGE,
+      picture: "/priyadarshani-nagpur.jpg", // Updated to use the new JPG image
       highlights: ["Good infrastructure.", "Decent placements.", "Student support."],
       campusLife: "Active student clubs.",
       placementData: { averagePackage: "₹3.8L", highestPackage: "₹12L", topRecruiters: ["Wipro", "Cognizant"] },
