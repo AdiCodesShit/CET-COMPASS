@@ -24,6 +24,7 @@ export interface College {
     }[];
     availableBranches: string[]; // Added for branch tags
     cutOffPercentiles: Record<CasteCategory, number>; // For detailed view
+    googleMapsLink: string; // Added Google Maps link
   };
 }
 

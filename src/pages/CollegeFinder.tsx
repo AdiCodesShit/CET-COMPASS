@@ -18,7 +18,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { ScrollArea } from "@/components/ui/scroll-area";
 import ShortlistedCollegesDisplay from "@/components/ShortlistedCollegesDisplay";
 import { Badge } from "@/components/ui/badge";
-import { MapPin, TrendingUp, Star, Users, Lightbulb, CheckCircle, GraduationCap, ListFilter } from "lucide-react"; // Added ListFilter
+import { MapPin, TrendingUp, Star, Users, Lightbulb, CheckCircle, GraduationCap, ListFilter, Map } from "lucide-react"; // Added Map icon
 import { Label } from "@/components/ui/label";
 
 interface CollegeDetailProps {
@@ -145,12 +145,20 @@ const CollegeDetail: React.FC<CollegeDetailProps> = ({ college }) => (
             </div>
           </CardContent>
         </Card>
+
+        {college.details.googleMapsLink && (
+          <Button asChild className="w-full gradient-button">
+            <a href={college.details.googleMapsLink} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
+              <Map className="h-5 w-5" /> View on Google Maps
+            </a>
+          </Button>
+        )}
       </div>
     </div>
   </ScrollArea>
 );
 
-const cityOptions = ["Mumbai", "Pune", "Aurangabad", "Nagpur", "Nashik", "Sangli", "Kolhapur", "Thane", "Navi Mumbai"];
+const cityOptions = ["Mumbai", "Pune", "Aurangabad", "Nagpur", "Nashik", "Sangli", "Kolhapur", "Thane", "Navi Mumbai", "Karad", "Amravati", "Shegaon", "Jalgaon", "Nanded", "Chandrapur", "Lonavala", "Ahmednagar", "Raigad", "Chandwad"];
 const collegeTypeFilters: (CollegeType | "All")[] = ["All", "Government", "Autonomous", "Private"];
 
 const CollegeFinder = () => {
@@ -189,7 +197,7 @@ const CollegeFinder = () => {
     // Sort by city preference first, then by cutoff
     results.sort((a, b) => {
       const aIsPreferredCity = cityPreferences.includes(a.city);
-      const bIsPreferredCity = b.city.toLowerCase() === cityPreferences.includes(b.city);
+      const bIsPreferredCity = cityPreferences.includes(b.city); // Corrected comparison
 
       if (aIsPreferredCity && !bIsPreferredCity) return -1;
       if (!aIsPreferredCity && bIsPreferredCity) return 1;
