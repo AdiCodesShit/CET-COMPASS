@@ -236,7 +236,7 @@ export const mockColleges: College[] = [
     cetCollegeCode: "EN3199",
     percentileCutoff: { OPEN: 98.2, OBC: 96.8, SC: 91.5, ST: 86.5, EWS: 97.8 },
     details: {
-      picture: "https://images.unsplash.com/photo-1550009158-9ebf69173e03?auto=format&fit=crop&w=1000&q=80", // Lecture hall
+      picture: "/kjsce-main-building.jpg", // Updated to use the new JPG image
       highlights: [
         "Autonomous institute with a sprawling campus.",
         "Strong emphasis on holistic development.",
@@ -271,7 +271,7 @@ export const mockColleges: College[] = [
     cetCollegeCode: "EN6177",
     percentileCutoff: { OPEN: 99.0, OBC: 98.0, SC: 93.0, ST: 88.0, EWS: 98.5 },
     details: {
-      picture: "/pict.jpg", // Updated to use the new PICT image
+      picture: "/pict-main-gate.jpg", // Updated to use the new PICT image
       highlights: ["Top-tier CS/IT placements.", "Strong coding culture.", "Experienced faculty."],
       campusLife: "Tech-focused clubs, hackathons.",
       placementData: { averagePackage: "₹11.0L", highestPackage: "₹50L", topRecruiters: ["Microsoft", "Amazon", "Infosys"] },
