@@ -61,7 +61,7 @@ export const mockColleges: College[] = [
     cetCollegeCode: "EN3002",
     percentileCutoff: { OPEN: 99.3, OBC: 98.5, SC: 94.5, ST: 89.5, EWS: 98.8 },
     details: {
-      picture: "https://images.unsplash.com/photo-1580582932707-5205c5f205a2?auto=format&fit=crop&w=1000&q=80", // Another generic college building
+      picture: "/vjti-main-building.jpg", // Updated to use the new JPG image
       highlights: [
         "Premier engineering institute in Maharashtra.",
         "Strong industry connections and research focus.",
@@ -139,7 +139,7 @@ export const mockColleges: College[] = [
         "Modern infrastructure and well-equipped labs.",
         "Located in a prime area of Mumbai with excellent connectivity.",
       ],
-      campusLife: "Located in a prime area of Mumbai, offering good connectivity. Active student clubs and technical fests. The campus is relatively small but makes up for it with its location and facilities.",
+      campusLife: "Located in a prime area of Mumbai, offering good connectivity. Active student clubs and technical fests. The campus is relatively small but makes up for it with its location and and facilities.",
       placementData: {
         averagePackage: "₹6.8L",
         highestPackage: "₹25L",
