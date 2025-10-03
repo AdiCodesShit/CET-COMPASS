@@ -64,11 +64,11 @@ const Layout = () => {
     <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
       <div className="hidden border-r bg-sidebar md:block">
         <div className="flex h-full max-h-screen flex-col gap-2">
-          <div className="flex h-14 items-center border-b border-sidebar-border px-4 lg:h-[60px] lg:px-6">
+          <div className="flex h-16 items-center border-b border-sidebar-border px-4 lg:h-[70px] lg:px-6">
             <Link to="/" className="flex items-center gap-2 font-semibold text-sidebar-primary-foreground">
               <img src="/cet-compass-logo.jpeg" alt="CET-COMPASS Logo" className="h-8 w-8 object-contain" />
               <div className="flex flex-col leading-tight">
-                <span className="text-lg font-bold text-app-purple">CET-COMPASS</span>
+                <span className="text-base font-bold text-app-purple">CET-COMPASS</span>
                 <span className="text-xs text-muted-foreground">Your Guide to Engineering Admissions</span>
               </div>
             </Link>
@@ -100,7 +100,7 @@ const Layout = () => {
                 >
                   <img src="/cet-compass-logo.jpeg" alt="CET-COMPASS Logo" className="h-8 w-8 object-contain" />
                   <div className="flex flex-col leading-tight">
-                    <span className="text-lg font-bold text-app-purple">CET-COMPASS</span>
+                    <span className="text-base font-bold text-app-purple">CET-COMPASS</span>
                     <span className="text-xs text-muted-foreground">Your Guide to Engineering Admissions</span>
                   </div>
                 </Link>
