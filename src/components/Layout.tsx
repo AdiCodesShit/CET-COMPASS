@@ -66,7 +66,7 @@ const Layout = () => {
         <div className="flex h-full max-h-screen flex-col gap-2">
           <div className="flex h-14 items-center border-b border-sidebar-border px-4 lg:h-[60px] lg:px-6">
             <Link to="/" className="flex items-center gap-2 font-semibold text-sidebar-primary-foreground">
-              <GraduationCap className="h-6 w-6 text-app-purple" />
+              <img src="/cet-compass-logo.jpeg" alt="CET-COMPASS Logo" className="h-8 w-8 object-contain" />
               <div className="flex flex-col leading-tight">
                 <span className="text-lg font-bold text-app-purple">CET-COMPASS</span>
                 <span className="text-xs text-muted-foreground">Your Guide to Engineering Admissions</span>
@@ -98,7 +98,7 @@ const Layout = () => {
                   to="/"
                   className="flex items-center gap-2 text-lg font-semibold text-sidebar-primary-foreground"
                 >
-                  <GraduationCap className="h-6 w-6 text-app-purple" />
+                  <img src="/cet-compass-logo.jpeg" alt="CET-COMPASS Logo" className="h-8 w-8 object-contain" />
                   <div className="flex flex-col leading-tight">
                     <span className="text-lg font-bold text-app-purple">CET-COMPASS</span>
                     <span className="text-xs text-muted-foreground">Your Guide to Engineering Admissions</span>
