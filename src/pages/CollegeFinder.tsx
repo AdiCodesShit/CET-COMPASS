@@ -17,8 +17,9 @@ import { toast } from "sonner";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import ShortlistedCollegesDisplay from "@/components/ShortlistedCollegesDisplay";
+import CollegeComparisonDisplay from "@/components/CollegeComparisonDisplay"; // Import the new component
 import { Badge } from "@/components/ui/badge";
-import { MapPin, TrendingUp, Star, Users, Lightbulb, CheckCircle, GraduationCap, ListFilter, Map, Hotel, UtensilsCrossed } from "lucide-react"; // Added Map and Hotel, UtensilsCrossed icons
+import { MapPin, TrendingUp, Star, Users, Lightbulb, CheckCircle, GraduationCap, ListFilter, Map, Hotel, UtensilsCrossed, GitCompare } from "lucide-react"; // Added GitCompare icon
 import { Label } from "@/components/ui/label";
 
 interface CollegeDetailProps {
@@ -214,6 +215,7 @@ const CollegeFinder = () => {
     return storedShortlist ? JSON.parse(storedShortlist) : [];
   });
   const [showShortlistDialog, setShowShortlistDialog] = useState(false);
+  const [showComparisonDialog, setShowComparisonDialog] = useState(false); // New state for comparison dialog
   const [activeTypeFilter, setActiveTypeFilter] = useState<CollegeType | "All">("All");
 
   useEffect(() => {
@@ -397,29 +399,58 @@ const CollegeFinder = () => {
                 Based on {percentile}% percentile in {casteCategory} category
               </p>
             </div>
-            <Dialog open={showShortlistDialog} onOpenChange={setShowShortlistDialog}>
-              <DialogTrigger asChild>
-                <Button onClick={() => {
-                  if (shortlistedColleges.length === 0) {
-                    toast.info("Please shortlist some colleges first.");
-                    setShowShortlistDialog(false);
-                  } else {
-                    setShowShortlistDialog(true);
-                  }
-                }} className="gradient-button">
-                  <ListFilter className="h-4 w-4 mr-2" /> Shortlist ({shortlistedColleges.length})
-                </Button>
-              </DialogTrigger>
-              <DialogContent className="sm:max-w-[900px] p-0">
-                <DialogHeader className="p-6 pb-0">
-                  <DialogTitle>Your Shortlisted Colleges</DialogTitle>
-                </DialogHeader>
-                <ShortlistedCollegesDisplay
-                  shortlistedColleges={finalShortlistedColleges}
-                  casteCategory={casteCategory}
-                />
-              </DialogContent>
-            </Dialog>
+            <div className="flex gap-2"> {/* Container for both buttons */}
+              <Dialog open={showComparisonDialog} onOpenChange={setShowComparisonDialog}>
+                <DialogTrigger asChild>
+                  <Button
+                    onClick={() => {
+                      if (finalShortlistedColleges.length < 2) {
+                        toast.info("Please shortlist at least two colleges to compare.");
+                        setShowComparisonDialog(false);
+                      } else {
+                        setShowComparisonDialog(true);
+                      }
+                    }}
+                    className="gradient-button"
+                  >
+                    <GitCompare className="h-4 w-4 mr-2" /> Compare ({finalShortlistedColleges.length})
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-[1200px] p-0"> {/* Wider dialog for comparison */}
+                  <DialogHeader className="p-6 pb-0">
+                    <DialogTitle>Compare Shortlisted Colleges</DialogTitle>
+                  </DialogHeader>
+                  <CollegeComparisonDisplay
+                    colleges={finalShortlistedColleges}
+                    casteCategory={casteCategory}
+                  />
+                </DialogContent>
+              </Dialog>
+
+              <Dialog open={showShortlistDialog} onOpenChange={setShowShortlistDialog}>
+                <DialogTrigger asChild>
+                  <Button onClick={() => {
+                    if (shortlistedColleges.length === 0) {
+                      toast.info("Please shortlist some colleges first.");
+                      setShowShortlistDialog(false);
+                    } else {
+                      setShowShortlistDialog(true);
+                    }
+                  }} className="gradient-button">
+                    <ListFilter className="h-4 w-4 mr-2" /> Shortlist ({shortlistedColleges.length})
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-[900px] p-0">
+                  <DialogHeader className="p-6 pb-0">
+                    <DialogTitle>Your Shortlisted Colleges</DialogTitle>
+                  </DialogHeader>
+                  <ShortlistedCollegesDisplay
+                    shortlistedColleges={finalShortlistedColleges}
+                    casteCategory={casteCategory}
+                  />
+                </DialogContent>
+              </Dialog>
+            </div>
           </div>
 
           {/* Type Filter Buttons */}
