@@ -7,6 +7,13 @@ export interface Branch {
   cutoffs: Record<CasteCategory, number>;
 }
 
+export interface HostelInfo {
+  rating: number; // e.g., 4.0
+  messRating: number; // e.g., 3.5
+  distanceFromCollege: string; // e.g., "In Campus Hostel", "2 km", "15 min walk"
+  highlights: string[];
+}
+
 export interface College {
   id: string;
   name: string;
@@ -32,6 +39,7 @@ export interface College {
     availableBranches: Branch[]; // Changed to array of Branch objects with code and cutoffs
     cutOffPercentiles: Record<CasteCategory, number>; // For detailed view (can be derived from branches or kept as overall)
     googleMapsLink: string; // Added Google Maps link
+    hostelInfo?: HostelInfo; // Optional hostel information
   };
 }
 

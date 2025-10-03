@@ -18,12 +18,31 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { ScrollArea } from "@/components/ui/scroll-area";
 import ShortlistedCollegesDisplay from "@/components/ShortlistedCollegesDisplay";
 import { Badge } from "@/components/ui/badge";
-import { MapPin, TrendingUp, Star, Users, Lightbulb, CheckCircle, GraduationCap, ListFilter, Map } from "lucide-react"; // Added Map icon
+import { MapPin, TrendingUp, Star, Users, Lightbulb, CheckCircle, GraduationCap, ListFilter, Map, Hotel, UtensilsCrossed } from "lucide-react"; // Added Map and Hotel, UtensilsCrossed icons
 import { Label } from "@/components/ui/label";
 
 interface CollegeDetailProps {
   college: College;
 }
+
+const StarRating = ({ rating }: { rating: number }) => {
+  const fullStars = Math.floor(rating);
+  const halfStar = rating % 1 >= 0.5;
+  const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
+
+  return (
+    <div className="flex items-center">
+      {[...Array(fullStars)].map((_, i) => (
+        <Star key={`full-${i}`} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+      ))}
+      {halfStar && <Star key="half" className="h-4 w-4 fill-yellow-400 text-yellow-400 opacity-50" />}
+      {[...Array(emptyStars)].map((_, i) => (
+        <Star key={`empty-${i}`} className="h-4 w-4 text-gray-300 dark:text-gray-600" />
+      ))}
+      <span className="ml-2 text-sm text-muted-foreground">({rating.toFixed(1)}/5)</span>
+    </div>
+  );
+};
 
 const CollegeDetail: React.FC<CollegeDetailProps> = ({ college }) => (
   <ScrollArea className="h-[80vh] p-0">
@@ -111,40 +130,64 @@ const CollegeDetail: React.FC<CollegeDetailProps> = ({ college }) => (
                   <Badge key={i} variant="secondary">{recruiter}</Badge>
                 ))}
               </div>
-            </div>
-          </CardContent>
+            </div
+          ></CardContent>
         </Card>
 
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center text-lg">
-              <GraduationCap className="h-5 w-5 mr-2 text-app-purple" /> Cut-off Percentiles
+              <GraduationCap className="h-5 w-5 mr-2 text-app-purple" /> Branch-wise Cut-off Percentiles
             </CardTitle>
           </CardHeader>
-          <CardContent className="grid grid-cols-2 gap-2">
-            {Object.entries(college.details.cutOffPercentiles).map(([category, cutoff]) => (
-              <div key={category} className="flex justify-between items-center">
-                <span className="text-sm font-medium">{category}</span>
-                <span className="text-sm text-app-purple font-semibold">{cutoff}%</span>
+          <CardContent className="grid gap-3">
+            {college.details.availableBranches.map((branch, i) => (
+              <div key={i} className="border-b pb-2 last:border-b-0 last:pb-0">
+                <h4 className="font-semibold text-sm mb-1">{branch.name} ({branch.code})</h4>
+                <div className="grid grid-cols-2 gap-1 text-xs">
+                  {Object.entries(branch.cutoffs).map(([category, cutoff]) => (
+                    <div key={category} className="flex justify-between">
+                      <span className="text-muted-foreground">{category}:</span>
+                      <span className="font-medium text-app-blue">{cutoff}%</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             ))}
           </CardContent>
         </Card>
 
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center text-lg">
-              <CheckCircle className="h-5 w-5 mr-2 text-app-purple" /> Available Branches
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="flex flex-wrap gap-2">
-              {college.details.availableBranches.map((branch, i) => (
-                <Badge key={i} variant="outline">{branch.name}</Badge>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
+        {college.details.hostelInfo && (
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center text-lg">
+                <Hotel className="h-5 w-5 mr-2 text-app-purple" /> Hostel Information
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              <div>
+                <p className="text-sm text-muted-foreground">Hostel Rating</p>
+                <StarRating rating={college.details.hostelInfo.rating} />
+              </div>
+              <div>
+                <p className="text-sm text-muted-foreground">Mess Rating</p>
+                <StarRating rating={college.details.hostelInfo.messRating} />
+              </div>
+              <div>
+                <p className="text-sm text-muted-foreground">Distance from College</p>
+                <p className="font-semibold text-app-purple">{college.details.hostelInfo.distanceFromCollege}</p>
+              </div>
+              <div>
+                <p className="text-sm text-muted-foreground mb-2">Highlights</p>
+                <ul className="list-disc list-inside text-sm space-y-1">
+                  {college.details.hostelInfo.highlights.map((highlight, i) => (
+                    <li key={i}>{highlight}</li>
+                  ))}
+                </ul>
+              </div>
+            </CardContent>
+          </Card>
+        )}
 
         {college.details.googleMapsLink && (
           <Button asChild className="w-full gradient-button">

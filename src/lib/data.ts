@@ -51,6 +51,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 99.5, OBC: 98.8, SC: 95.0, ST: 90.0, EWS: 99.0 },
       googleMapsLink: generateGoogleMapsLink("College of Engineering, Pune", "Pune"),
+      hostelInfo: {
+        rating: 4.5,
+        messRating: 4.0,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Well-maintained rooms", "24/7 security", "Sports facilities nearby", "Study rooms available"],
+      },
     },
   },
   {
@@ -87,6 +93,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 99.3, OBC: 98.5, SC: 94.5, ST: 89.5, EWS: 98.8 },
       googleMapsLink: generateGoogleMapsLink("Veermata Jijabai Technological Institute", "Mumbai"),
+      hostelInfo: {
+        rating: 4.0,
+        messRating: 3.5,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Affordable accommodation", "Good community", "Basic amenities", "Close to academic blocks"],
+      },
     },
   },
   {
@@ -122,6 +134,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 97.0, OBC: 95.5, SC: 90.0, ST: 85.0, EWS: 96.5 },
       googleMapsLink: generateGoogleMapsLink("Walchand College of Engineering", "Sangli"),
+      hostelInfo: {
+        rating: 4.2,
+        messRating: 3.8,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Spacious rooms", "Green surroundings", "Good food variety", "24/7 water and electricity"],
+      },
     },
   },
   {
@@ -156,6 +174,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 98.5, OBC: 97.0, SC: 92.0, ST: 87.0, EWS: 98.0 },
       googleMapsLink: generateGoogleMapsLink("Sardar Patel Institute of Technology", "Mumbai"),
+      hostelInfo: {
+        rating: 3.8,
+        messRating: 3.2,
+        distanceFromCollege: "1.5 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -191,6 +215,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 98.0, OBC: 96.5, SC: 91.0, ST: 86.0, EWS: 97.5 },
       googleMapsLink: generateGoogleMapsLink("Vishwakarma Institute of Technology", "Pune"),
+      hostelInfo: {
+        rating: 4.3,
+        messRating: 3.9,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Modern facilities", "Good food", "Recreational areas", "Wi-Fi enabled"],
+      },
     },
   },
   {
@@ -226,6 +256,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 96.0, OBC: 94.0, SC: 89.0, ST: 84.0, EWS: 95.5 },
       googleMapsLink: generateGoogleMapsLink("Government College of Engineering, Aurangabad", "Aurangabad"),
+      hostelInfo: {
+        rating: 3.5,
+        messRating: 3.0,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Affordable", "Basic facilities", "Quiet environment", "Good for focused study"],
+      },
     },
   },
   {
@@ -261,6 +297,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 98.2, OBC: 96.8, SC: 91.5, ST: 86.5, EWS: 97.8 },
       googleMapsLink: generateGoogleMapsLink("K. J. Somaiya College of Engineering", "Mumbai"),
+      hostelInfo: {
+        rating: 4.6,
+        messRating: 4.2,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Modern infrastructure", "Variety of food options", "Gym and sports facilities", "24/7 medical support"],
+      },
     },
   },
   {
@@ -283,6 +325,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 99.0, OBC: 98.0, SC: 93.0, ST: 88.0, EWS: 98.5 },
       googleMapsLink: generateGoogleMapsLink("Pune Institute of Computer Technology", "Pune"),
+      hostelInfo: {
+        rating: 4.1,
+        messRating: 3.7,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Good study environment", "Clean and hygienic", "Wi-Fi access", "Laundry services"],
+      },
     },
   },
   {
@@ -306,6 +354,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 95.0, OBC: 93.0, SC: 88.0, ST: 83.0, EWS: 94.5 },
       googleMapsLink: generateGoogleMapsLink("MIT Academy of Engineering, Alandi", "Pune"),
+      hostelInfo: {
+        rating: 4.0,
+        messRating: 3.5,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Spacious rooms", "Good mess food", "Sports facilities", "24/7 security"],
+      },
     },
   },
   {
@@ -329,6 +383,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 96.5, OBC: 94.8, SC: 89.5, ST: 84.5, EWS: 96.0 },
       googleMapsLink: generateGoogleMapsLink("Pimpri Chinchwad College of Engineering", "Pune"),
+      hostelInfo: {
+        rating: 4.4,
+        messRating: 4.1,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Well-furnished rooms", "Nutritious food", "Gym facilities", "24/7 Wi-Fi"],
+      },
     },
   },
   {
@@ -352,6 +412,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 97.5, OBC: 95.5, SC: 90.5, ST: 85.5, EWS: 97.0 },
       googleMapsLink: generateGoogleMapsLink("Dwarkadas J. Sanghvi College of Engineering", "Mumbai"),
+      hostelInfo: {
+        rating: 3.9,
+        messRating: 3.3,
+        distanceFromCollege: "2 km",
+        highlights: ["Well-connected location", "Clean rooms", "Good security", "Study areas"],
+      },
     },
   },
   {
@@ -375,6 +441,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 97.0, OBC: 95.0, SC: 90.0, ST: 85.0, EWS: 96.5 },
       googleMapsLink: generateGoogleMapsLink("Maharashtra Institute of Technology, Pune", "Pune"),
+      hostelInfo: {
+        rating: 4.2,
+        messRating: 3.8,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Large hostel complex", "Multiple mess options", "Sports facilities", "24/7 medical support"],
+      },
     },
   },
   {
@@ -397,6 +469,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 96.0, OBC: 94.0, SC: 89.0, ST: 84.0, EWS: 95.5 },
       googleMapsLink: generateGoogleMapsLink("Thadomal Shahani Engineering College", "Mumbai"),
+      hostelInfo: {
+        rating: 3.7,
+        messRating: 3.1,
+        distanceFromCollege: "3 km",
+        highlights: ["Well-connected", "Clean rooms", "Good security", "Nearby eateries"],
+      },
     },
   },
   {
@@ -420,6 +498,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 93.0, OBC: 90.0, SC: 85.0, ST: 80.0, EWS: 92.0 },
       googleMapsLink: generateGoogleMapsLink("Government College of Engineering, Karad", "Karad"),
+      hostelInfo: {
+        rating: 3.6,
+        messRating: 3.0,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Affordable", "Basic facilities", "Quiet environment", "Good for focused study"],
+      },
     },
   },
   {
@@ -443,6 +527,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 94.0, OBC: 92.0, SC: 87.0, ST: 82.0, EWS: 93.5 },
       googleMapsLink: generateGoogleMapsLink("Fr. C. Rodrigues Institute of Technology", "Navi Mumbai"),
+      hostelInfo: {
+        rating: 3.9,
+        messRating: 3.4,
+        distanceFromCollege: "1 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -466,6 +556,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 95.5, OBC: 93.5, SC: 88.5, ST: 83.5, EWS: 95.0 },
       googleMapsLink: generateGoogleMapsLink("Ramrao Adik Institute of Technology", "Navi Mumbai"),
+      hostelInfo: {
+        rating: 4.0,
+        messRating: 3.6,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Well-maintained rooms", "Good food", "Recreational areas", "Wi-Fi enabled"],
+      },
     },
   },
   {
@@ -489,6 +585,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 92.0, OBC: 89.0, SC: 84.0, ST: 79.0, EWS: 91.0 },
       googleMapsLink: generateGoogleMapsLink("Government College of Engineering, Amravati", "Amravati"),
+      hostelInfo: {
+        rating: 3.5,
+        messRating: 2.9,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Affordable", "Basic facilities", "Quiet environment", "Good for focused study"],
+      },
     },
   },
   {
@@ -512,6 +614,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 95.5, OBC: 93.5, SC: 88.5, ST: 83.5, EWS: 95.0 },
       googleMapsLink: generateGoogleMapsLink("Shri Ramdeobaba College of Engineering and Management", "Nagpur"),
+      hostelInfo: {
+        rating: 4.3,
+        messRating: 3.9,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Modern facilities", "Good food", "Recreational areas", "Wi-Fi enabled"],
+      },
     },
   },
   {
@@ -535,6 +643,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 94.0, OBC: 92.0, SC: 87.0, ST: 82.0, EWS: 93.5 },
       googleMapsLink: generateGoogleMapsLink("G. H. Raisoni College of Engineering, Nagpur", "Nagpur"),
+      hostelInfo: {
+        rating: 4.0,
+        messRating: 3.6,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Well-maintained rooms", "Good food", "Recreational areas", "Wi-Fi enabled"],
+      },
     },
   },
   {
@@ -558,6 +672,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 91.0, OBC: 88.0, SC: 83.0, ST: 78.0, EWS: 90.0 },
       googleMapsLink: generateGoogleMapsLink("K. K. Wagh Institute of Engineering Education and Research", "Nashik"),
+      hostelInfo: {
+        rating: 3.8,
+        messRating: 3.2,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Clean rooms", "Good security", "Study rooms", "Green surroundings"],
+      },
     },
   },
   {
@@ -580,6 +700,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 88.0, OBC: 85.0, SC: 80.0, ST: 75.0, EWS: 87.0 },
       googleMapsLink: generateGoogleMapsLink("Sandip Institute of Technology & Management", "Nashik"),
+      hostelInfo: {
+        rating: 3.5,
+        messRating: 2.8,
+        distanceFromCollege: "1 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -602,6 +728,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 89.0, OBC: 86.0, SC: 81.0, ST: 76.0, EWS: 88.0 },
       googleMapsLink: generateGoogleMapsLink("S. B. Jain Institute of Technology, Management & Research", "Nagpur"),
+      hostelInfo: {
+        rating: 3.6,
+        messRating: 3.0,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Affordable", "Basic facilities", "Quiet environment", "Good for focused study"],
+      },
     },
   },
   {
@@ -624,6 +756,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 90.0, OBC: 87.0, SC: 82.0, ST: 77.0, EWS: 89.0 },
       googleMapsLink: generateGoogleMapsLink("Shri Sant Gajanan Maharaj College of Engineering", "Shegaon"),
+      hostelInfo: {
+        rating: 4.1,
+        messRating: 3.7,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Clean and hygienic", "Good food", "Spiritual environment", "Study rooms"],
+      },
     },
   },
   {
@@ -646,6 +784,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 87.0, OBC: 84.0, SC: 79.0, ST: 74.0, EWS: 86.0 },
       googleMapsLink: generateGoogleMapsLink("Government College of Engineering, Jalgaon", "Jalgaon"),
+      hostelInfo: {
+        rating: 3.2,
+        messRating: 2.7,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Affordable", "Basic facilities", "Quiet environment", "Good for focused study"],
+      },
     },
   },
   {
@@ -668,6 +812,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 86.0, OBC: 83.0, SC: 78.0, ST: 73.0, EWS: 85.0 },
       googleMapsLink: generateGoogleMapsLink("Sipna College of Engineering & Technology", "Amravati"),
+      hostelInfo: {
+        rating: 3.4,
+        messRating: 2.9,
+        distanceFromCollege: "1.5 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -691,6 +841,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 89.5, OBC: 86.5, SC: 81.5, ST: 76.5, EWS: 88.5 },
       googleMapsLink: generateGoogleMapsLink("Prof. Ram Meghe Institute of Technology & Research", "Amravati"),
+      hostelInfo: {
+        rating: 3.9,
+        messRating: 3.4,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Well-maintained rooms", "Good food", "Recreational areas", "Wi-Fi enabled"],
+      },
     },
   },
   {
@@ -714,6 +870,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 94.5, OBC: 92.5, SC: 87.5, ST: 82.5, EWS: 94.0 },
       googleMapsLink: generateGoogleMapsLink("Shri Guru Gobind Singhji Institute of Engineering and Technology", "Nanded"),
+      hostelInfo: {
+        rating: 4.2,
+        messRating: 3.8,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Spacious rooms", "Good mess food", "Sports facilities", "24/7 security"],
+      },
     },
   },
   {
@@ -736,6 +898,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 85.0, OBC: 82.0, SC: 77.0, ST: 72.0, EWS: 84.0 },
       googleMapsLink: generateGoogleMapsLink("Government College of Engineering, Chandrapur", "Chandrapur"),
+      hostelInfo: {
+        rating: 3.0,
+        messRating: 2.5,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Affordable", "Basic facilities", "Quiet environment", "Good for focused study"],
+      },
     },
   },
   {
@@ -759,6 +927,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 93.5, OBC: 91.5, SC: 86.5, ST: 81.5, EWS: 93.0 },
       googleMapsLink: generateGoogleMapsLink("JSPM's Rajarshi Shahu College of Engineering", "Pune"),
+      hostelInfo: {
+        rating: 3.8,
+        messRating: 3.3,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Clean rooms", "Good security", "Study rooms", "Wi-Fi enabled"],
+      },
     },
   },
   {
@@ -782,6 +956,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 92.5, OBC: 90.5, SC: 85.5, ST: 80.5, EWS: 92.0 },
       googleMapsLink: generateGoogleMapsLink("Sinhgad College of Engineering", "Pune"),
+      hostelInfo: {
+        rating: 3.7,
+        messRating: 3.2,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Large hostel complex", "Multiple mess options", "Sports facilities", "24/7 security"],
+      },
     },
   },
   {
@@ -804,6 +984,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 95.0, OBC: 93.0, SC: 88.0, ST: 83.0, EWS: 94.5 },
       googleMapsLink: generateGoogleMapsLink("Vidyalankar Institute of Technology, Mumbai", "Mumbai"),
+      hostelInfo: {
+        rating: 4.0,
+        messRating: 3.5,
+        distanceFromCollege: "1 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -826,6 +1012,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 93.0, OBC: 91.0, SC: 86.0, ST: 81.0, EWS: 92.5 },
       googleMapsLink: generateGoogleMapsLink("Don Bosco Institute of Technology, Mumbai", "Mumbai"),
+      hostelInfo: {
+        rating: 3.6,
+        messRating: 3.0,
+        distanceFromCollege: "2 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -848,6 +1040,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 91.5, OBC: 89.5, SC: 84.5, ST: 79.5, EWS: 91.0 },
       googleMapsLink: generateGoogleMapsLink("Atharva College of Engineering", "Mumbai"),
+      hostelInfo: {
+        rating: 3.5,
+        messRating: 2.9,
+        distanceFromCollege: "2.5 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -870,6 +1068,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 94.0, OBC: 92.0, SC: 87.0, ST: 82.0, EWS: 93.5 },
       googleMapsLink: generateGoogleMapsLink("St. Francis Institute of Technology", "Mumbai"),
+      hostelInfo: {
+        rating: 3.9,
+        messRating: 3.4,
+        distanceFromCollege: "1.8 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -892,6 +1096,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 90.0, OBC: 88.0, SC: 83.0, ST: 78.0, EWS: 89.5 },
       googleMapsLink: generateGoogleMapsLink("Rajiv Gandhi Institute of Technology", "Mumbai"),
+      hostelInfo: {
+        rating: 3.4,
+        messRating: 2.8,
+        distanceFromCollege: "3 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -914,6 +1124,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 89.0, OBC: 87.0, SC: 82.0, ST: 77.0, EWS: 88.5 },
       googleMapsLink: generateGoogleMapsLink("Anjuman-I-Islam's M.H. Saboo Siddik College of Engineering", "Mumbai"),
+      hostelInfo: {
+        rating: 3.3,
+        messRating: 2.7,
+        distanceFromCollege: "2.8 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -936,6 +1152,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 92.0, OBC: 90.0, SC: 85.0, ST: 80.0, EWS: 91.5 },
       googleMapsLink: generateGoogleMapsLink("Terna Engineering College", "Navi Mumbai"),
+      hostelInfo: {
+        rating: 3.7,
+        messRating: 3.1,
+        distanceFromCollege: "1.2 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -958,6 +1180,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 90.5, OBC: 88.5, SC: 83.5, ST: 78.5, EWS: 90.0 },
       googleMapsLink: generateGoogleMapsLink("Datta Meghe College of Engineering", "Navi Mumbai"),
+      hostelInfo: {
+        rating: 3.6,
+        messRating: 3.0,
+        distanceFromCollege: "1.5 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -980,6 +1208,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 88.0, OBC: 86.0, SC: 81.0, ST: 76.0, EWS: 87.5 },
       googleMapsLink: generateGoogleMapsLink("Padmabhushan Vasantdada Patil Pratishthan's College of Engineering", "Mumbai"),
+      hostelInfo: {
+        rating: 3.3,
+        messRating: 2.7,
+        distanceFromCollege: "2.5 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -1002,6 +1236,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 91.0, OBC: 89.0, SC: 84.0, ST: 79.0, EWS: 90.5 },
       googleMapsLink: generateGoogleMapsLink("Lokmanya Tilak College of Engineering", "Navi Mumbai"),
+      hostelInfo: {
+        rating: 3.7,
+        messRating: 3.1,
+        distanceFromCollege: "1.0 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -1024,6 +1264,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 85.5, OBC: 82.5, SC: 77.5, ST: 72.5, EWS: 85.0 },
       googleMapsLink: generateGoogleMapsLink("Pillai HOC College of Engineering and Technology", "Raigad"),
+      hostelInfo: {
+        rating: 3.2,
+        messRating: 2.6,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Affordable", "Basic facilities", "Quiet environment", "Good for focused study"],
+      },
     },
   },
   {
@@ -1047,6 +1293,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 96.0, OBC: 94.0, SC: 89.0, ST: 84.0, EWS: 95.5 },
       googleMapsLink: generateGoogleMapsLink("DY Patil College of Engineering, Akurdi", "Pune"),
+      hostelInfo: {
+        rating: 4.1,
+        messRating: 3.7,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Modern facilities", "Good food", "Recreational areas", "Wi-Fi enabled"],
+      },
     },
   },
   {
@@ -1069,6 +1321,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 91.0, OBC: 89.0, SC: 84.0, ST: 79.0, EWS: 90.5 },
       googleMapsLink: generateGoogleMapsLink("Modern Education Society's College of Engineering, Pune", "Pune"),
+      hostelInfo: {
+        rating: 3.6,
+        messRating: 3.0,
+        distanceFromCollege: "1.8 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -1091,6 +1349,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 87.0, OBC: 84.0, SC: 79.0, ST: 74.0, EWS: 86.0 },
       googleMapsLink: generateGoogleMapsLink("Zeal College of Engineering and Research", "Pune"),
+      hostelInfo: {
+        rating: 3.4,
+        messRating: 2.8,
+        distanceFromCollege: "2.0 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -1113,6 +1377,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 89.0, OBC: 86.0, SC: 81.0, ST: 76.0, EWS: 88.5 },
       googleMapsLink: generateGoogleMapsLink("Dr. D. Y. Patil School of Engineering, Lohegaon", "Pune"),
+      hostelInfo: {
+        rating: 3.6,
+        messRating: 3.0,
+        distanceFromCollege: "1.5 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -1136,6 +1406,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 94.0, OBC: 92.0, SC: 87.0, ST: 82.0, EWS: 93.5 },
       googleMapsLink: generateGoogleMapsLink("AISSMS College of Engineering", "Pune"),
+      hostelInfo: {
+        rating: 3.9,
+        messRating: 3.4,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Well-maintained rooms", "Good food", "Recreational areas", "Wi-Fi enabled"],
+      },
     },
   },
   {
@@ -1158,6 +1434,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 97.0, OBC: 95.0, SC: 90.0, ST: 85.0, EWS: 96.5 },
       googleMapsLink: generateGoogleMapsLink("Cummins College of Engineering for Women", "Pune"),
+      hostelInfo: {
+        rating: 4.5,
+        messRating: 4.0,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Women-friendly environment", "Excellent security", "Good food", "Study rooms"],
+      },
     },
   },
   {
@@ -1180,6 +1462,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 84.0, OBC: 81.0, SC: 76.0, ST: 71.0, EWS: 83.0 },
       googleMapsLink: generateGoogleMapsLink("Government College of Engineering, Yavatmal", "Yavatmal"),
+      hostelInfo: {
+        rating: 3.0,
+        messRating: 2.5,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Affordable", "Basic facilities", "Quiet environment", "Good for focused study"],
+      },
     },
   },
   {
@@ -1202,6 +1490,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 88.0, OBC: 85.0, SC: 80.0, ST: 75.0, EWS: 87.0 },
       googleMapsLink: generateGoogleMapsLink("Priyadarshini College of Engineering, Nagpur", "Nagpur"),
+      hostelInfo: {
+        rating: 3.5,
+        messRating: 2.9,
+        distanceFromCollege: "1.5 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -1224,6 +1518,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 87.0, OBC: 84.0, SC: 79.0, ST: 74.0, EWS: 86.0 },
       googleMapsLink: generateGoogleMapsLink("K.D.K. College of Engineering, Nagpur", "Nagpur"),
+      hostelInfo: {
+        rating: 3.4,
+        messRating: 2.8,
+        distanceFromCollege: "1.8 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -1246,6 +1546,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 90.0, OBC: 87.0, SC: 82.0, ST: 77.0, EWS: 89.0 },
       googleMapsLink: generateGoogleMapsLink("G.H. Raisoni Institute of Engineering & Technology, Pune", "Pune"),
+      hostelInfo: {
+        rating: 3.6,
+        messRating: 3.0,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Clean rooms", "Good security", "Study rooms", "Wi-Fi enabled"],
+      },
     },
   },
   {
@@ -1268,6 +1574,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 93.0, OBC: 91.0, SC: 86.0, ST: 81.0, EWS: 92.5 },
       googleMapsLink: generateGoogleMapsLink("Dr. D. Y. Patil Institute of Engineering, Management and Research, Akurdi", "Pune"),
+      hostelInfo: {
+        rating: 3.8,
+        messRating: 3.3,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Clean rooms", "Good security", "Study rooms", "Wi-Fi enabled"],
+      },
     },
   },
   {
@@ -1290,6 +1602,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 86.0, OBC: 83.0, SC: 78.0, ST: 73.0, EWS: 85.0 },
       googleMapsLink: generateGoogleMapsLink("Sinhgad Institute of Technology, Lonavala", "Lonavala"),
+      hostelInfo: {
+        rating: 3.4,
+        messRating: 2.8,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Affordable", "Basic facilities", "Quiet environment", "Good for focused study"],
+      },
     },
   },
   {
@@ -1312,6 +1630,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 89.0, OBC: 86.0, SC: 81.0, ST: 76.0, EWS: 88.0 },
       googleMapsLink: generateGoogleMapsLink("JSPM's Imperial College of Engineering and Research, Wagholi", "Pune"),
+      hostelInfo: {
+        rating: 3.6,
+        messRating: 3.0,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Clean rooms", "Good security", "Study rooms", "Wi-Fi enabled"],
+      },
     },
   },
   {
@@ -1334,6 +1658,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 85.0, OBC: 82.0, SC: 77.0, ST: 72.0, EWS: 84.0 },
       googleMapsLink: generateGoogleMapsLink("Genba Sopanrao Moze College of Engineering, Balewadi", "Pune"),
+      hostelInfo: {
+        rating: 3.2,
+        messRating: 2.7,
+        distanceFromCollege: "1.0 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -1356,6 +1686,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 90.0, OBC: 87.0, SC: 82.0, ST: 77.0, EWS: 89.0 },
       googleMapsLink: generateGoogleMapsLink("D. Y. Patil College of Engineering & Technology, Kolhapur", "Kolhapur"),
+      hostelInfo: {
+        rating: 3.7,
+        messRating: 3.2,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Clean rooms", "Good security", "Study rooms", "Wi-Fi enabled"],
+      },
     },
   },
   {
@@ -1378,6 +1714,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 93.0, OBC: 91.0, SC: 86.0, ST: 81.0, EWS: 92.5 },
       googleMapsLink: generateGoogleMapsLink("KIT's College of Engineering (Autonomous), Kolhapur", "Kolhapur"),
+      hostelInfo: {
+        rating: 3.9,
+        messRating: 3.4,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Well-maintained rooms", "Good food", "Recreational areas", "Wi-Fi enabled"],
+      },
     },
   },
   {
@@ -1400,6 +1742,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 88.0, OBC: 85.0, SC: 80.0, ST: 75.0, EWS: 87.0 },
       googleMapsLink: generateGoogleMapsLink("Sanjay Ghodawat Institute, Atigre", "Kolhapur"),
+      hostelInfo: {
+        rating: 3.5,
+        messRating: 2.9,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Clean rooms", "Good security", "Study rooms", "Wi-Fi enabled"],
+      },
     },
   },
   {
@@ -1422,6 +1770,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 92.0, OBC: 89.0, SC: 84.0, ST: 79.0, EWS: 91.5 },
       googleMapsLink: generateGoogleMapsLink("Rajarambapu Institute of Technology, Rajaramnagar", "Sangli"),
+      hostelInfo: {
+        rating: 3.8,
+        messRating: 3.3,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Clean rooms", "Good security", "Study rooms", "Wi-Fi enabled"],
+      },
     },
   },
   {
@@ -1444,6 +1798,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 87.0, OBC: 84.0, SC: 79.0, ST: 74.0, EWS: 86.0 },
       googleMapsLink: generateGoogleMapsLink("Annasaheb Dange College of Engineering and Technology, Ashta", "Sangli"),
+      hostelInfo: {
+        rating: 3.4,
+        messRating: 2.8,
+        distanceFromCollege: "1.0 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -1466,6 +1826,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 86.0, OBC: 83.0, SC: 78.0, ST: 73.0, EWS: 85.0 },
       googleMapsLink: generateGoogleMapsLink("Shreeyash College of Engineering and Technology, Aurangabad", "Aurangabad"),
+      hostelInfo: {
+        rating: 3.2,
+        messRating: 2.7,
+        distanceFromCollege: "1.5 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -1488,6 +1854,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 89.0, OBC: 86.0, SC: 81.0, ST: 76.0, EWS: 88.0 },
       googleMapsLink: generateGoogleMapsLink("Deogiri Institute of Engineering and Management Studies, Aurangabad", "Aurangabad"),
+      hostelInfo: {
+        rating: 3.6,
+        messRating: 3.0,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Clean rooms", "Good security", "Study rooms", "Wi-Fi enabled"],
+      },
     },
   },
   {
@@ -1510,6 +1882,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 85.0, OBC: 82.0, SC: 77.0, ST: 72.0, EWS: 84.0 },
       googleMapsLink: generateGoogleMapsLink("Matoshri College of Engineering and Research Centre", "Nashik"),
+      hostelInfo: {
+        rating: 3.2,
+        messRating: 2.7,
+        distanceFromCollege: "1.0 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -1532,6 +1910,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 84.0, OBC: 81.0, SC: 76.0, ST: 71.0, EWS: 83.0 },
       googleMapsLink: generateGoogleMapsLink("Pravara Rural Engineering College, Loni", "Ahmednagar"),
+      hostelInfo: {
+        rating: 3.0,
+        messRating: 2.5,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Affordable", "Basic facilities", "Quiet environment", "Good for focused study"],
+      },
     },
   },
   {
@@ -1554,6 +1938,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 87.0, OBC: 84.0, SC: 79.0, ST: 74.0, EWS: 86.0 },
       googleMapsLink: generateGoogleMapsLink("Amrutvahini College of Engineering, Sangamner", "Ahmednagar"),
+      hostelInfo: {
+        rating: 3.4,
+        messRating: 2.8,
+        distanceFromCollege: "1.2 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -1576,6 +1966,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 85.0, OBC: 82.0, SC: 77.0, ST: 72.0, EWS: 84.0 },
       googleMapsLink: generateGoogleMapsLink("Sanjivani College of Engineering, Kopargaon", "Ahmednagar"),
+      hostelInfo: {
+        rating: 3.2,
+        messRating: 2.7,
+        distanceFromCollege: "1.0 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -1598,6 +1994,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 83.0, OBC: 80.0, SC: 75.0, ST: 70.0, EWS: 82.0 },
       googleMapsLink: generateGoogleMapsLink("Shri Chhatrapati Shivaji Maharaj College of Engineering, Nepti", "Ahmednagar"),
+      hostelInfo: {
+        rating: 3.0,
+        messRating: 2.5,
+        distanceFromCollege: "1.8 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -1620,6 +2022,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 82.0, OBC: 79.0, SC: 74.0, ST: 69.0, EWS: 81.0 },
       googleMapsLink: generateGoogleMapsLink("SNJB's Late Sau. Kantabai Bhavarlalji Jain College of Engineering", "Chandwad"),
+      hostelInfo: {
+        rating: 2.8,
+        messRating: 2.3,
+        distanceFromCollege: "1.5 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -1642,6 +2050,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 81.0, OBC: 78.0, SC: 73.0, ST: 68.0, EWS: 80.0 },
       googleMapsLink: generateGoogleMapsLink("K. C. E. S.'s College of Engineering and Management, Jalgaon", "Jalgaon"),
+      hostelInfo: {
+        rating: 2.7,
+        messRating: 2.2,
+        distanceFromCollege: "1.0 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -1664,6 +2078,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 80.0, OBC: 77.0, SC: 72.0, ST: 67.0, EWS: 79.0 },
       googleMapsLink: generateGoogleMapsLink("SSBT's College of Engineering and Technology, Bambhori", "Jalgaon"),
+      hostelInfo: {
+        rating: 2.6,
+        messRating: 2.1,
+        distanceFromCollege: "1.2 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -1686,6 +2106,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 88.0, OBC: 85.0, SC: 80.0, ST: 75.0, EWS: 87.0 },
       googleMapsLink: generateGoogleMapsLink("Jawaharlal Nehru Engineering College, Aurangabad", "Aurangabad"),
+      hostelInfo: {
+        rating: 3.5,
+        messRating: 2.9,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Clean rooms", "Good security", "Study rooms", "Wi-Fi enabled"],
+      },
     },
   },
   {
@@ -1708,6 +2134,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 85.0, OBC: 82.0, SC: 77.0, ST: 72.0, EWS: 84.0 },
       googleMapsLink: generateGoogleMapsLink("MGM's College of Engineering, Nanded", "Nanded"),
+      hostelInfo: {
+        rating: 3.2,
+        messRating: 2.7,
+        distanceFromCollege: "1.0 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -1731,6 +2163,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 95.0, OBC: 93.0, SC: 88.0, ST: 83.0, EWS: 94.5 },
       googleMapsLink: generateGoogleMapsLink("Government College of Engineering, Nagpur", "Nagpur"),
+      hostelInfo: {
+        rating: 4.0,
+        messRating: 3.5,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Affordable", "Basic facilities", "Quiet environment", "Good for focused study"],
+      },
     },
   },
   {
@@ -1753,6 +2191,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 84.0, OBC: 81.0, SC: 76.0, ST: 71.0, EWS: 83.0 },
       googleMapsLink: generateGoogleMapsLink("P. R. Pote (Patil) Education & Welfare Trust's Group of Institutions, Amravati", "Amravati"),
+      hostelInfo: {
+        rating: 3.0,
+        messRating: 2.5,
+        distanceFromCollege: "1.5 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -1775,6 +2219,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 87.0, OBC: 84.0, SC: 79.0, ST: 74.0, EWS: 86.0 },
       googleMapsLink: generateGoogleMapsLink("Prof. Ram Meghe College of Engineering and Management, Badnera", "Amravati"),
+      hostelInfo: {
+        rating: 3.4,
+        messRating: 2.8,
+        distanceFromCollege: "1.0 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -1796,6 +2246,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 83.0, OBC: 80.0, SC: 75.0, ST: 70.0, EWS: 82.0 },
       googleMapsLink: generateGoogleMapsLink("Shri Shivaji Science & Arts College, Amravati", "Amravati"),
+      hostelInfo: {
+        rating: 3.0,
+        messRating: 2.5,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Affordable", "Basic facilities", "Quiet environment", "Good for focused study"],
+      },
     },
   },
   {
@@ -1818,6 +2274,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 93.0, OBC: 91.0, SC: 86.0, ST: 81.0, EWS: 92.5 },
       googleMapsLink: generateGoogleMapsLink("Yeshwantrao Chavan College of Engineering, Nagpur", "Nagpur"),
+      hostelInfo: {
+        rating: 3.9,
+        messRating: 3.4,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Well-maintained rooms", "Good food", "Recreational areas", "Wi-Fi enabled"],
+      },
     },
   },
   {
@@ -1840,6 +2302,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 89.0, OBC: 86.0, SC: 81.0, ST: 76.0, EWS: 88.0 },
       googleMapsLink: generateGoogleMapsLink("Kavikulguru Institute of Technology and Science, Ramtek", "Nagpur"),
+      hostelInfo: {
+        rating: 3.6,
+        messRating: 3.0,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Clean rooms", "Good security", "Study rooms", "Wi-Fi enabled"],
+      },
     },
   },
   {
@@ -1862,6 +2330,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 78.0, OBC: 75.0, SC: 70.0, ST: 65.0, EWS: 77.0 },
       googleMapsLink: generateGoogleMapsLink("Government College of Engineering, Jalgaon", "Jalgaon"),
+      hostelInfo: {
+        rating: 2.8,
+        messRating: 2.3,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Affordable", "Basic facilities", "Quiet environment", "Good for focused study"],
+      },
     },
   },
   {
@@ -1884,6 +2358,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 75.0, OBC: 72.0, SC: 67.0, ST: 62.0, EWS: 74.0 },
       googleMapsLink: generateGoogleMapsLink("SSBT's College of Engineering and Technology, Bambhori", "Jalgaon"),
+      hostelInfo: {
+        rating: 2.6,
+        messRating: 2.1,
+        distanceFromCollege: "1.2 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -1906,6 +2386,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 72.0, OBC: 69.0, SC: 64.0, ST: 59.0, EWS: 71.0 },
       googleMapsLink: generateGoogleMapsLink("K. C. E. S.'s College of Engineering and Management, Jalgaon", "Jalgaon"),
+      hostelInfo: {
+        rating: 2.5,
+        messRating: 2.0,
+        distanceFromCollege: "1.0 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -1928,6 +2414,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 70.0, OBC: 67.0, SC: 62.0, ST: 57.0, EWS: 69.0 },
       googleMapsLink: generateGoogleMapsLink("Shri Sant Gajanan Maharaj College of Engineering", "Shegaon"),
+      hostelInfo: {
+        rating: 3.8,
+        messRating: 3.3,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Clean and hygienic", "Good food", "Spiritual environment", "Study rooms"],
+      },
     },
   },
   {
@@ -1950,6 +2442,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 68.0, OBC: 65.0, SC: 60.0, ST: 55.0, EWS: 67.0 },
       googleMapsLink: generateGoogleMapsLink("Sipna College of Engineering & Technology", "Amravati"),
+      hostelInfo: {
+        rating: 3.0,
+        messRating: 2.5,
+        distanceFromCollege: "1.5 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -1972,6 +2470,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 65.0, OBC: 62.0, SC: 57.0, ST: 52.0, EWS: 64.0 },
       googleMapsLink: generateGoogleMapsLink("Prof. Ram Meghe Institute of Technology & Research", "Amravati"),
+      hostelInfo: {
+        rating: 3.5,
+        messRating: 3.0,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Well-maintained rooms", "Good food", "Recreational areas", "Wi-Fi enabled"],
+      },
     },
   },
   {
@@ -1994,6 +2498,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 62.0, OBC: 59.0, SC: 54.0, ST: 49.0, EWS: 61.0 },
       googleMapsLink: generateGoogleMapsLink("P. R. Pote (Patil) Education & Welfare Trust's Group of Institutions, Amravati", "Amravati"),
+      hostelInfo: {
+        rating: 2.8,
+        messRating: 2.3,
+        distanceFromCollege: "1.5 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -2015,6 +2525,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 60.0, OBC: 57.0, SC: 52.0, ST: 47.0, EWS: 59.0 },
       googleMapsLink: generateGoogleMapsLink("Shri Shivaji Science & Arts College, Amravati", "Amravati"),
+      hostelInfo: {
+        rating: 2.5,
+        messRating: 2.0,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Affordable", "Basic facilities", "Quiet environment", "Good for focused study"],
+      },
     },
   },
   {
@@ -2037,6 +2553,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 58.0, OBC: 55.0, SC: 50.0, ST: 45.0, EWS: 57.0 },
       googleMapsLink: generateGoogleMapsLink("Government College of Engineering, Chandrapur", "Chandrapur"),
+      hostelInfo: {
+        rating: 2.5,
+        messRating: 2.0,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Affordable", "Basic facilities", "Quiet environment", "Good for focused study"],
+      },
     },
   },
   {
@@ -2059,6 +2581,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 55.0, OBC: 52.0, SC: 47.0, ST: 42.0, EWS: 54.0 },
       googleMapsLink: generateGoogleMapsLink("JSPM's Rajarshi Shahu College of Engineering", "Pune"),
+      hostelInfo: {
+        rating: 3.5,
+        messRating: 3.0,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Clean rooms", "Good security", "Study rooms", "Wi-Fi enabled"],
+      },
     },
   },
   {
@@ -2081,6 +2609,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 52.0, OBC: 49.0, SC: 44.0, ST: 39.0, EWS: 51.0 },
       googleMapsLink: generateGoogleMapsLink("Sinhgad College of Engineering", "Pune"),
+      hostelInfo: {
+        rating: 3.2,
+        messRating: 2.7,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Large hostel complex", "Multiple mess options", "Sports facilities", "24/7 security"],
+      },
     },
   },
   {
@@ -2103,6 +2637,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 50.0, OBC: 47.0, SC: 42.0, ST: 37.0, EWS: 49.0 },
       googleMapsLink: generateGoogleMapsLink("Vidyalankar Institute of Technology, Mumbai", "Mumbai"),
+      hostelInfo: {
+        rating: 3.5,
+        messRating: 3.0,
+        distanceFromCollege: "1.0 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -2125,6 +2665,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 48.0, OBC: 45.0, SC: 40.0, ST: 35.0, EWS: 47.0 },
       googleMapsLink: generateGoogleMapsLink("Don Bosco Institute of Technology, Mumbai", "Mumbai"),
+      hostelInfo: {
+        rating: 3.0,
+        messRating: 2.5,
+        distanceFromCollege: "2.0 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -2147,6 +2693,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 45.0, OBC: 42.0, SC: 37.0, ST: 32.0, EWS: 44.0 },
       googleMapsLink: generateGoogleMapsLink("Atharva College of Engineering", "Mumbai"),
+      hostelInfo: {
+        rating: 2.8,
+        messRating: 2.3,
+        distanceFromCollege: "2.5 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -2169,6 +2721,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 42.0, OBC: 39.0, SC: 34.0, ST: 29.0, EWS: 41.0 },
       googleMapsLink: generateGoogleMapsLink("St. Francis Institute of Technology", "Mumbai"),
+      hostelInfo: {
+        rating: 3.0,
+        messRating: 2.5,
+        distanceFromCollege: "1.8 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -2191,6 +2749,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 40.0, OBC: 37.0, SC: 32.0, ST: 27.0, EWS: 39.0 },
       googleMapsLink: generateGoogleMapsLink("Rajiv Gandhi Institute of Technology", "Mumbai"),
+      hostelInfo: {
+        rating: 2.7,
+        messRating: 2.2,
+        distanceFromCollege: "3.0 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -2213,6 +2777,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 38.0, OBC: 35.0, SC: 30.0, ST: 25.0, EWS: 37.0 },
       googleMapsLink: generateGoogleMapsLink("Anjuman-I-Islam's M.H. Saboo Siddik College of Engineering", "Mumbai"),
+      hostelInfo: {
+        rating: 2.6,
+        messRating: 2.1,
+        distanceFromCollege: "2.8 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -2235,6 +2805,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 35.0, OBC: 32.0, SC: 27.0, ST: 22.0, EWS: 34.0 },
       googleMapsLink: generateGoogleMapsLink("Terna Engineering College", "Navi Mumbai"),
+      hostelInfo: {
+        rating: 2.8,
+        messRating: 2.3,
+        distanceFromCollege: "1.2 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -2257,6 +2833,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 33.0, OBC: 30.0, SC: 25.0, ST: 20.0, EWS: 32.0 },
       googleMapsLink: generateGoogleMapsLink("Datta Meghe College of Engineering", "Navi Mumbai"),
+      hostelInfo: {
+        rating: 2.7,
+        messRating: 2.2,
+        distanceFromCollege: "1.5 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -2279,6 +2861,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 30.0, OBC: 27.0, SC: 22.0, ST: 17.0, EWS: 29.0 },
       googleMapsLink: generateGoogleMapsLink("Padmabhushan Vasantdada Patil Pratishthan's College of Engineering", "Mumbai"),
+      hostelInfo: {
+        rating: 2.5,
+        messRating: 2.0,
+        distanceFromCollege: "2.5 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -2301,6 +2889,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 60.0, OBC: 58.0, SC: 53.0, ST: 48.0, EWS: 59.0 },
       googleMapsLink: generateGoogleMapsLink("Lokmanya Tilak College of Engineering", "Navi Mumbai"),
+      hostelInfo: {
+        rating: 3.5,
+        messRating: 3.0,
+        distanceFromCollege: "1.0 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -2323,6 +2917,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 57.0, OBC: 54.0, SC: 49.0, ST: 44.0, EWS: 56.0 },
       googleMapsLink: generateGoogleMapsLink("Pillai HOC College of Engineering and Technology", "Raigad"),
+      hostelInfo: {
+        rating: 2.8,
+        messRating: 2.3,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Affordable", "Basic facilities", "Quiet environment", "Good for focused study"],
+      },
     },
   },
   {
@@ -2345,6 +2945,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 65.0, OBC: 62.0, SC: 57.0, ST: 52.0, EWS: 64.0 },
       googleMapsLink: generateGoogleMapsLink("DY Patil College of Engineering, Akurdi", "Pune"),
+      hostelInfo: {
+        rating: 3.8,
+        messRating: 3.3,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Modern facilities", "Good food", "Recreational areas", "Wi-Fi enabled"],
+      },
     },
   },
   {
@@ -2367,6 +2973,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 62.0, OBC: 59.0, SC: 54.0, ST: 49.0, EWS: 61.0 },
       googleMapsLink: generateGoogleMapsLink("Modern Education Society's College of Engineering, Pune", "Pune"),
+      hostelInfo: {
+        rating: 3.2,
+        messRating: 2.7,
+        distanceFromCollege: "1.8 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -2389,6 +3001,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 59.0, OBC: 56.0, SC: 51.0, ST: 46.0, EWS: 58.0 },
       googleMapsLink: generateGoogleMapsLink("Zeal College of Engineering and Research", "Pune"),
+      hostelInfo: {
+        rating: 3.0,
+        messRating: 2.5,
+        distanceFromCollege: "2.0 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -2411,6 +3029,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 56.0, OBC: 53.0, SC: 48.0, ST: 43.0, EWS: 55.0 },
       googleMapsLink: generateGoogleMapsLink("Dr. D. Y. Patil School of Engineering, Lohegaon", "Pune"),
+      hostelInfo: {
+        rating: 3.0,
+        messRating: 2.5,
+        distanceFromCollege: "1.5 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -2433,6 +3057,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 53.0, OBC: 50.0, SC: 45.0, ST: 40.0, EWS: 52.0 },
       googleMapsLink: generateGoogleMapsLink("AISSMS College of Engineering", "Pune"),
+      hostelInfo: {
+        rating: 3.5,
+        messRating: 3.0,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Well-maintained rooms", "Good food", "Recreational areas", "Wi-Fi enabled"],
+      },
     },
   },
   {
@@ -2455,6 +3085,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 68.0, OBC: 65.0, SC: 60.0, ST: 55.0, EWS: 67.0 },
       googleMapsLink: generateGoogleMapsLink("Cummins College of Engineering for Women", "Pune"),
+      hostelInfo: {
+        rating: 4.0,
+        messRating: 3.5,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Women-friendly environment", "Excellent security", "Good food", "Study rooms"],
+      },
     },
   },
   {
@@ -2477,6 +3113,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 50.0, OBC: 47.0, SC: 42.0, ST: 37.0, EWS: 49.0 },
       googleMapsLink: generateGoogleMapsLink("Government College of Engineering, Yavatmal", "Yavatmal"),
+      hostelInfo: {
+        rating: 2.5,
+        messRating: 2.0,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Affordable", "Basic facilities", "Quiet environment", "Good for focused study"],
+      },
     },
   },
   {
@@ -2499,6 +3141,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 55.0, OBC: 52.0, SC: 47.0, ST: 42.0, EWS: 54.0 },
       googleMapsLink: generateGoogleMapsLink("Priyadarshini College of Engineering, Nagpur", "Nagpur"),
+      hostelInfo: {
+        rating: 3.0,
+        messRating: 2.5,
+        distanceFromCollege: "1.5 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -2521,6 +3169,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 52.0, OBC: 49.0, SC: 44.0, ST: 39.0, EWS: 51.0 },
       googleMapsLink: generateGoogleMapsLink("K.D.K. College of Engineering, Nagpur", "Nagpur"),
+      hostelInfo: {
+        rating: 2.8,
+        messRating: 2.3,
+        distanceFromCollege: "1.8 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -2543,6 +3197,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 50.0, OBC: 47.0, SC: 42.0, ST: 37.0, EWS: 49.0 },
       googleMapsLink: generateGoogleMapsLink("G.H. Raisoni Institute of Engineering & Technology, Pune", "Pune"),
+      hostelInfo: {
+        rating: 2.7,
+        messRating: 2.2,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Clean rooms", "Good security", "Study rooms", "Wi-Fi enabled"],
+      },
     },
   },
   {
@@ -2565,6 +3225,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 48.0, OBC: 45.0, SC: 40.0, ST: 35.0, EWS: 47.0 },
       googleMapsLink: generateGoogleMapsLink("Dr. D. Y. Patil Institute of Engineering, Management and Research, Akurdi", "Pune"),
+      hostelInfo: {
+        rating: 3.0,
+        messRating: 2.5,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Clean rooms", "Good security", "Study rooms", "Wi-Fi enabled"],
+      },
     },
   },
   {
@@ -2587,6 +3253,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 45.0, OBC: 42.0, SC: 37.0, ST: 32.0, EWS: 44.0 },
       googleMapsLink: generateGoogleMapsLink("Sinhgad Institute of Technology, Lonavala", "Lonavala"),
+      hostelInfo: {
+        rating: 2.8,
+        messRating: 2.3,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Affordable", "Basic facilities", "Quiet environment", "Good for focused study"],
+      },
     },
   },
   {
@@ -2609,6 +3281,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 42.0, OBC: 39.0, SC: 34.0, ST: 29.0, EWS: 41.0 },
       googleMapsLink: generateGoogleMapsLink("JSPM's Imperial College of Engineering and Research, Wagholi", "Pune"),
+      hostelInfo: {
+        rating: 2.7,
+        messRating: 2.2,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Clean rooms", "Good security", "Study rooms", "Wi-Fi enabled"],
+      },
     },
   },
   {
@@ -2631,6 +3309,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 39.0, OBC: 36.0, SC: 31.0, ST: 26.0, EWS: 38.0 },
       googleMapsLink: generateGoogleMapsLink("Genba Sopanrao Moze College of Engineering, Balewadi", "Pune"),
+      hostelInfo: {
+        rating: 2.5,
+        messRating: 2.0,
+        distanceFromCollege: "1.0 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -2653,6 +3337,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 36.0, OBC: 33.0, SC: 28.0, ST: 23.0, EWS: 35.0 },
       googleMapsLink: generateGoogleMapsLink("D. Y. Patil College of Engineering & Technology, Kolhapur", "Kolhapur"),
+      hostelInfo: {
+        rating: 2.8,
+        messRating: 2.3,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Clean rooms", "Good security", "Study rooms", "Wi-Fi enabled"],
+      },
     },
   },
   {
@@ -2675,6 +3365,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 60.0, OBC: 57.0, SC: 52.0, ST: 47.0, EWS: 59.0 },
       googleMapsLink: generateGoogleMapsLink("KIT's College of Engineering (Autonomous), Kolhapur", "Kolhapur"),
+      hostelInfo: {
+        rating: 3.5,
+        messRating: 3.0,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Well-maintained rooms", "Good food", "Recreational areas", "Wi-Fi enabled"],
+      },
     },
   },
   {
@@ -2697,6 +3393,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 55.0, OBC: 52.0, SC: 47.0, ST: 42.0, EWS: 54.0 },
       googleMapsLink: generateGoogleMapsLink("Sanjay Ghodawat Institute, Atigre", "Kolhapur"),
+      hostelInfo: {
+        rating: 3.0,
+        messRating: 2.5,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Clean rooms", "Good security", "Study rooms", "Wi-Fi enabled"],
+      },
     },
   },
   {
@@ -2719,6 +3421,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 52.0, OBC: 49.0, SC: 44.0, ST: 39.0, EWS: 51.0 },
       googleMapsLink: generateGoogleMapsLink("Rajarambapu Institute of Technology, Rajaramnagar", "Sangli"),
+      hostelInfo: {
+        rating: 2.8,
+        messRating: 2.3,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Clean rooms", "Good security", "Study rooms", "Wi-Fi enabled"],
+      },
     },
   },
   {
@@ -2741,6 +3449,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 49.0, OBC: 46.0, SC: 41.0, ST: 36.0, EWS: 48.0 },
       googleMapsLink: generateGoogleMapsLink("Annasaheb Dange College of Engineering and Technology, Ashta", "Sangli"),
+      hostelInfo: {
+        rating: 2.5,
+        messRating: 2.0,
+        distanceFromCollege: "1.0 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -2763,6 +3477,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 46.0, OBC: 43.0, SC: 38.0, ST: 33.0, EWS: 45.0 },
       googleMapsLink: generateGoogleMapsLink("Shreeyash College of Engineering and Technology, Aurangabad", "Aurangabad"),
+      hostelInfo: {
+        rating: 2.5,
+        messRating: 2.0,
+        distanceFromCollege: "1.5 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -2785,6 +3505,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 43.0, OBC: 40.0, SC: 35.0, ST: 30.0, EWS: 42.0 },
       googleMapsLink: generateGoogleMapsLink("Deogiri Institute of Engineering and Management Studies, Aurangabad", "Aurangabad"),
+      hostelInfo: {
+        rating: 2.7,
+        messRating: 2.2,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Clean rooms", "Good security", "Study rooms", "Wi-Fi enabled"],
+      },
     },
   },
   {
@@ -2807,6 +3533,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 40.0, OBC: 37.0, SC: 32.0, ST: 27.0, EWS: 39.0 },
       googleMapsLink: generateGoogleMapsLink("Matoshri College of Engineering and Research Centre", "Nashik"),
+      hostelInfo: {
+        rating: 2.5,
+        messRating: 2.0,
+        distanceFromCollege: "1.0 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -2829,6 +3561,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 37.0, OBC: 34.0, SC: 29.0, ST: 24.0, EWS: 36.0 },
       googleMapsLink: generateGoogleMapsLink("Pravara Rural Engineering College, Loni", "Ahmednagar"),
+      hostelInfo: {
+        rating: 2.5,
+        messRating: 2.0,
+        distanceFromCollege: "In Campus Hostel",
+        highlights: ["Affordable", "Basic facilities", "Quiet environment", "Good for focused study"],
+      },
     },
   },
   {
@@ -2851,6 +3589,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 34.0, OBC: 31.0, SC: 26.0, ST: 21.0, EWS: 33.0 },
       googleMapsLink: generateGoogleMapsLink("Amrutvahini College of Engineering, Sangamner", "Ahmednagar"),
+      hostelInfo: {
+        rating: 2.7,
+        messRating: 2.2,
+        distanceFromCollege: "1.2 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -2873,6 +3617,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 31.0, OBC: 28.0, SC: 23.0, ST: 18.0, EWS: 30.0 },
       googleMapsLink: generateGoogleMapsLink("Sanjivani College of Engineering, Kopargaon", "Ahmednagar"),
+      hostelInfo: {
+        rating: 2.5,
+        messRating: 2.0,
+        distanceFromCollege: "1.0 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -2895,6 +3645,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 28.0, OBC: 25.0, SC: 20.0, ST: 15.0, EWS: 27.0 },
       googleMapsLink: generateGoogleMapsLink("Shri Chhatrapati Shivaji Maharaj College of Engineering, Nepti", "Ahmednagar"),
+      hostelInfo: {
+        rating: 2.5,
+        messRating: 2.0,
+        distanceFromCollege: "1.8 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
   {
@@ -2917,6 +3673,12 @@ export const mockColleges: College[] = [
       ],
       cutOffPercentiles: { OPEN: 25.0, OBC: 22.0, SC: 17.0, ST: 12.0, EWS: 24.0 },
       googleMapsLink: generateGoogleMapsLink("SNJB's Late Sau. Kantabai Bhavarlalji Jain College of Engineering", "Chandwad"),
+      hostelInfo: {
+        rating: 2.3,
+        messRating: 1.8,
+        distanceFromCollege: "1.5 km",
+        highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
+      },
     },
   },
 ];
