@@ -271,7 +271,7 @@ export const mockColleges: College[] = [
     cetCollegeCode: "EN6177",
     percentileCutoff: { OPEN: 99.0, OBC: 98.0, SC: 93.0, ST: 88.0, EWS: 98.5 },
     details: {
-      picture: "https://images.unsplash.com/photo-1543269825-b1e201141179?auto=format&fit=crop&w=1000&q=80", // Group of students
+      picture: "/pict.jpg", // Updated to use the new PICT image
       highlights: ["Top-tier CS/IT placements.", "Strong coding culture.", "Experienced faculty."],
       campusLife: "Tech-focused clubs, hackathons.",
       placementData: { averagePackage: "₹11.0L", highestPackage: "₹50L", topRecruiters: ["Microsoft", "Amazon", "Infosys"] },
@@ -1509,7 +1509,7 @@ export const mockColleges: College[] = [
         { name: "Mechanical Engineering", code: "MECH", cutoffs: createBranchCutoffs(82.0, 79.0, 74.0, 69.0, 81.5) },
       ],
       cutOffPercentiles: { OPEN: 85.0, OBC: 82.0, SC: 77.0, ST: 72.0, EWS: 84.0 },
-      googleMapsLink: generateGoogleMapsLink("Matoshri College of Engineering and Research Centre, Nashik", "Nashik"),
+      googleMapsLink: generateGoogleMapsLink("Matoshri College of Engineering and Research Centre", "Nashik"),
     },
   },
   {
@@ -2806,7 +2806,7 @@ export const mockColleges: College[] = [
         { name: "Mechanical Engineering", code: "MECH", cutoffs: createBranchCutoffs(37.0, 34.0, 29.0, 24.0, 36.0) },
       ],
       cutOffPercentiles: { OPEN: 40.0, OBC: 37.0, SC: 32.0, ST: 27.0, EWS: 39.0 },
-      googleMapsLink: generateGoogleMapsLink("Matoshri College of Engineering and Research Centre, Nashik", "Nashik"),
+      googleMapsLink: generateGoogleMapsLink("Matoshri College of Engineering and Research Centre", "Nashik"),
     },
   },
   {
