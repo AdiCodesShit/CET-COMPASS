@@ -140,7 +140,7 @@ const CollegeDetail: React.FC<CollegeDetailProps> = ({ college }) => (
           <CardContent>
             <div className="flex flex-wrap gap-2">
               {college.details.availableBranches.map((branch, i) => (
-                <Badge key={i} variant="outline">{branch}</Badge>
+                <Badge key={i} variant="outline">{branch.name}</Badge>
               ))}
             </div>
           </CardContent>
@@ -430,7 +430,7 @@ const CollegeFinder = () => {
                     </div>
                     <div className="flex flex-wrap gap-2 mt-2">
                       {college.details.availableBranches.slice(0, 3).map((branch, i) => (
-                        <Badge key={i} variant="outline">{branch}</Badge>
+                        <Badge key={i} variant="outline">{branch.name}</Badge>
                       ))}
                       {college.details.availableBranches.length > 3 && (
                         <Badge variant="outline">+{college.details.availableBranches.length - 3} more</Badge>
