@@ -25,7 +25,7 @@ export const mockColleges: College[] = [
     cetCollegeCode: "EN6006",
     percentileCutoff: { OPEN: 99.5, OBC: 98.8, SC: 95.0, ST: 90.0, EWS: 99.0 }, // Highest cutoff for the college
     details: {
-      picture: "/coep-main-building.png", // Updated to use the new image
+      picture: "/coep-main-building.jpg", // Updated to use the new JPG image
       highlights: [
         "One of the oldest engineering colleges in India.",
         "Autonomous institute with strong academic freedom.",
@@ -2978,7 +2978,7 @@ export const mockFormGuide: FormGuideSection[] = [
         <li><strong>Fee Payment:</strong> Pay the CAP registration fee online.</li>
         <li><strong>Document Verification:</strong> Your uploaded documents will be verified either online (e-Scrutiny) or at a Physical Scrutiny Center (PSC).</li>
         <li><strong>Provisional Merit List:</strong> A provisional merit list will be published. Check for any discrepancies.</li>
-        <li><strong>Final Merit List:</strong> After addressing grievances, the final merit list is released.</li>
+        <li><strong>Final Merit List:</b> After addressing grievances, the final merit list is released.</li>
         <li><strong>Option Entry (Round 1, 2, 3):</strong> Fill in your preferred colleges and branches in order of priority.</li>
         <li><strong>Allotment:</strong> Check your allotment status after each round.</li>
         <li><strong>Acceptance/Freezing/Sliding:</strong> Decide whether to accept the allotted seat, freeze it, or float for subsequent rounds.</li>
