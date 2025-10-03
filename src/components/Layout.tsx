@@ -4,11 +4,11 @@ import React from "react";
 import { Link, Outlet } from "react-router-dom";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { Home, ListFilter, Menu, GraduationCap, FileText } from "lucide-react"; // Added FileText icon
+import { Home, ListFilter, Menu, GraduationCap, FileText } from "lucide-react";
 import { MadeWithDyad } from "./made-with-dyad";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import ShortlistedCollegesDisplay from "./ShortlistedCollegesDisplay";
-import { mockColleges } from "@/lib/data"; // To get college data for shortlist display
+import { mockColleges } from "@/lib/data";
 
 interface NavLinkProps {
   to: string;
@@ -34,24 +34,21 @@ const SidebarContent = () => (
       <ListFilter className="h-4 w-4" />
       Form Filling Guide
     </NavLink>
-    <NavLink to="/prepare-documents"> {/* New NavLink for Prepare Documents */}
+    <NavLink to="/prepare-documents">
       <FileText className="h-4 w-4" />
       Prepare Your Documents
     </NavLink>
     <NavLink to="/ils-round">
-      <Home className="h-4 w-4" /> {/* Using Home as a placeholder for a relevant icon */}
+      <Home className="h-4 w-4" />
       ILS Round
     </NavLink>
   </nav>
 );
 
 const Layout = () => {
-  // This state would ideally come from a global context or prop
   const [shortlistedCollegesCount, setShortlistedCollegesCount] = React.useState(0);
   const [shortlistedCollegeIds, setShortlistedCollegeIds] = React.useState<string[]>([]);
 
-  // This is a temporary way to get the count for the header button
-  // In a real app, this would be managed by a global state (e.g., React Context)
   React.useEffect(() => {
     const storedShortlist = localStorage.getItem('shortlistedColleges');
     if (storedShortlist) {
@@ -63,7 +60,6 @@ const Layout = () => {
 
   const finalShortlistedColleges = mockColleges.filter(college => shortlistedCollegeIds.includes(college.id));
 
-
   return (
     <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
       <div className="hidden border-r bg-sidebar md:block">
@@ -72,8 +68,8 @@ const Layout = () => {
             <Link to="/" className="flex items-center gap-2 font-semibold text-sidebar-primary-foreground">
               <GraduationCap className="h-6 w-6 text-app-purple" />
               <div className="flex flex-col leading-tight">
-                <span className="text-lg font-bold text-app-purple">MHT-CET Predictor</span>
-                <span className="text-xs text-muted-foreground">Find Your Perfect College</span>
+                <span className="text-lg font-bold text-app-purple">CET-COMPASS</span>
+                <span className="text-xs text-muted-foreground">Your Guide to Engineering Admissions</span>
               </div>
             </Link>
           </div>
@@ -104,8 +100,8 @@ const Layout = () => {
                 >
                   <GraduationCap className="h-6 w-6 text-app-purple" />
                   <div className="flex flex-col leading-tight">
-                    <span className="text-lg font-bold text-app-purple">MHT-CET Predictor</span>
-                    <span className="text-xs text-muted-foreground">Find Your Perfect College</span>
+                    <span className="text-lg font-bold text-app-purple">CET-COMPASS</span>
+                    <span className="text-xs text-muted-foreground">Your Guide to Engineering Admissions</span>
                   </div>
                 </Link>
                 <SidebarContent />
@@ -136,7 +132,7 @@ const Layout = () => {
                   </DialogHeader>
                   <ShortlistedCollegesDisplay
                     shortlistedColleges={finalShortlistedColleges}
-                    casteCategory={"OPEN"} // This might need to be dynamic if shortlist is global
+                    casteCategory={"OPEN"}
                   />
                 </DialogContent>
               </Dialog>
