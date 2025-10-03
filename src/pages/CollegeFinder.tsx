@@ -372,7 +372,7 @@ const CollegeFinder = () => {
           </div>
 
           {/* Type Filter Buttons */}
-          <div className="flex gap-2 mb-6">
+          <div className="flex gap-2 mb-6 p-4 rounded-lg bg-background shadow-md">
             {collegeTypeFilters.map(type => (
               <Button
                 key={type}
