@@ -132,7 +132,7 @@ export const mockColleges: College[] = [
     cetCollegeCode: "EN3181",
     percentileCutoff: { OPEN: 98.5, OBC: 97.0, SC: 92.0, ST: 87.0, EWS: 98.0 },
     details: {
-      picture: "https://images.unsplash.com/photo-1560785477-80e9830c53f3?auto=format&fit=crop&w=1000&q=80", // Modern building exterior
+      picture: "/spit.jpg", // Updated to use the new JPG image
       highlights: [
         "Affiliated with Mumbai University, strong academic curriculum.",
         "Good faculty and research opportunities in emerging fields.",
@@ -166,7 +166,7 @@ export const mockColleges: College[] = [
     cetCollegeCode: "EN6175",
     percentileCutoff: { OPEN: 98.0, OBC: 96.5, SC: 91.0, ST: 86.0, EWS: 97.5 },
     details: {
-      picture: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1000&q=80", // Students studying
+      picture: "/vit.jpg", // Updated to use the new JPG image
       highlights: [
         "Autonomous institute with a strong academic reputation.",
         "Focus on innovation, entrepreneurship, and research.",
@@ -316,7 +316,7 @@ export const mockColleges: College[] = [
     cetCollegeCode: "EN6176",
     percentileCutoff: { OPEN: 96.5, OBC: 94.8, SC: 89.5, ST: 84.5, EWS: 96.0 },
     details: {
-      picture: "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1000&q=80", // Re-using a generic college building
+      picture: "/pccoe.jpeg", // Updated to use the new JPG image
       highlights: ["Excellent placements.", "Modern labs.", "Industry collaborations."],
       campusLife: "Vibrant campus, many fests.",
       placementData: { averagePackage: "₹7.8L", highestPackage: "₹30L", topRecruiters: ["Wipro", "Capgemini"] },
@@ -1146,7 +1146,7 @@ export const mockColleges: College[] = [
     cetCollegeCode: "EN6185",
     percentileCutoff: { OPEN: 97.0, OBC: 95.0, SC: 90.0, ST: 85.0, EWS: 96.5 },
     details: {
-      picture: COLLEGE_PLACEHOLDER_IMAGE,
+      picture: "/cummins.jpg", // Updated to use the new JPG image
       highlights: ["Women-centric education.", "Strong placements.", "Excellent faculty."],
       campusLife: "Supportive environment.",
       placementData: { averagePackage: "₹8.0L", highestPackage: "₹35L", topRecruiters: ["Infosys", "TCS", "Microsoft"] },
@@ -2982,7 +2982,9 @@ export const mockFormGuide: FormGuideSection[] = [
         <li><strong>Option Entry (Round 1, 2, 3):</strong> Fill in your preferred colleges and branches in order of priority.</li>
         <li><strong>Allotment:</strong> Check your allotment status after each round.</li>
         <li><strong>Acceptance/Freezing/Sliding:</strong> Decide whether to accept the allotted seat, freeze it, or float for subsequent rounds.</li>
-        <li><strong>Reporting to ARC/College:</strong> Report to the Admission Reporting Center (ARC) or directly to the allotted college for admission confirmation.</li>
+        <li><strong>Reporting to ARC/College:</b> Adhere to the deadlines for reporting and document submission.</li>
+        <li><strong>Keep Copies:</strong> Always keep multiple copies of all your documents and receipts.</li>
+        <li><strong>Stay Updated:</strong> Regularly check the official MHT-CET CAP website for announcements and schedule changes.</li>
       </ol>
     `,
   },
