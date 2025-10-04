@@ -5,7 +5,9 @@ CodeSultans
 
 #Team members name:
 1: Aditya Bhagat
-2: Kunal Halwai 
+2: Kunal Halwai
+3: Siddheshwar Mahant
+4: Gargee Naik 
 
   
 ## Project Abstract
