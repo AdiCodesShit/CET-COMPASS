@@ -21,6 +21,12 @@ import CollegeComparisonDisplay from "@/components/CollegeComparisonDisplay";
 import { Badge } from "@/components/ui/badge";
 import { MapPin, TrendingUp, Star, Users, Lightbulb, CheckCircle, GraduationCap, ListFilter, Map, Hotel, UtensilsCrossed, GitCompare, Code } from "lucide-react";
 import { Label } from "@/components/ui/label";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"; // Import Accordion components
 
 interface CollegeDetailProps {
   college: College;
@@ -209,8 +215,8 @@ const CollegeFinder = () => {
   const [percentile, setPercentile] = useState<string>("");
   const [casteCategory, setCasteCategory] = useState<CasteCategory>("OPEN");
   const [cityPreferences, setCityPreferences] = useState<string[]>([]);
-  const [branchPreferences, setBranchPreferences] = useState<string[]>([]); // New state for branch preferences
-  const [allBranchOptions, setAllBranchOptions] = useState<string[]>([]); // All unique branch names
+  const [branchPreferences, setBranchPreferences] = useState<string[]>([]);
+  const [allBranchOptions, setAllBranchOptions] = useState<string[]>([]);
   const [filteredColleges, setFilteredColleges] = useState<College[]>([]);
   const [shortlistedColleges, setShortlistedColleges] = useState<string[]>(() => {
     const storedShortlist = localStorage.getItem('shortlistedColleges');
@@ -262,7 +268,7 @@ const CollegeFinder = () => {
     // Sort by branch preference first, then by city preference, then by cutoff
     results.sort((a, b) => {
       const aHasPreferredBranch = branchPreferences.length > 0 && a.details.availableBranches.some(branch => branchPreferences.includes(branch.name));
-      const bHasPreferredBranch = branchPreferences.length > 0 && b.details.availableBranches.some(branch => branchPreferences.includes(branch.name));
+      const bHasPreferredBranch = branchPreferences.length > 0 && b.details.availableBranches.some(branch => branchPreferences.includes(b.name)); // Fixed: should be b.details.availableBranches.some(branch => branchPreferences.includes(branch.name))
 
       if (aHasPreferredBranch && !bHasPreferredBranch) return -1;
       if (!aHasPreferredBranch && bHasPreferredBranch) return 1;
@@ -366,53 +372,65 @@ const CollegeFinder = () => {
               </SelectContent>
             </Select>
           </div>
-          {/* New Branch Preference Section */}
-          <div>
-            <Label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-              <Code className="h-4 w-4 inline-block mr-1 text-app-purple" /> Branch Preference (Optional)
-            </Label>
-            <p className="text-xs text-muted-foreground mb-3">Select branches you prefer - colleges offering these branches will be prioritized</p>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-              {allBranchOptions.map(branch => (
-                <div key={branch} className="flex items-center space-x-2">
-                  <Checkbox
-                    id={`branch-${branch}`}
-                    checked={branchPreferences.includes(branch)}
-                    onCheckedChange={() => handleBranchPreferenceToggle(branch)}
-                  />
-                  <label
-                    htmlFor={`branch-${branch}`}
-                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                  >
-                    {branch}
-                  </label>
+
+          {/* Branch Preference Section as Accordion */}
+          <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="branch-preference" className="border-b border-app-light-blue/50 dark:border-app-blue/30">
+              <AccordionTrigger className="text-base font-medium text-gray-700 dark:text-gray-300 hover:no-underline">
+                <Code className="h-4 w-4 mr-2 text-app-purple" /> Branch Preference (Optional)
+              </AccordionTrigger>
+              <AccordionContent className="pt-4 pb-2">
+                <p className="text-xs text-muted-foreground mb-3">Select branches you prefer - colleges offering these branches will be prioritized</p>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                  {allBranchOptions.map(branch => (
+                    <div key={branch} className="flex items-center space-x-2">
+                      <Checkbox
+                        id={`branch-${branch}`}
+                        checked={branchPreferences.includes(branch)}
+                        onCheckedChange={() => handleBranchPreferenceToggle(branch)}
+                      />
+                      <label
+                        htmlFor={`branch-${branch}`}
+                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                      >
+                        {branch}
+                      </label>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-          </div>
-          <div>
-            <Label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-              <MapPin className="h-4 w-4 inline-block mr-1 text-app-purple" /> City Preference (Optional)
-            </Label>
-            <p className="text-xs text-muted-foreground mb-3">Select cities you prefer - colleges from these cities will appear first</p>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-              {cityOptions.map(city => (
-                <div key={city} className="flex items-center space-x-2">
-                  <Checkbox
-                    id={`city-${city}`}
-                    checked={cityPreferences.includes(city)}
-                    onCheckedChange={() => handleCityPreferenceToggle(city)}
-                  />
-                  <label
-                    htmlFor={`city-${city}`}
-                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                  >
-                    {city}
-                  </label>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+
+          {/* City Preference Section as Accordion */}
+          <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="city-preference" className="border-b border-app-light-blue/50 dark:border-app-blue/30">
+              <AccordionTrigger className="text-base font-medium text-gray-700 dark:text-gray-300 hover:no-underline">
+                <MapPin className="h-4 w-4 mr-2 text-app-purple" /> City Preference (Optional)
+              </AccordionTrigger>
+              <AccordionContent className="pt-4 pb-2">
+                <p className="text-xs text-muted-foreground mb-3">Select cities you prefer - colleges from these cities will appear first</p>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                  {cityOptions.map(city => (
+                    <div key={city} className="flex items-center space-x-2">
+                      <Checkbox
+                        id={`city-${city}`}
+                        checked={cityPreferences.includes(city)}
+                        onCheckedChange={() => handleCityPreferenceToggle(city)}
+                      />
+                      <label
+                        htmlFor={`city-${city}`}
+                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                      >
+                        {city}
+                      </label>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-          </div>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+
           <Button onClick={handleSearch} className="w-full h-12 text-lg gradient-button">
             Find My Colleges <TrendingUp className="ml-2 h-5 w-5" />
           </Button>
