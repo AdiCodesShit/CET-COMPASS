@@ -9,6 +9,8 @@ CodeSultans
 3: Siddheshwar Mahant
 4: Gargee Naik 
 
+#Project Name:
+CET-CET
   
 ## Project Abstract
 CET-COMPASS is a comprehensive web application designed to assist students navigating the MHT-CET engineering admissions process. It provides tools to find suitable colleges based on percentile and caste category, offers a detailed guide for form filling, helps prepare and convert necessary documents to PDF, and keeps users informed about Institute Level Seats (ILS) rounds. The application aims to simplify the complex admission journey by offering personalized insights and essential resources.
