@@ -17,9 +17,9 @@ import { toast } from "sonner";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import ShortlistedCollegesDisplay from "@/components/ShortlistedCollegesDisplay";
-import CollegeComparisonDisplay from "@/components/CollegeComparisonDisplay"; // Import the new component
+import CollegeComparisonDisplay from "@/components/CollegeComparisonDisplay";
 import { Badge } from "@/components/ui/badge";
-import { MapPin, TrendingUp, Star, Users, Lightbulb, CheckCircle, GraduationCap, ListFilter, Map, Hotel, UtensilsCrossed, GitCompare } from "lucide-react"; // Added GitCompare icon
+import { MapPin, TrendingUp, Star, Users, Lightbulb, CheckCircle, GraduationCap, ListFilter, Map, Hotel, UtensilsCrossed, GitCompare, Code } from "lucide-react";
 import { Label } from "@/components/ui/label";
 
 interface CollegeDetailProps {
@@ -131,8 +131,8 @@ const CollegeDetail: React.FC<CollegeDetailProps> = ({ college }) => (
                   <Badge key={i} variant="secondary">{recruiter}</Badge>
                 ))}
               </div>
-            </div
-          ></CardContent>
+            </div>
+          </CardContent>
         </Card>
 
         <Card>
@@ -164,7 +164,7 @@ const CollegeDetail: React.FC<CollegeDetailProps> = ({ college }) => (
               <CardTitle className="flex items-center text-lg">
                 <Hotel className="h-5 w-5 mr-2 text-app-purple" /> Hostel Information
               </CardTitle>
-            </CardHeader>
+          </CardHeader>
             <CardContent className="space-y-3">
               <div>
                 <p className="text-sm text-muted-foreground">Hostel Rating</p>
@@ -209,18 +209,31 @@ const CollegeFinder = () => {
   const [percentile, setPercentile] = useState<string>("");
   const [casteCategory, setCasteCategory] = useState<CasteCategory>("OPEN");
   const [cityPreferences, setCityPreferences] = useState<string[]>([]);
+  const [branchPreferences, setBranchPreferences] = useState<string[]>([]); // New state for branch preferences
+  const [allBranchOptions, setAllBranchOptions] = useState<string[]>([]); // All unique branch names
   const [filteredColleges, setFilteredColleges] = useState<College[]>([]);
   const [shortlistedColleges, setShortlistedColleges] = useState<string[]>(() => {
     const storedShortlist = localStorage.getItem('shortlistedColleges');
     return storedShortlist ? JSON.parse(storedShortlist) : [];
   });
   const [showShortlistDialog, setShowShortlistDialog] = useState(false);
-  const [showComparisonDialog, setShowComparisonDialog] = useState(false); // New state for comparison dialog
+  const [showComparisonDialog, setShowComparisonDialog] = useState(false);
   const [activeTypeFilter, setActiveTypeFilter] = useState<CollegeType | "All">("All");
 
   useEffect(() => {
     localStorage.setItem('shortlistedColleges', JSON.stringify(shortlistedColleges));
   }, [shortlistedColleges]);
+
+  // Effect to populate all unique branch options
+  useEffect(() => {
+    const uniqueBranches = new Set<string>();
+    mockColleges.forEach(college => {
+      college.details.availableBranches.forEach(branch => {
+        uniqueBranches.add(branch.name);
+      });
+    });
+    setAllBranchOptions(Array.from(uniqueBranches).sort());
+  }, []);
 
   const handleSearch = () => {
     const userPercentile = parseFloat(percentile);
@@ -239,15 +252,29 @@ const CollegeFinder = () => {
       results = results.filter(college => college.type === activeTypeFilter);
     }
 
-    // Sort by city preference first, then by cutoff
+    // Apply branch preference filter
+    if (branchPreferences.length > 0) {
+      results = results.filter(college =>
+        college.details.availableBranches.some(branch => branchPreferences.includes(branch.name))
+      );
+    }
+
+    // Sort by branch preference first, then by city preference, then by cutoff
     results.sort((a, b) => {
+      const aHasPreferredBranch = branchPreferences.length > 0 && a.details.availableBranches.some(branch => branchPreferences.includes(branch.name));
+      const bHasPreferredBranch = branchPreferences.length > 0 && b.details.availableBranches.some(branch => branchPreferences.includes(branch.name));
+
+      if (aHasPreferredBranch && !bHasPreferredBranch) return -1;
+      if (!aHasPreferredBranch && bHasPreferredBranch) return 1;
+
+      // If both or neither have preferred branches, then consider city preference
       const aIsPreferredCity = cityPreferences.includes(a.city);
-      const bIsPreferredCity = cityPreferences.includes(b.city); // Corrected comparison
+      const bIsPreferredCity = cityPreferences.includes(b.city);
 
       if (aIsPreferredCity && !bIsPreferredCity) return -1;
       if (!aIsPreferredCity && bIsPreferredCity) return 1;
 
-      // If both or neither are preferred city, sort by cutoff (descending)
+      // If all other preferences are equal, sort by cutoff (descending)
       return b.percentileCutoff[casteCategory] - a.percentileCutoff[casteCategory];
     });
 
@@ -264,8 +291,6 @@ const CollegeFinder = () => {
       const newShortlist = prev.includes(collegeId)
         ? prev.filter(id => id !== collegeId)
         : [...prev, collegeId];
-      // Update the count in the Layout component (if it were using context)
-      // For now, this will trigger the useEffect in Layout to re-read localStorage
       return newShortlist;
     });
   };
@@ -273,6 +298,12 @@ const CollegeFinder = () => {
   const handleCityPreferenceToggle = (city: string) => {
     setCityPreferences(prev =>
       prev.includes(city) ? prev.filter(c => c !== city) : [...prev, city]
+    );
+  };
+
+  const handleBranchPreferenceToggle = (branchName: string) => {
+    setBranchPreferences(prev =>
+      prev.includes(branchName) ? prev.filter(b => b !== branchName) : [...prev, branchName]
     );
   };
 
@@ -334,6 +365,30 @@ const CollegeFinder = () => {
                 <SelectItem value="EWS">EWS</SelectItem>
               </SelectContent>
             </Select>
+          </div>
+          {/* New Branch Preference Section */}
+          <div>
+            <Label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <Code className="h-4 w-4 inline-block mr-1 text-app-purple" /> Branch Preference (Optional)
+            </Label>
+            <p className="text-xs text-muted-foreground mb-3">Select branches you prefer - colleges offering these branches will be prioritized</p>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+              {allBranchOptions.map(branch => (
+                <div key={branch} className="flex items-center space-x-2">
+                  <Checkbox
+                    id={`branch-${branch}`}
+                    checked={branchPreferences.includes(branch)}
+                    onCheckedChange={() => handleBranchPreferenceToggle(branch)}
+                  />
+                  <label
+                    htmlFor={`branch-${branch}`}
+                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  >
+                    {branch}
+                  </label>
+                </div>
+              ))}
+            </div>
           </div>
           <div>
             <Label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
@@ -399,7 +454,7 @@ const CollegeFinder = () => {
                 Based on {percentile}% percentile in {casteCategory} category
               </p>
             </div>
-            <div className="flex gap-2"> {/* Container for both buttons */}
+            <div className="flex gap-2">
               <Dialog open={showComparisonDialog} onOpenChange={setShowComparisonDialog}>
                 <DialogTrigger asChild>
                   <Button
@@ -416,7 +471,7 @@ const CollegeFinder = () => {
                     <GitCompare className="h-4 w-4 mr-2" /> Compare ({finalShortlistedColleges.length})
                   </Button>
                 </DialogTrigger>
-                <DialogContent className="sm:max-w-[1200px] p-0"> {/* Wider dialog for comparison */}
+                <DialogContent className="sm:max-w-[1200px] p-0">
                   <DialogHeader className="p-6 pb-0">
                     <DialogTitle>Compare Shortlisted Colleges</DialogTitle>
                   </DialogHeader>
