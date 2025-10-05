@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
-import { Sheet, SheetContent, SheetTrigger } = from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Home, ListFilter, Menu, GraduationCap, FileText } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
