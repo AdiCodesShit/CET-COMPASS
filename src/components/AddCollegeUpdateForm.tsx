@@ -11,6 +11,7 @@ import { useAuth } from "@/components/AuthContext";
 import { CollegeUpdate } from "@/lib/types";
 import { PlusCircle, Loader2 } from "lucide-react";
 import { mockColleges } from "@/lib/data"; // To validate CET College Code
+import { Link } from "react-router-dom"; // Import Link
 
 interface AddCollegeUpdateFormProps {
   onNewUpdate: (update: CollegeUpdate) => void;
