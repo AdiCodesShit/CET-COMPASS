@@ -38,11 +38,12 @@ const FriendRequestButton: React.FC<FriendRequestButtonProps> = ({
       return;
     }
 
-    if (currentUser.friendIds.includes(targetUserId)) {
+    // Safely access friend-related arrays
+    if ((currentUser.friendIds || []).includes(targetUserId)) {
       setStatus("friends");
-    } else if (currentUser.sentFriendRequests.includes(targetUserId)) {
+    } else if ((currentUser.sentFriendRequests || []).includes(targetUserId)) {
       setStatus("request-sent");
-    } else if (currentUser.receivedFriendRequests.includes(targetUserId)) {
+    } else if ((currentUser.receivedFriendRequests || []).includes(targetUserId)) {
       setStatus("request-received");
     } else {
       setStatus("not-friends");
