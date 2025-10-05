@@ -91,6 +91,22 @@ export interface CollegeUpdate {
   timestamp: string;
 }
 
+// New interface for MeetUp
+export interface MeetUp {
+  id: string;
+  collegeName: string;
+  cetCollegeCode: string;
+  userId: string;
+  username: string;
+  title: string;
+  description: string;
+  location: string;
+  date: string; // ISO string format
+  time: string; // e.g., "18:00"
+  imageUrl?: string;
+  timestamp: string;
+}
+
 // New interfaces for Chat
 export interface ChatMessage {
   id: string;

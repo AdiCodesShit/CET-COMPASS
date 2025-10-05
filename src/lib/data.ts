@@ -1,4 +1,4 @@
-import { College, ILSRoundInfo, FormGuideSection, CollegeType, CasteCategory, Branch, CollegeUpdate, ChatRoom, ChatMessage } from "@/lib/types";
+import { College, ILSRoundInfo, FormGuideSection, CollegeType, CasteCategory, Branch, CollegeUpdate, ChatRoom, ChatMessage, MeetUp } from "@/lib/types";
 
 const generateGoogleMapsLink = (collegeName: string, city: string) => {
   return `https://www.google.com/maps/search/${encodeURIComponent(collegeName + ', ' + city)}`;
@@ -530,7 +530,7 @@ export const mockColleges: College[] = [
       hostelInfo: {
         rating: 3.9,
         messRating: 3.4,
-        distanceFromCollege: "1 km",
+        distanceFromCollege: "1.5 km",
         highlights: ["Clean rooms", "Good security", "Nearby markets", "Shared accommodation"],
       },
     },
@@ -3840,6 +3840,65 @@ export const mockCollegeUpdates: CollegeUpdate[] = [
     content: "Our Entrepreneurship Cell is organizing 'E-Summit 2024' with keynote speakers, startup pitches, and networking opportunities. Register by August 10th!",
     imageUrl: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     timestamp: "2024-07-15T11:00:00Z",
+  },
+];
+
+// Mock MeetUp Data
+export const mockMeetUps: MeetUp[] = [
+  {
+    id: "meetup-1",
+    collegeName: "College of Engineering, Pune (COEP)",
+    cetCollegeCode: "EN6006",
+    userId: "user-1",
+    username: "Rahul Sharma",
+    title: "COEP Freshers' Party!",
+    description: "Let's kick off the new academic year with a bang! Freshers' party at the college auditorium. Music, food, and fun!",
+    location: "COEP Auditorium",
+    date: "2024-09-05",
+    time: "18:00",
+    imageUrl: "https://images.unsplash.com/photo-1533174072545-7bd46c006744?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    timestamp: "2024-08-20T10:00:00Z",
+  },
+  {
+    id: "meetup-2",
+    collegeName: "Veermata Jijabai Technological Institute (VJTI)",
+    cetCollegeCode: "EN3002",
+    userId: "user-2",
+    username: "Anjali Desai",
+    title: "Study Group for DSA Mid-terms",
+    description: "Anyone interested in forming a study group for Data Structures and Algorithms mid-terms? Let's meet at the library.",
+    location: "VJTI Central Library, Study Room 3",
+    date: "2024-09-01",
+    time: "14:00",
+    timestamp: "2024-08-25T11:30:00Z",
+  },
+  {
+    id: "meetup-3",
+    collegeName: "Pune Institute of Computer Technology (PICT)",
+    cetCollegeCode: "EN6177",
+    userId: "user-8",
+    username: "Aditya",
+    title: "Gaming Night at PICT!",
+    description: "Calling all gamers! We're organizing a casual gaming night with Valorant, CS:GO, and more. Bring your laptops!",
+    location: "PICT Computer Lab 5",
+    date: "2024-09-10",
+    time: "19:30",
+    imageUrl: "https://images.unsplash.com/photo-1542751371-adc38148e7fd?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    timestamp: "2024-08-22T16:00:00Z",
+  },
+  {
+    id: "meetup-4",
+    collegeName: "K. J. Somaiya College of Engineering",
+    cetCollegeCode: "EN3199",
+    userId: "user-7",
+    username: "Rajeshwari Iyer",
+    title: "Weekend Hike to Kalsubai Peak",
+    description: "Adventure enthusiasts! Planning a weekend hike to Kalsubai Peak. All skill levels welcome. DM for details.",
+    location: "KJSCE Main Gate (Departure Point)",
+    date: "2024-09-15",
+    time: "06:00",
+    imageUrl: "https://images.unsplash.com/photo-1501785888041-af3ba6f6064f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    timestamp: "2024-08-18T09:00:00Z",
   },
 ];
 
