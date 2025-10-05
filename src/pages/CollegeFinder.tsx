@@ -19,7 +19,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import ShortlistedCollegesDisplay from "@/components/ShortlistedCollegesDisplay";
 import CollegeComparisonDisplay from "@/components/CollegeComparisonDisplay";
 import { Badge } from "@/components/ui/badge";
-import { MapPin, TrendingUp, Star, Users, Lightbulb, CheckCircle, GraduationCap, ListFilter, Map, Hotel, UtensilsCrossed, GitCompare, Code } from "lucide-react";
+import { MapPin, TrendingUp, Star, Users, Lightbulb, CheckCircle, GraduationCap, ListFilter, Map, Hotel, UtensilsCrossed, GitCompare, Code, Search } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import {
   Accordion,
@@ -137,7 +137,7 @@ const CollegeDetail: React.FC<CollegeDetailProps> = ({ college }) => (
                   <Badge key={i} variant="secondary">{recruiter}</Badge>
                 ))}
               </div>
-            </div>
+            </div >
           </CardContent>
         </Card>
 
@@ -225,6 +225,7 @@ const CollegeFinder = () => {
   const [showShortlistDialog, setShowShortlistDialog] = useState(false);
   const [showComparisonDialog, setShowComparisonDialog] = useState(false);
   const [activeTypeFilter, setActiveTypeFilter] = useState<CollegeType | "All">("All");
+  const [collegeSearchQuery, setCollegeSearchQuery] = useState(""); // New state for college search
 
   useEffect(() => {
     localStorage.setItem('shortlistedColleges', JSON.stringify(shortlistedColleges));
@@ -253,6 +254,16 @@ const CollegeFinder = () => {
       return userPercentile >= cutoff;
     });
 
+    // Apply college name search filter
+    if (collegeSearchQuery.trim()) {
+      const lowerCaseQuery = collegeSearchQuery.toLowerCase();
+      results = results.filter(college =>
+        college.name.toLowerCase().includes(lowerCaseQuery) ||
+        college.city.toLowerCase().includes(lowerCaseQuery) ||
+        college.cetCollegeCode.toLowerCase().includes(lowerCaseQuery)
+      );
+    }
+
     // Apply type filter
     if (activeTypeFilter !== "All") {
       results = results.filter(college => college.type === activeTypeFilter);
@@ -268,7 +279,7 @@ const CollegeFinder = () => {
     // Sort by branch preference first, then by city preference, then by cutoff
     results.sort((a, b) => {
       const aHasPreferredBranch = branchPreferences.length > 0 && a.details.availableBranches.some(branch => branchPreferences.includes(branch.name));
-      const bHasPreferredBranch = branchPreferences.length > 0 && b.details.availableBranches.some(branch => branchPreferences.includes(b.name)); // Fixed: should be b.details.availableBranches.some(branch => branchPreferences.includes(branch.name))
+      const bHasPreferredBranch = branchPreferences.length > 0 && b.details.availableBranches.some(branch => branchPreferences.includes(branch.name));
 
       if (aHasPreferredBranch && !bHasPreferredBranch) return -1;
       if (!aHasPreferredBranch && bHasPreferredBranch) return 1;
@@ -371,6 +382,20 @@ const CollegeFinder = () => {
                 <SelectItem value="EWS">EWS</SelectItem>
               </SelectContent>
             </Select>
+          </div>
+
+          {/* College Search Input */}
+          <div>
+            <Label htmlFor="collegeSearch" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+              <Search className="h-4 w-4 inline-block mr-1 text-app-purple" /> Search College by Name/City/Code
+            </Label>
+            <Input
+              id="collegeSearch"
+              type="text"
+              placeholder="e.g., COEP, Pune, EN6006"
+              value={collegeSearchQuery}
+              onChange={(e) => setCollegeSearchQuery(e.target.value)}
+            />
           </div>
 
           {/* Branch Preference Section as Accordion */}
