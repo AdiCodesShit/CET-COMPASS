@@ -254,15 +254,8 @@ const CollegeFinder = () => {
       return userPercentile >= cutoff;
     });
 
-    // Apply college name search filter
-    if (collegeSearchQuery.trim()) {
-      const lowerCaseQuery = collegeSearchQuery.toLowerCase();
-      results = results.filter(college =>
-        college.name.toLowerCase().includes(lowerCaseQuery) ||
-        college.city.toLowerCase().includes(lowerCaseQuery) ||
-        college.cetCollegeCode.toLowerCase().includes(lowerCaseQuery)
-      );
-    }
+    // The collegeSearchQuery filter will now be applied to the *displayed* results, not the initial search
+    // This logic will be moved to the rendering part of the filtered colleges.
 
     // Apply type filter
     if (activeTypeFilter !== "All") {
@@ -326,6 +319,16 @@ const CollegeFinder = () => {
 
   const finalShortlistedColleges = mockColleges.filter(college => shortlistedColleges.includes(college.id));
 
+  // Filter colleges based on collegeSearchQuery for display
+  const displayedColleges = filteredColleges.filter(college => {
+    const lowerCaseQuery = collegeSearchQuery.toLowerCase();
+    return (
+      college.name.toLowerCase().includes(lowerCaseQuery) ||
+      college.city.toLowerCase().includes(lowerCaseQuery) ||
+      college.cetCollegeCode.toLowerCase().includes(lowerCaseQuery)
+    );
+  });
+
   return (
     <div className="space-y-10">
       {/* Hero Section */}
@@ -382,20 +385,6 @@ const CollegeFinder = () => {
                 <SelectItem value="EWS">EWS</SelectItem>
               </SelectContent>
             </Select>
-          </div>
-
-          {/* College Search Input */}
-          <div>
-            <Label htmlFor="collegeSearch" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-              <Search className="h-4 w-4 inline-block mr-1 text-app-purple" /> Search College by Name/City/Code
-            </Label>
-            <Input
-              id="collegeSearch"
-              type="text"
-              placeholder="e.g., COEP, Pune, EN6006"
-              value={collegeSearchQuery}
-              onChange={(e) => setCollegeSearchQuery(e.target.value)}
-            />
           </div>
 
           {/* Branch Preference Section as Accordion */}
@@ -551,6 +540,20 @@ const CollegeFinder = () => {
             </div>
           </div>
 
+          {/* College Search Input - Moved here */}
+          <div className="mb-6 p-4 rounded-lg bg-background shadow-md">
+            <Label htmlFor="collegeSearch" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+              <Search className="h-4 w-4 inline-block mr-1 text-app-purple" /> Search College by Name/City/Code
+            </Label>
+            <Input
+              id="collegeSearch"
+              type="text"
+              placeholder="e.g., COEP, Pune, EN6006"
+              value={collegeSearchQuery}
+              onChange={(e) => setCollegeSearchQuery(e.target.value)}
+            />
+          </div>
+
           {/* Type Filter Buttons */}
           <div className="flex gap-2 mb-6 p-4 rounded-lg bg-background shadow-md">
             {collegeTypeFilters.map(type => (
@@ -566,7 +569,7 @@ const CollegeFinder = () => {
           </div>
 
           <div className="grid gap-6">
-            {filteredColleges.map(college => (
+            {displayedColleges.map(college => (
               <Card key={college.id} className="shadow-md flex flex-col md:flex-row overflow-hidden">
                 <div className="md:w-1/3 lg:w-1/4 flex-shrink-0">
                   <img
