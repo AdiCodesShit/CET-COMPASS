@@ -61,7 +61,7 @@ const ChatRoomDisplay: React.FC<ChatRoomDisplayProps> = ({ chatRoom }) => {
 
     // Update local storage with the new message
     const allStoredMessages: ChatMessage[] = JSON.parse(localStorage.getItem(CHAT_MESSAGES_STORAGE_KEY) || "[]");
-    const updatedAllMessages = [...allStoredMessages, newMsg]; // Correctly add the new message to the global list
+    const updatedAllMessages = [...allStoredMessages, newMsg];
     localStorage.setItem(CHAT_MESSAGES_STORAGE_KEY, JSON.stringify(updatedAllMessages));
   };
 
@@ -94,7 +94,7 @@ const ChatRoomDisplay: React.FC<ChatRoomDisplayProps> = ({ chatRoom }) => {
                   <div
                     className={`max-w-[70%] p-3 rounded-lg ${
                       msg.userId === user?.id
-                        ? "bg-app-blue text-white rounded-br-none" // Changed from bg-app-purple to bg-app-blue
+                        ? "bg-gradient-to-r from-app-light-blue to-app-light-purple text-black rounded-br-none"
                         : "bg-muted text-foreground rounded-bl-none"
                     }`}
                   >
@@ -102,7 +102,7 @@ const ChatRoomDisplay: React.FC<ChatRoomDisplayProps> = ({ chatRoom }) => {
                       {msg.userId === user?.id ? "You" : msg.username}
                     </p>
                     <p className="text-sm">{msg.content}</p>
-                    <p className="text-xs text-white/70 dark:text-muted-foreground text-right mt-1">
+                    <p className="text-xs text-gray-700 text-right mt-1">
                       {format(new Date(msg.timestamp), "p")}
                     </p>
                   </div>
