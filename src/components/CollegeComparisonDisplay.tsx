@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useMemo } from "react";
 import { College, CasteCategory } from "@/lib/types";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -8,6 +8,16 @@ import { Separator } from "@/components/ui/separator";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Star, GraduationCap, TrendingUp, Home, UtensilsCrossed, Code } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
 
 interface CollegeComparisonDisplayProps {
   colleges: College[];
@@ -33,10 +43,25 @@ const StarRatingDisplay = ({ rating }: { rating: number }) => {
   );
 };
 
+// Helper function to parse package strings like "₹10.2L" into numbers (e.g., 10.2)
+const parsePackageToNumber = (packageStr: string): number => {
+  if (!packageStr) return 0;
+  const numericPart = parseFloat(packageStr.replace(/[₹L]/g, ''));
+  return isNaN(numericPart) ? 0 : numericPart;
+};
+
 const CollegeComparisonDisplay: React.FC<CollegeComparisonDisplayProps> = ({ colleges, casteCategory }) => {
   if (colleges.length === 0) {
     return <p className="text-center text-muted-foreground p-8">No colleges selected for comparison.</p>;
   }
+
+  const chartData = useMemo(() => {
+    return colleges.map((college) => ({
+      name: college.name,
+      averagePackage: parsePackageToNumber(college.details.placementData.averagePackage),
+      highestPackage: parsePackageToNumber(college.details.placementData.highestPackage),
+    }));
+  }, [colleges]);
 
   return (
     <ScrollArea className="h-[80vh] p-4">
@@ -44,6 +69,56 @@ const CollegeComparisonDisplay: React.FC<CollegeComparisonDisplayProps> = ({ col
       <p className="text-center text-muted-foreground mb-6">
         Compare key features of your shortlisted colleges side-by-side.
       </p>
+
+      {/* Placement Data Charts */}
+      <div className="mb-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <Card className="shadow-md">
+          <CardHeader>
+            <CardTitle className="text-lg flex items-center">
+              <TrendingUp className="h-5 w-5 mr-2 text-app-purple" /> Average Placement Package (LPA)
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="h-64">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={chartData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
+                <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
+                <XAxis dataKey="name" angle={-15} textAnchor="end" height={60} tick={{ fill: 'hsl(var(--foreground))', fontSize: 12 }} />
+                <YAxis tick={{ fill: 'hsl(var(--foreground))', fontSize: 12 }} />
+                <Tooltip
+                  formatter={(value: number) => [`₹${value}L`, "Average Package"]}
+                  contentStyle={{ backgroundColor: 'hsl(var(--card))', border: '1px solid hsl(var(--border))', borderRadius: '0.375rem' }}
+                  labelStyle={{ color: 'hsl(var(--foreground))' }}
+                />
+                <Bar dataKey="averagePackage" fill="hsl(var(--app-blue))" radius={[4, 4, 0, 0]} />
+              </BarChart>
+            </ResponsiveContainer>
+          </CardContent>
+        </Card>
+
+        <Card className="shadow-md">
+          <CardHeader>
+            <CardTitle className="text-lg flex items-center">
+              <TrendingUp className="h-5 w-5 mr-2 text-app-purple" /> Highest Placement Package (LPA)
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="h-64">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={chartData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
+                <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
+                <XAxis dataKey="name" angle={-15} textAnchor="end" height={60} tick={{ fill: 'hsl(var(--foreground))', fontSize: 12 }} />
+                <YAxis tick={{ fill: 'hsl(var(--foreground))', fontSize: 12 }} />
+                <Tooltip
+                  formatter={(value: number) => [`₹${value}L`, "Highest Package"]}
+                  contentStyle={{ backgroundColor: 'hsl(var(--card))', border: '1px solid hsl(var(--border))', borderRadius: '0.375rem' }}
+                  labelStyle={{ color: 'hsl(var(--foreground))' }}
+                />
+                <Bar dataKey="highestPackage" fill="hsl(var(--app-purple))" radius={[4, 4, 0, 0]} />
+              </BarChart>
+            </ResponsiveContainer>
+          </CardContent>
+        </Card>
+      </div>
+
       <div className="overflow-x-auto">
         <Table className="min-w-full border-collapse">
           <TableHeader>
