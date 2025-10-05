@@ -10,6 +10,7 @@ import ShortlistedCollegesDisplay from "./ShortlistedCollegesDisplay";
 import { mockColleges } from "@/lib/data";
 import { useAuth } from "@/components/AuthContext";
 import { getUserById } from "@/utils/auth";
+import UserYearTagDisplay from "./UserYearTagDisplay"; // Import the new component
 
 interface NavLinkProps {
   to: string;
@@ -63,6 +64,8 @@ const Layout = () => {
   const [shortlistedCollegeIds, setShortlistedCollegeIds] = React.useState<string[]>([]);
   const { user, logout, isLoading } = useAuth();
   const [pendingFriendRequestsCount, setPendingFriendRequestsCount] = React.useState(0);
+  const [currentUserYearTag, setCurrentUserYearTag] = React.useState<string | undefined>(undefined);
+
 
   React.useEffect(() => {
     const storedShortlist = localStorage.getItem('shortlistedColleges');
@@ -75,8 +78,10 @@ const Layout = () => {
     if (user) {
       const currentUserData = getUserById(user.id);
       setPendingFriendRequestsCount(currentUserData?.receivedFriendRequests?.length || 0);
+      setCurrentUserYearTag(currentUserData?.yearTag); // Set the year tag
     } else {
       setPendingFriendRequestsCount(0);
+      setCurrentUserYearTag(undefined);
     }
   }, [user]);
 
@@ -148,9 +153,12 @@ const Layout = () => {
               {!isLoading && (
                 user ? (
                   <>
-                    <span className="text-sm font-medium text-muted-foreground hidden sm:inline">
-                      Hello, {user.username}!
-                    </span>
+                    <div className="flex items-center gap-2">
+                      <span className="text-sm font-medium text-muted-foreground hidden sm:inline">
+                        Hello, {user.username}!
+                      </span>
+                      {currentUserYearTag && <UserYearTagDisplay yearTag={currentUserYearTag} />}
+                    </div>
                     {pendingFriendRequestsCount > 0 && (
                       <Link to="/direct-messages" className="relative">
                         <Button variant="ghost" size="icon" className="text-app-blue">

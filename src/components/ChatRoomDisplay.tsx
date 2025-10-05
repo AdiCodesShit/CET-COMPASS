@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import { ChatMessage, ChatRoom } from "@/lib/types";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -11,7 +11,9 @@ import { useAuth } from "@/components/AuthContext";
 import { toast } from "sonner";
 import { format } from "date-fns";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import FriendRequestButton from "./FriendRequestButton"; // Import the new component
+import FriendRequestButton from "./FriendRequestButton";
+import UserYearTagDisplay from "./UserYearTagDisplay"; // Import the new component
+import { getAllUsers } from "@/utils/auth"; // Import getAllUsers to get user data
 
 interface ChatRoomDisplayProps {
   chatRoom: ChatRoom;
@@ -21,6 +23,7 @@ const CHAT_MESSAGES_STORAGE_KEY = "mockChatMessages";
 
 const ChatRoomDisplay: React.FC<ChatRoomDisplayProps> = ({ chatRoom }) => {
   const { user } = useAuth();
+  const allUsers = useMemo(() => getAllUsers(), []); // Get all users for yearTag lookup
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [newMessage, setNewMessage] = useState("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -78,49 +81,55 @@ const ChatRoomDisplay: React.FC<ChatRoomDisplayProps> = ({ chatRoom }) => {
             {messages.length === 0 ? (
               <p className="text-center text-muted-foreground">No messages yet. Be the first to say something!</p>
             ) : (
-              messages.map((msg) => (
-                <div
-                  key={msg.id}
-                  className={`flex items-start gap-3 ${
-                    msg.userId === user?.id ? "justify-end" : "justify-start"
-                  }`}
-                >
-                  {msg.userId !== user?.id && (
-                    <Avatar className="h-8 w-8">
-                      <AvatarFallback>
-                        <UserCircle2 className="h-5 w-5" />
-                      </AvatarFallback>
-                    </Avatar>
-                  )}
+              messages.map((msg) => {
+                const senderUser = allUsers.find(u => u.id === msg.userId); // Find sender's full user data
+                return (
                   <div
-                    className={`max-w-[70%] p-3 rounded-lg ${
-                      msg.userId === user?.id
-                        ? "bg-gradient-to-r from-app-light-blue to-app-light-purple text-black rounded-br-none"
-                        : "bg-muted text-foreground rounded-bl-none"
+                    key={msg.id}
+                    className={`flex items-start gap-3 ${
+                      msg.userId === user?.id ? "justify-end" : "justify-start"
                     }`}
                   >
-                    <div className="flex items-center justify-between mb-1">
-                      <p className="text-xs font-semibold">
-                        {msg.userId === user?.id ? "You" : msg.username}
+                    {msg.userId !== user?.id && (
+                      <Avatar className="h-8 w-8">
+                        <AvatarFallback>
+                          <UserCircle2 className="h-5 w-5" />
+                        </AvatarFallback>
+                      </Avatar>
+                    )}
+                    <div
+                      className={`max-w-[70%] p-3 rounded-lg ${
+                        msg.userId === user?.id
+                          ? "bg-gradient-to-r from-app-light-blue to-app-light-purple text-black rounded-br-none"
+                          : "bg-muted text-foreground rounded-bl-none"
+                      }`}
+                    >
+                      <div className="flex items-center justify-between mb-1">
+                        <div className="flex items-center gap-2">
+                          <p className="text-xs font-semibold">
+                            {msg.userId === user?.id ? "You" : msg.username}
+                          </p>
+                          {senderUser?.yearTag && <UserYearTagDisplay yearTag={senderUser.yearTag} />}
+                        </div>
+                        {user && msg.userId !== user.id && (
+                          <FriendRequestButton targetUserId={msg.userId} />
+                        )}
+                      </div>
+                      <p className="text-sm">{msg.content}</p>
+                      <p className="text-xs text-gray-700 text-right mt-1">
+                        {format(new Date(msg.timestamp), "p")}
                       </p>
-                      {user && msg.userId !== user.id && (
-                        <FriendRequestButton targetUserId={msg.userId} />
-                      )}
                     </div>
-                    <p className="text-sm">{msg.content}</p>
-                    <p className="text-xs text-gray-700 text-right mt-1">
-                      {format(new Date(msg.timestamp), "p")}
-                    </p>
+                    {msg.userId === user?.id && (
+                      <Avatar className="h-8 w-8">
+                        <AvatarFallback>
+                          <UserCircle2 className="h-5 w-5" />
+                        </AvatarFallback>
+                      </Avatar>
+                    )}
                   </div>
-                  {msg.userId === user?.id && (
-                    <Avatar className="h-8 w-8">
-                      <AvatarFallback>
-                        <UserCircle2 className="h-5 w-5" />
-                      </AvatarFallback>
-                    </Avatar>
-                  )}
-                </div>
-              ))
+                );
+              })
             )}
             <div ref={messagesEndRef} />
           </div>

@@ -1,4 +1,4 @@
-import { User, FriendRequest } from "@/lib/types";
+import { User, FriendRequest, UserYearTag } from "@/lib/types";
 
 const USERS_STORAGE_KEY = "cet_compass_users";
 const CURRENT_USER_STORAGE_KEY = "cet_compass_current_user";
@@ -54,7 +54,7 @@ export function updateUserInStorage(updatedUser: User): void {
 }
 
 // Register a new user
-export function registerUser(username: string, email: string, passwordHash: string, cetCollegeCode?: string): User | null {
+export function registerUser(username: string, email: string, passwordHash: string, cetCollegeCode?: string, yearTag?: UserYearTag): User | null {
   const users = getAllUsers();
   if (users.some(user => user.email === email)) {
     return null; // User with this email already exists
@@ -65,6 +65,7 @@ export function registerUser(username: string, email: string, passwordHash: stri
     username,
     email,
     cetCollegeCode,
+    yearTag, // Include yearTag
     friendIds: [],
     sentFriendRequests: [],
     receivedFriendRequests: [],
@@ -96,7 +97,7 @@ export function getCurrentUser(): User | null {
 
 // Logout the current user
 export function logoutUser(): void {
-  localStorage.removeItem(CURRENT_USER_KEY);
+  localStorage.removeItem(CURRENT_USER_STORAGE_KEY);
 }
 
 // --- Friend Request Logic ---

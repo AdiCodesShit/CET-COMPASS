@@ -8,12 +8,15 @@ import { Label } from "@/components/ui/label";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "@/components/AuthContext";
 import { Loader2 } from "lucide-react";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { UserYearTag } from "@/lib/types";
 
 const Signup = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [cetCollegeCode, setCetCollegeCode] = useState("");
+  const [yearTag, setYearTag] = useState<UserYearTag | undefined>(undefined);
   const { signup, isLoading } = useAuth();
   const navigate = useNavigate();
 
@@ -23,7 +26,7 @@ const Signup = () => {
       // This basic validation is handled by the toast in AuthContext
       return;
     }
-    const success = await signup(username, email, password, cetCollegeCode || undefined); // Using password directly as hash for local storage
+    const success = await signup(username, email, password, cetCollegeCode || undefined, yearTag); // Pass yearTag
     if (success) {
       navigate("/college-finder");
     }
@@ -71,6 +74,24 @@ const Signup = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
+            </div>
+            <div className="grid gap-2">
+              <Label htmlFor="yearTag">Your Academic Year (Optional)</Label>
+              <Select value={yearTag} onValueChange={(value: UserYearTag) => setYearTag(value)}>
+                <SelectTrigger id="yearTag">
+                  <SelectValue placeholder="Select your academic year" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="Newcomer">Newcomer</SelectItem>
+                  <SelectItem value="FirstYear">First Year</SelectItem>
+                  <SelectItem value="SecondYear">Second Year</SelectItem>
+                  <SelectItem value="ThirdYear">Third Year</SelectItem>
+                  <SelectItem value="FinalYear">Final Year</SelectItem>
+                </SelectContent>
+              </Select>
+              <p className="text-xs text-muted-foreground">
+                This helps others understand your experience level.
+              </p>
             </div>
             <div className="grid gap-2">
               <Label htmlFor="cetCollegeCode">Your CET College Code (Optional, for reviews)</Label>

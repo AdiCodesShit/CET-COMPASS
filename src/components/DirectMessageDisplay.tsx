@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import { DirectMessage, DirectConversation, User } from "@/lib/types";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -12,6 +12,7 @@ import { toast } from "sonner";
 import { format } from "date-fns";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { getAllUsers } from "@/utils/auth";
+import UserYearTagDisplay from "./UserYearTagDisplay"; // Import the new component
 
 interface DirectMessageDisplayProps {
   conversation: DirectConversation;
@@ -115,7 +116,10 @@ const DirectMessageDisplay: React.FC<DirectMessageDisplayProps> = ({
             <AvatarImage src={`https://api.dicebear.com/7.x/initials/svg?seed=${otherParticipant.username}`} alt={otherParticipant.username} />
             <AvatarFallback><UserCircle2 className="h-6 w-6" /></AvatarFallback>
           </Avatar>
-          {otherParticipant.username}
+          <div className="flex items-center gap-2">
+            {otherParticipant.username}
+            {otherParticipant.yearTag && <UserYearTagDisplay yearTag={otherParticipant.yearTag} />}
+          </div>
         </CardTitle>
       </CardHeader>
       <CardContent className="flex-1 p-4 overflow-hidden">

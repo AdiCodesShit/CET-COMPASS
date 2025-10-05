@@ -61,12 +61,15 @@ export interface FormGuideSection {
   documentItems?: FormGuideDocumentItem[]; // For structured document lists with checkboxes
 }
 
+export type UserYearTag = "Newcomer" | "FirstYear" | "SecondYear" | "ThirdYear" | "FinalYear";
+
 // New interfaces for User and Review
 export interface User {
   id: string;
   username: string;
   email: string;
   cetCollegeCode?: string; // Optional: User's college code for review verification
+  yearTag?: UserYearTag; // New: User's academic year tag
   friendIds: string[]; // IDs of users who are friends
   sentFriendRequests: string[]; // IDs of users to whom this user sent a request
   receivedFriendRequests: string[]; // IDs of users from whom this user received a request
