@@ -1,7 +1,7 @@
 # CET-COMPASS: Your Guide to Engineering Admissions
 
 ## Project Abstract
-CET-COMPASS is a comprehensive web application designed to assist students navigating the MHT-CET engineering admissions process. It provides tools to find suitable colleges based on percentile and caste category, offers a detailed guide for form filling, helps prepare and convert necessary documents to PDF, keeps users informed about Institute Level Seats (ILS) rounds, and facilitates community interaction through college-specific chats and direct messaging. The application aims to simplify the complex admission journey by offering personalized insights and essential resources.
+CET-COMPASS is a comprehensive web application designed to streamline the MHT-CET engineering admissions process. It empowers students with tools to discover and compare colleges based on percentile, caste, city, and branch preferences, alongside a dynamic search feature for refined results. The platform also offers a detailed form-filling guide, a document preparation tool for PDF conversion, and up-to-date information on Institute Level Seats (ILS) rounds. Furthermore, it fosters a vibrant community through college-specific and branch-wise chats with search capabilities, a college network for updates and meet-ups, and private direct messaging with friend management, all aimed at simplifying the complex admission journey with personalized insights and essential resources.
 
 ## Tech Stack
 The application is built using a modern web development stack:
