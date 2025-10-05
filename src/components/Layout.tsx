@@ -4,13 +4,14 @@ import React from "react";
 import { Link, Outlet } from "react-router-dom";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { Home, ListFilter, Menu, GraduationCap, FileText, LogIn, UserPlus, LogOut, MessageSquareText, MessageSquareMore, MessageSquare, Bell } from "lucide-react";
+import { Home, ListFilter, Menu, GraduationCap, FileText, LogIn, UserPlus, LogOut, MessageSquareText, MessageSquareMore, MessageSquare, Bell, UserCircle } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import ShortlistedCollegesDisplay from "./ShortlistedCollegesDisplay";
 import { mockColleges } from "@/lib/data";
 import { useAuth } from "@/components/AuthContext";
 import { getUserById } from "@/utils/auth";
 import UserYearTagDisplay from "./UserYearTagDisplay"; // Import the new component
+import UserProfileSettings from "./UserProfileSettings"; // Import the new component
 
 interface NavLinkProps {
   to: string;
@@ -65,6 +66,7 @@ const Layout = () => {
   const { user, logout, isLoading } = useAuth();
   const [pendingFriendRequestsCount, setPendingFriendRequestsCount] = React.useState(0);
   const [currentUserYearTag, setCurrentUserYearTag] = React.useState<string | undefined>(undefined);
+  const [isProfileDialogOpen, setIsProfileDialogOpen] = React.useState(false);
 
 
   React.useEffect(() => {
@@ -83,7 +85,7 @@ const Layout = () => {
       setPendingFriendRequestsCount(0);
       setCurrentUserYearTag(undefined);
     }
-  }, [user]);
+  }, [user, isProfileDialogOpen]); // Re-fetch user data when profile dialog closes
 
   const finalShortlistedColleges = mockColleges.filter(college => shortlistedCollegeIds.includes(college.id));
 
@@ -170,6 +172,17 @@ const Layout = () => {
                         </Button>
                       </Link>
                     )}
+                    <Dialog open={isProfileDialogOpen} onOpenChange={setIsProfileDialogOpen}>
+                      <DialogTrigger asChild>
+                        <Button variant="ghost" size="icon" className="text-app-purple">
+                          <UserCircle className="h-5 w-5" />
+                          <span className="sr-only">User Profile</span>
+                        </Button>
+                      </DialogTrigger>
+                      <DialogContent className="sm:max-w-[425px]">
+                        <UserProfileSettings onClose={() => setIsProfileDialogOpen(false)} />
+                      </DialogContent>
+                    </Dialog>
                     <Button variant="outline" onClick={logout} className="flex items-center gap-2">
                       <LogOut className="h-4 w-4" /> Logout
                     </Button>
