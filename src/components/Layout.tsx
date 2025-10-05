@@ -8,8 +8,8 @@ import { Home, ListFilter, Menu, GraduationCap, FileText, LogIn, UserPlus, LogOu
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import ShortlistedCollegesDisplay from "./ShortlistedCollegesDisplay";
 import { mockColleges } from "@/lib/data";
-import { useAuth } from "@/components/AuthContext"; // Import useAuth
-import { getUserById } from "@/utils/auth"; // Import getUserById
+import { useAuth } from "@/components/AuthContext";
+import { getUserById } from "@/utils/auth";
 
 interface NavLinkProps {
   to: string;
@@ -61,7 +61,7 @@ const SidebarContent = () => (
 const Layout = () => {
   const [shortlistedCollegesCount, setShortlistedCollegesCount] = React.useState(0);
   const [shortlistedCollegeIds, setShortlistedCollegeIds] = React.useState<string[]>([]);
-  const { user, logout, isLoading } = useAuth(); // Use the auth hook
+  const { user, logout, isLoading } = useAuth();
   const [pendingFriendRequestsCount, setPendingFriendRequestsCount] = React.useState(0);
 
   React.useEffect(() => {
@@ -74,12 +74,11 @@ const Layout = () => {
 
     if (user) {
       const currentUserData = getUserById(user.id);
-      // Safely access receivedFriendRequests.length, defaulting to 0 if undefined
       setPendingFriendRequestsCount(currentUserData?.receivedFriendRequests?.length || 0);
     } else {
       setPendingFriendRequestsCount(0);
     }
-  }, [user]); // Re-run when user changes
+  }, [user]);
 
   const finalShortlistedColleges = mockColleges.filter(college => shortlistedCollegeIds.includes(college.id));
 
@@ -132,10 +131,18 @@ const Layout = () => {
           </Sheet>
           <div className="w-full flex-1 flex items-center justify-between">
             <div className="hidden md:flex items-center gap-4">
-              <Link to="/college-finder" className="text-sm font-medium text-muted-foreground hover:text-primary">Admission Process</Link>
-              <Link to="/college-network" className="text-sm font-medium text-muted-foreground hover:text-primary">College Network</Link>
-              <Link to="/college-chats" className="text-sm font-medium text-muted-foreground hover:text-primary">College Chats</Link>
-              <Link to="/direct-messages" className="text-sm font-medium text-muted-foreground hover:text-primary">Direct Messages</Link>
+              <Button asChild className="gradient-button" size="sm">
+                <Link to="/college-finder">Admission Process</Link>
+              </Button>
+              <Button asChild className="gradient-button" size="sm">
+                <Link to="/college-network">College Network</Link>
+              </Button>
+              <Button asChild className="gradient-button" size="sm">
+                <Link to="/college-chats">College Chats</Link>
+              </Button>
+              <Button asChild className="gradient-button" size="sm">
+                <Link to="/direct-messages">Direct Messages</Link>
+              </Button>
             </div>
             <div className="ml-auto flex items-center gap-4">
               {!isLoading && (
