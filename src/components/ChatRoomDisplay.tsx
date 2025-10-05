@@ -11,6 +11,7 @@ import { useAuth } from "@/components/AuthContext";
 import { toast } from "sonner";
 import { format } from "date-fns";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import FriendRequestButton from "./FriendRequestButton"; // Import the new component
 
 interface ChatRoomDisplayProps {
   chatRoom: ChatRoom;
@@ -98,9 +99,14 @@ const ChatRoomDisplay: React.FC<ChatRoomDisplayProps> = ({ chatRoom }) => {
                         : "bg-muted text-foreground rounded-bl-none"
                     }`}
                   >
-                    <p className="text-xs font-semibold mb-1">
-                      {msg.userId === user?.id ? "You" : msg.username}
-                    </p>
+                    <div className="flex items-center justify-between mb-1">
+                      <p className="text-xs font-semibold">
+                        {msg.userId === user?.id ? "You" : msg.username}
+                      </p>
+                      {user && msg.userId !== user.id && (
+                        <FriendRequestButton targetUserId={msg.userId} />
+                      )}
+                    </div>
                     <p className="text-sm">{msg.content}</p>
                     <p className="text-xs text-gray-700 text-right mt-1">
                       {format(new Date(msg.timestamp), "p")}

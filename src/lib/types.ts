@@ -67,6 +67,9 @@ export interface User {
   username: string;
   email: string;
   cetCollegeCode?: string; // Optional: User's college code for review verification
+  friendIds: string[]; // IDs of users who are friends
+  sentFriendRequests: string[]; // IDs of users to whom this user sent a request
+  receivedFriendRequests: string[]; // IDs of users from whom this user received a request
 }
 
 export interface Review {
@@ -144,4 +147,14 @@ export interface DirectConversation {
   participants: string[]; // Array of two user IDs
   lastMessageContent: string;
   lastMessageTimestamp: string;
+}
+
+export type FriendRequestStatus = "pending" | "accepted" | "declined";
+
+export interface FriendRequest {
+  id: string;
+  senderId: string;
+  receiverId: string;
+  status: FriendRequestStatus;
+  timestamp: string;
 }

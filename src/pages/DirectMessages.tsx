@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { DirectConversation, DirectMessage } from "@/lib/types";
 import { Card } from "@/components/ui/card";
 import DirectConversationList from "@/components/DirectConversationList";
@@ -9,6 +9,7 @@ import { useAuth } from "@/components/AuthContext";
 import { Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
+import { getUserById } from "@/utils/auth"; // Import getUserById
 
 const DIRECT_CONVERSATIONS_STORAGE_KEY = "mockDirectConversations";
 
@@ -17,6 +18,33 @@ const DirectMessages = () => {
   const navigate = useNavigate();
   const [conversations, setConversations] = useState<DirectConversation[]>([]);
   const [selectedConversation, setSelectedConversation] = useState<DirectConversation | null>(null);
+  const [refreshKey, setRefreshKey] = useState(0); // Key to force re-render/re-fetch
+
+  const fetchConversations = useCallback(() => {
+    if (!user) return;
+
+    const storedConversations: DirectConversation[] = JSON.parse(
+      localStorage.getItem(DIRECT_CONVERSATIONS_STORAGE_KEY) || "[]"
+    );
+    // Filter conversations to only show those involving the current user
+    const userConversations = storedConversations.filter((conv) =>
+      conv.participants.includes(user.id)
+    );
+    // Sort conversations by last message timestamp (newest first)
+    userConversations.sort((a, b) =>
+      new Date(b.lastMessageTimestamp).getTime() - new Date(a.lastMessageTimestamp).getTime()
+    );
+    setConversations(userConversations);
+
+    // If a conversation was previously selected and still exists, re-select it
+    if (selectedConversation) {
+      const reSelected = userConversations.find(c => c.id === selectedConversation.id);
+      setSelectedConversation(reSelected || null);
+    } else if (userConversations.length > 0) {
+      // Otherwise, select the newest conversation by default
+      setSelectedConversation(userConversations[0]);
+    }
+  }, [user, selectedConversation]);
 
   useEffect(() => {
     if (!authLoading && !user) {
@@ -24,31 +52,8 @@ const DirectMessages = () => {
       navigate("/login");
       return;
     }
-
-    if (user) {
-      const storedConversations: DirectConversation[] = JSON.parse(
-        localStorage.getItem(DIRECT_CONVERSATIONS_STORAGE_KEY) || "[]"
-      );
-      // Filter conversations to only show those involving the current user
-      const userConversations = storedConversations.filter((conv) =>
-        conv.participants.includes(user.id)
-      );
-      // Sort conversations by last message timestamp (newest first)
-      userConversations.sort((a, b) =>
-        new Date(b.lastMessageTimestamp).getTime() - new Date(a.lastMessageTimestamp).getTime()
-      );
-      setConversations(userConversations);
-
-      // If a conversation was previously selected and still exists, re-select it
-      if (selectedConversation) {
-        const reSelected = userConversations.find(c => c.id === selectedConversation.id);
-        setSelectedConversation(reSelected || null);
-      } else if (userConversations.length > 0) {
-        // Otherwise, select the newest conversation by default
-        setSelectedConversation(userConversations[0]);
-      }
-    }
-  }, [user, authLoading, navigate]); // Re-run when user or authLoading changes
+    fetchConversations();
+  }, [user, authLoading, navigate, fetchConversations, refreshKey]); // Added refreshKey
 
   const handleSelectConversation = (conv: DirectConversation) => {
     setSelectedConversation(conv);
@@ -62,6 +67,7 @@ const DirectMessages = () => {
       localStorage.setItem(DIRECT_CONVERSATIONS_STORAGE_KEY, JSON.stringify([...allStoredConversations, newConv]));
       return updated;
     });
+    setRefreshKey(prev => prev + 1); // Trigger refresh
   };
 
   const handleSendMessage = (message: DirectMessage) => {
@@ -79,6 +85,11 @@ const DirectMessages = () => {
         new Date(b.lastMessageTimestamp).getTime() - new Date(a.lastMessageTimestamp).getTime()
       )
     );
+    setRefreshKey(prev => prev + 1); // Trigger refresh
+  };
+
+  const handleFriendRequestUpdate = () => {
+    setRefreshKey(prev => prev + 1); // Force re-fetch conversations and user data
   };
 
   if (authLoading) {
@@ -102,6 +113,7 @@ const DirectMessages = () => {
           onSelectConversation={handleSelectConversation}
           onCreateNewConversation={handleCreateNewConversation}
           selectedConversationId={selectedConversation?.id || null}
+          onFriendRequestUpdate={handleFriendRequestUpdate}
         />
       </div>
       <div className="flex-1">

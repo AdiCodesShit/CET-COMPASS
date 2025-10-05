@@ -4,12 +4,12 @@ import React from "react";
 import { Link, Outlet } from "react-router-dom";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { Home, ListFilter, Menu, GraduationCap, FileText, LogIn, UserPlus, LogOut, MessageSquareText, MessageSquareMore, MessageSquare } from "lucide-react";
+import { Home, ListFilter, Menu, GraduationCap, FileText, LogIn, UserPlus, LogOut, MessageSquareText, MessageSquareMore, MessageSquare, Bell } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import ShortlistedCollegesDisplay from "./ShortlistedCollegesDisplay";
 import { mockColleges } from "@/lib/data";
 import { useAuth } from "@/components/AuthContext"; // Import useAuth
-
+import { getUserById } from "@/utils/auth"; // Import getUserById
 
 interface NavLinkProps {
   to: string;
@@ -62,6 +62,7 @@ const Layout = () => {
   const [shortlistedCollegesCount, setShortlistedCollegesCount] = React.useState(0);
   const [shortlistedCollegeIds, setShortlistedCollegeIds] = React.useState<string[]>([]);
   const { user, logout, isLoading } = useAuth(); // Use the auth hook
+  const [pendingFriendRequestsCount, setPendingFriendRequestsCount] = React.useState(0);
 
   React.useEffect(() => {
     const storedShortlist = localStorage.getItem('shortlistedColleges');
@@ -70,7 +71,16 @@ const Layout = () => {
       setShortlistedCollegeIds(ids);
       setShortlistedCollegesCount(ids.length);
     }
-  }, []);
+
+    if (user) {
+      const currentUserData = getUserById(user.id);
+      if (currentUserData) {
+        setPendingFriendRequestsCount(currentUserData.receivedFriendRequests.length);
+      }
+    } else {
+      setPendingFriendRequestsCount(0);
+    }
+  }, [user]); // Re-run when user changes
 
   const finalShortlistedColleges = mockColleges.filter(college => shortlistedCollegeIds.includes(college.id));
 
@@ -135,6 +145,17 @@ const Layout = () => {
                     <span className="text-sm font-medium text-muted-foreground hidden sm:inline">
                       Hello, {user.username}!
                     </span>
+                    {pendingFriendRequestsCount > 0 && (
+                      <Link to="/direct-messages" className="relative">
+                        <Button variant="ghost" size="icon" className="text-app-blue">
+                          <Bell className="h-5 w-5" />
+                          <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-xs text-white">
+                            {pendingFriendRequestsCount}
+                          </span>
+                          <span className="sr-only">Pending Friend Requests</span>
+                        </Button>
+                      </Link>
+                    )}
                     <Button variant="outline" onClick={logout} className="flex items-center gap-2">
                       <LogOut className="h-4 w-4" /> Logout
                     </Button>
