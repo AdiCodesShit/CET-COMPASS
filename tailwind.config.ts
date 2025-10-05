@@ -63,12 +63,12 @@ export default {
           ring: "hsl(var(--sidebar-ring))",
         },
         // Custom colors for the new theme, now referencing CSS variables
-        "app-purple": "hsl(var(--app-purple))",
-        "app-blue": "hsl(var(--app-blue))",
-        "app-light-purple": "hsl(var(--app-light-purple))",
-        "app-light-blue": "hsl(var(--app-light-blue))",
-        "app-text-dark": "hsl(var(--app-text-dark))",
-        "app-text-light": "hsl(var(--app-text-light))",
+        "app-purple": "var(--app-purple)",
+        "app-blue": "var(--app-blue)",
+        "app-light-purple": "var(--app-light-purple)",
+        "app-light-blue": "var(--app-light-blue)",
+        "app-text-dark": "var(--app-text-dark)",
+        "app-text-light": "var(--app-text-light)",
       },
       borderRadius: {
         lg: "var(--radius)",

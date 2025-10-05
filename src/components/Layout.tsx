@@ -2,13 +2,13 @@
 
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger } = from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Home, ListFilter, Menu, GraduationCap, FileText } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import ShortlistedCollegesDisplay from "./ShortlistedCollegesDisplay";
 import { mockColleges } from "@/lib/data";
-import { ThemeToggle } from "./ThemeToggle"; // Import ThemeToggle
+
 
 interface NavLinkProps {
   to: string;
@@ -111,8 +111,7 @@ const Layout = () => {
             <div className="hidden md:flex items-center gap-4">
               <Link to="/" className="text-sm font-medium text-muted-foreground hover:text-primary">Home</Link>
             </div>
-            <div className="ml-auto flex items-center gap-4"> {/* Added flex and gap for spacing */}
-              <ThemeToggle /> {/* Added ThemeToggle here */}
+            <div className="ml-auto flex items-center gap-4">
               <Dialog>
                 <DialogTrigger asChild>
                   <Button variant="outline" className="relative">
