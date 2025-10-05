@@ -4,10 +4,11 @@ import React from "react";
 import { Link, Outlet } from "react-router-dom";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { Home, ListFilter, Menu, GraduationCap, FileText } from "lucide-react";
+import { Home, ListFilter, Menu, GraduationCap, FileText, LogIn, UserPlus, LogOut } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import ShortlistedCollegesDisplay from "./ShortlistedCollegesDisplay";
 import { mockColleges } from "@/lib/data";
+import { useAuth } from "@/components/AuthContext"; // Import useAuth
 
 
 interface NavLinkProps {
@@ -48,6 +49,7 @@ const SidebarContent = () => (
 const Layout = () => {
   const [shortlistedCollegesCount, setShortlistedCollegesCount] = React.useState(0);
   const [shortlistedCollegeIds, setShortlistedCollegeIds] = React.useState<string[]>([]);
+  const { user, logout, isLoading } = useAuth(); // Use the auth hook
 
   React.useEffect(() => {
     const storedShortlist = localStorage.getItem('shortlistedColleges');
@@ -112,6 +114,31 @@ const Layout = () => {
               <Link to="/" className="text-sm font-medium text-muted-foreground hover:text-primary">Home</Link>
             </div>
             <div className="ml-auto flex items-center gap-4">
+              {!isLoading && (
+                user ? (
+                  <>
+                    <span className="text-sm font-medium text-muted-foreground hidden sm:inline">
+                      Hello, {user.username}!
+                    </span>
+                    <Button variant="outline" onClick={logout} className="flex items-center gap-2">
+                      <LogOut className="h-4 w-4" /> Logout
+                    </Button>
+                  </>
+                ) : (
+                  <>
+                    <Link to="/login">
+                      <Button variant="outline" className="flex items-center gap-2">
+                        <LogIn className="h-4 w-4" /> Login
+                      </Button>
+                    </Link>
+                    <Link to="/signup">
+                      <Button className="gradient-button flex items-center gap-2">
+                        <UserPlus className="h-4 w-4" /> Sign Up
+                      </Button>
+                    </Link>
+                  </>
+                )
+              )}
               <Dialog>
                 <DialogTrigger asChild>
                   <Button variant="outline" className="relative">

@@ -60,3 +60,21 @@ export interface FormGuideSection {
   content?: string; // For general text content
   documentItems?: FormGuideDocumentItem[]; // For structured document lists with checkboxes
 }
+
+// New interfaces for User and Review
+export interface User {
+  id: string;
+  username: string;
+  email: string;
+  cetCollegeCode?: string; // Optional: User's college code for review verification
+}
+
+export interface Review {
+  id: string;
+  collegeId: string;
+  userId: string;
+  username: string;
+  rating: number;
+  comment: string;
+  timestamp: string;
+}
