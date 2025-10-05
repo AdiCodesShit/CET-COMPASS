@@ -4,7 +4,7 @@ import React from "react";
 import { Link, Outlet } from "react-router-dom";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { Home, ListFilter, Menu, GraduationCap, FileText, LogIn, UserPlus, LogOut, MessageSquareText } from "lucide-react";
+import { Home, ListFilter, Menu, GraduationCap, FileText, LogIn, UserPlus, LogOut, MessageSquareText, MessageSquareMore } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import ShortlistedCollegesDisplay from "./ShortlistedCollegesDisplay";
 import { mockColleges } from "@/lib/data";
@@ -46,6 +46,10 @@ const SidebarContent = () => (
     <NavLink to="/college-network">
       <MessageSquareText className="h-4 w-4" />
       College Network
+    </NavLink>
+    <NavLink to="/college-chats">
+      <MessageSquareMore className="h-4 w-4" />
+      College Chats
     </NavLink>
   </nav>
 );
@@ -117,6 +121,7 @@ const Layout = () => {
             <div className="hidden md:flex items-center gap-4">
               <Link to="/college-finder" className="text-sm font-medium text-muted-foreground hover:text-primary">Admission Process</Link>
               <Link to="/college-network" className="text-sm font-medium text-muted-foreground hover:text-primary">College Network</Link>
+              <Link to="/college-chats" className="text-sm font-medium text-muted-foreground hover:text-primary">College Chats</Link>
             </div>
             <div className="ml-auto flex items-center gap-4">
               {!isLoading && (

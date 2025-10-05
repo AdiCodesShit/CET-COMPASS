@@ -90,3 +90,24 @@ export interface CollegeUpdate {
   imageUrl?: string;
   timestamp: string;
 }
+
+// New interfaces for Chat
+export interface ChatMessage {
+  id: string;
+  roomId: string;
+  userId: string;
+  username: string;
+  content: string;
+  timestamp: string;
+}
+
+export type ChatRoomType = "college" | "branch";
+
+export interface ChatRoom {
+  id: string;
+  name: string;
+  type: ChatRoomType;
+  collegeId?: string; // For college-level chats
+  branchCode?: string; // For branch-specific chats
+  description: string;
+}

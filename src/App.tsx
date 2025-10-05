@@ -12,6 +12,7 @@ import NotFound from "./pages/NotFound";
 import Login from "./components/Auth/Login"; // Import Login
 import Signup from "./components/Auth/Signup"; // Import Signup
 import CollegeNetwork from "./pages/CollegeNetwork"; // Import CollegeNetwork
+import CollegeChats from "./pages/CollegeChats"; // Import CollegeChats
 
 const queryClient = new QueryClient();
 
@@ -31,6 +32,7 @@ const App = () => (
             <Route path="login" element={<Login />} /> {/* New Login Route */}
             <Route path="signup" element={<Signup />} /> {/* New Signup Route */}
             <Route path="college-network" element={<CollegeNetwork />} /> {/* New College Network Route */}
+            <Route path="college-chats" element={<CollegeChats />} /> {/* New College Chats Route */}
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Route>
