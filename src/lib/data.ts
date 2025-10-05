@@ -1,4 +1,4 @@
-import { College, ILSRoundInfo, FormGuideSection, CollegeType, CasteCategory, Branch } from "@/lib/types";
+import { College, ILSRoundInfo, FormGuideSection, CollegeType, CasteCategory, Branch, CollegeUpdate } from "@/lib/types";
 
 const generateGoogleMapsLink = (collegeName: string, city: string) => {
   return `https://www.google.com/maps/search/${encodeURIComponent(collegeName + ', ' + city)}`;
@@ -473,7 +473,7 @@ export const mockColleges: College[] = [
         rating: 3.7,
         messRating: 3.1,
         distanceFromCollege: "3 km",
-        highlights: ["Well-connected", "Clean rooms", "Good security", "Nearby eateries"],
+        highlights: ["Well-connected location", "Clean rooms", "Good security", "Nearby eateries"],
       },
     },
   },
@@ -3782,5 +3782,63 @@ export const mockFormGuide: FormGuideSection[] = [
         <li><strong>Stay Updated:</strong> Regularly check the official MHT-CET CAP website for announcements and schedule changes.</li>
       </ul>
     `,
+  },
+];
+
+export const mockCollegeUpdates: CollegeUpdate[] = [
+  {
+    id: "update-1",
+    collegeName: "College of Engineering, Pune (COEP)",
+    cetCollegeCode: "EN6006",
+    userId: "user-1",
+    username: "Rahul Sharma",
+    title: "COEP TechFest 'Innovision' is Live!",
+    content: "Our annual technical festival, Innovision, has officially begun! Join us for exciting workshops, hackathons, and guest lectures from industry leaders. Don't miss out on the robotics competition!",
+    imageUrl: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    timestamp: "2024-08-01T10:00:00Z",
+  },
+  {
+    id: "update-2",
+    collegeName: "Veermata Jijabai Technological Institute (VJTI)",
+    cetCollegeCode: "EN3002",
+    userId: "user-2",
+    username: "Anjali Desai",
+    title: "Inter-College Sports Fest 'Khel Mahotsav' Next Week!",
+    content: "VJTI is proud to host Khel Mahotsav, an inter-college sports festival, starting next Monday! Registrations are open for Cricket, Football, Basketball, and more. Come represent your college!",
+    imageUrl: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    timestamp: "2024-07-28T14:30:00Z",
+  },
+  {
+    id: "update-3",
+    collegeName: "Pune Institute of Computer Technology (PICT)",
+    cetCollegeCode: "EN6177",
+    userId: "user-8",
+    username: "Aditya",
+    title: "Guest Lecture on AI in Healthcare Tomorrow!",
+    content: "Join us for an insightful guest lecture by Dr. Maya Rao on 'The Future of AI in Healthcare' in the main auditorium at 11 AM. All students are welcome!",
+    imageUrl: "https://images.unsplash.com/photo-1535982330050-f1d2f4435c1b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    timestamp: "2024-07-25T09:00:00Z",
+  },
+  {
+    id: "update-4",
+    collegeName: "K. J. Somaiya College of Engineering",
+    cetCollegeCode: "EN3199",
+    userId: "user-7",
+    username: "Rajeshwari Iyer",
+    title: "Cultural Night 'Sanskriti' Coming Soon!",
+    content: "Get ready for Sanskriti, our annual cultural night! Auditions for dance, music, and drama are open. Showcase your talent and make this year's event unforgettable!",
+    imageUrl: "https://images.unsplash.com/photo-1514525253164-ff4ade295d8d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    timestamp: "2024-07-20T18:00:00Z",
+  },
+  {
+    id: "update-5",
+    collegeName: "DY Patil College of Engineering, Akurdi",
+    cetCollegeCode: "EN6180",
+    userId: "user-42",
+    username: "Prajakta",
+    title: "Entrepreneurship Summit 2024 - Register Now!",
+    content: "Our Entrepreneurship Cell is organizing 'E-Summit 2024' with keynote speakers, startup pitches, and networking opportunities. Register by August 10th!",
+    imageUrl: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    timestamp: "2024-07-15T11:00:00Z",
   },
 ];

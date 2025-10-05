@@ -11,6 +11,7 @@ import PrepareDocuments from "./pages/PrepareDocuments";
 import NotFound from "./pages/NotFound";
 import Login from "./components/Auth/Login"; // Import Login
 import Signup from "./components/Auth/Signup"; // Import Signup
+import CollegeNetwork from "./pages/CollegeNetwork"; // Import CollegeNetwork
 
 const queryClient = new QueryClient();
 
@@ -29,6 +30,7 @@ const App = () => (
             <Route path="ils-round" element={<ILSRound />} />
             <Route path="login" element={<Login />} /> {/* New Login Route */}
             <Route path="signup" element={<Signup />} /> {/* New Signup Route */}
+            <Route path="college-network" element={<CollegeNetwork />} /> {/* New College Network Route */}
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Route>

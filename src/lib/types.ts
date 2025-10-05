@@ -78,3 +78,15 @@ export interface Review {
   comment: string;
   timestamp: string;
 }
+
+export interface CollegeUpdate {
+  id: string;
+  collegeName: string;
+  cetCollegeCode: string; // To link with a college
+  userId: string;
+  username: string;
+  title: string;
+  content: string;
+  imageUrl?: string;
+  timestamp: string;
+}
