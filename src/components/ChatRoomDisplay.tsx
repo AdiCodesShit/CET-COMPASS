@@ -55,12 +55,13 @@ const ChatRoomDisplay: React.FC<ChatRoomDisplayProps> = ({ chatRoom }) => {
       timestamp: new Date().toISOString(),
     };
 
+    // Update local state immediately for UI responsiveness
     setMessages((prevMessages) => [...prevMessages, newMsg]);
     setNewMessage("");
 
-    // Save all messages back to local storage
-    const allStoredMessages = JSON.parse(localStorage.getItem(CHAT_MESSAGES_STORAGE_KEY) || "[]");
-    const updatedAllMessages = [...allStoredMessages.filter((msg: ChatMessage) => msg.roomId !== chatRoom.id), newMsg];
+    // Update local storage with the new message
+    const allStoredMessages: ChatMessage[] = JSON.parse(localStorage.getItem(CHAT_MESSAGES_STORAGE_KEY) || "[]");
+    const updatedAllMessages = [...allStoredMessages, newMsg]; // Correctly add the new message to the global list
     localStorage.setItem(CHAT_MESSAGES_STORAGE_KEY, JSON.stringify(updatedAllMessages));
   };
 
@@ -93,7 +94,7 @@ const ChatRoomDisplay: React.FC<ChatRoomDisplayProps> = ({ chatRoom }) => {
                   <div
                     className={`max-w-[70%] p-3 rounded-lg ${
                       msg.userId === user?.id
-                        ? "bg-app-purple text-white rounded-br-none"
+                        ? "bg-app-blue text-white rounded-br-none" // Changed from bg-app-purple to bg-app-blue
                         : "bg-muted text-foreground rounded-bl-none"
                     }`}
                   >
