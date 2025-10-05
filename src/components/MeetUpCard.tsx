@@ -20,15 +20,17 @@ const MEET_UPS_STORAGE_KEY = "meetUps";
 const MeetUpCard: React.FC<MeetUpCardProps> = ({ meetUp, onUpdateMeetUp }) => {
   const { user } = useAuth();
   const [isAttending, setIsAttending] = useState(false);
-  const [attendeeCount, setAttendeeCount] = useState(meetUp.attendeeIds.length);
+  // Safely access attendeeIds, defaulting to an empty array if undefined
+  const [attendeeCount, setAttendeeCount] = useState(meetUp.attendeeIds?.length || 0);
 
   useEffect(() => {
-    if (user && meetUp.attendeeIds.includes(user.id)) {
+    // Safely check if user is in attendeeIds
+    if (user && meetUp.attendeeIds?.includes(user.id)) {
       setIsAttending(true);
     } else {
       setIsAttending(false);
     }
-    setAttendeeCount(meetUp.attendeeIds.length);
+    setAttendeeCount(meetUp.attendeeIds?.length || 0);
   }, [user, meetUp.attendeeIds]);
 
   const handleToggleAttendance = () => {
@@ -38,6 +40,9 @@ const MeetUpCard: React.FC<MeetUpCardProps> = ({ meetUp, onUpdateMeetUp }) => {
     }
 
     const updatedMeetUp = { ...meetUp };
+    // Ensure attendeeIds is an array before modifying
+    updatedMeetUp.attendeeIds = updatedMeetUp.attendeeIds || [];
+
     if (isAttending) {
       // Leave meet-up
       updatedMeetUp.attendeeIds = updatedMeetUp.attendeeIds.filter(id => id !== user.id);
