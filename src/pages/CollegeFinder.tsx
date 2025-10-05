@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
@@ -226,6 +226,7 @@ const CollegeFinder = () => {
   const [showComparisonDialog, setShowComparisonDialog] = useState(false);
   const [activeTypeFilter, setActiveTypeFilter] = useState<CollegeType | "All">("All");
   const [collegeSearchQuery, setCollegeSearchQuery] = useState(""); // New state for college search
+  const [hasUserInitiatedSearch, setHasUserInitiatedSearch] = useState(false); // New state to track if search button was clicked
 
   useEffect(() => {
     localStorage.setItem('shortlistedColleges', JSON.stringify(shortlistedColleges));
@@ -242,10 +243,13 @@ const CollegeFinder = () => {
     setAllBranchOptions(Array.from(uniqueBranches).sort());
   }, []);
 
-  const handleSearch = () => {
+  // This function will perform the filtering and sorting
+  const performFiltering = useCallback(() => {
     const userPercentile = parseFloat(percentile);
+
+    // If percentile is invalid or empty, clear results and don't proceed with filtering
     if (isNaN(userPercentile) || userPercentile < 0 || userPercentile > 100) {
-      toast.error("Please enter a valid percentile between 0 and 100.");
+      setFilteredColleges([]);
       return;
     }
 
@@ -254,22 +258,20 @@ const CollegeFinder = () => {
       return userPercentile >= cutoff;
     });
 
-    // The collegeSearchQuery filter will now be applied to the *displayed* results, not the initial search
-    // This logic will be moved to the rendering part of the filtered colleges.
-
-    // Apply type filter
     if (activeTypeFilter !== "All") {
       results = results.filter(college => college.type === activeTypeFilter);
     }
 
-    // Apply branch preference filter
     if (branchPreferences.length > 0) {
       results = results.filter(college =>
         college.details.availableBranches.some(branch => branchPreferences.includes(branch.name))
       );
     }
 
-    // Sort by branch preference first, then by city preference, then by cutoff
+    if (cityPreferences.length > 0) {
+      results = results.filter(college => cityPreferences.includes(college.city));
+    }
+
     results.sort((a, b) => {
       const aHasPreferredBranch = branchPreferences.length > 0 && a.details.availableBranches.some(branch => branchPreferences.includes(branch.name));
       const bHasPreferredBranch = branchPreferences.length > 0 && b.details.availableBranches.some(branch => branchPreferences.includes(branch.name));
@@ -277,24 +279,54 @@ const CollegeFinder = () => {
       if (aHasPreferredBranch && !bHasPreferredBranch) return -1;
       if (!aHasPreferredBranch && bHasPreferredBranch) return 1;
 
-      // If both or neither have preferred branches, then consider city preference
       const aIsPreferredCity = cityPreferences.includes(a.city);
       const bIsPreferredCity = cityPreferences.includes(b.city);
 
       if (aIsPreferredCity && !bIsPreferredCity) return -1;
       if (!aIsPreferredCity && bIsPreferredCity) return 1;
 
-      // If all other preferences are equal, sort by cutoff (descending)
       return b.percentileCutoff[casteCategory] - a.percentileCutoff[casteCategory];
     });
 
     setFilteredColleges(results);
-    if (results.length === 0) {
-      toast.info("No colleges found matching your criteria.");
-    } else {
-      toast.success(`${results.length} colleges found!`);
+  }, [percentile, casteCategory, cityPreferences, branchPreferences, activeTypeFilter]);
+
+  // Effect to run filtering whenever any relevant state changes, but only if a search has been initiated
+  useEffect(() => {
+    if (hasUserInitiatedSearch) {
+      performFiltering();
     }
+  }, [performFiltering, hasUserInitiatedSearch]);
+
+  // The "Find My Colleges" button handler
+  const handleSearchButtonClick = () => {
+    const userPercentile = parseFloat(percentile);
+    if (isNaN(userPercentile) || userPercentile < 0 || userPercentile > 100) {
+      toast.error("Please enter a valid percentile between 0 and 100.");
+      setHasUserInitiatedSearch(false); // Ensure search is not marked as initiated if input is invalid
+      setFilteredColleges([]); // Clear results
+      return;
+    }
+
+    setHasUserInitiatedSearch(true); // Mark that a search has been initiated
+    performFiltering(); // Trigger the filtering immediately
+    // The toast will be handled by the useEffect below
   };
+
+  // Effect to show toast messages after filtering is complete and a search was initiated
+  useEffect(() => {
+    if (hasUserInitiatedSearch) {
+      const userPercentile = parseFloat(percentile);
+      // Only show toast if percentile is valid (to avoid double-toasting for invalid input)
+      if (!isNaN(userPercentile) && userPercentile >= 0 && userPercentile <= 100) {
+        if (filteredColleges.length === 0) {
+          toast.info("No colleges found matching your criteria.");
+        } else {
+          toast.success(`${filteredColleges.length} colleges found!`);
+        }
+      }
+    }
+  }, [filteredColleges, hasUserInitiatedSearch, percentile]); // Dependencies for this toast effect
 
   const handleShortlistToggle = (collegeId: string) => {
     setShortlistedColleges(prev => {
@@ -445,7 +477,7 @@ const CollegeFinder = () => {
             </AccordionItem>
           </Accordion>
 
-          <Button onClick={handleSearch} className="w-full h-12 text-lg gradient-button">
+          <Button onClick={handleSearchButtonClick} className="w-full h-12 text-lg gradient-button">
             Find My Colleges <TrendingUp className="ml-2 h-5 w-5" />
           </Button>
         </CardContent>
@@ -477,7 +509,7 @@ const CollegeFinder = () => {
       </div>
 
       {/* Filtered Colleges Display */}
-      {filteredColleges.length > 0 && (
+      {hasUserInitiatedSearch && filteredColleges.length > 0 && (
         <div className="max-w-5xl mx-auto mt-10">
           <div className="flex items-center justify-between mb-6">
             <div>
