@@ -42,6 +42,14 @@
     --sidebar-accent-foreground: 240 5.9% 10%; /* Dark text on hover */
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Custom app colors - Light Mode */
+    --app-purple: 250 80% 65%;
+    --app-blue: 220 80% 60%;
+    --app-light-purple: 250 80% 95%;
+    --app-light-blue: 220 80% 95%;
+    --app-text-dark: 222.2 84% 4.9%;
+    --app-text-light: 210 40% 98%;
   }
 
   .dark {
@@ -54,7 +62,7 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 250 80% 65%; /* app-purple */
+    --primary: 250 80% 65%; /* Keep vibrant purple for primary in dark mode */
     --primary-foreground: 222.2 47.4% 11.2%;
 
     --secondary: 217.2 32.6% 17.5%;
@@ -81,6 +89,14 @@
     --sidebar-accent-foreground: 240 4.8% 95.9%; /* Light text on hover */
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Custom app colors - Dark Mode */
+    --app-purple: 250 70% 75%; /* Slightly lighter vibrant purple for dark mode */
+    --app-blue: 220 70% 70%;   /* Slightly lighter vibrant blue for dark mode */
+    --app-light-purple: 250 30% 15%; /* Dark, desaturated purple for subtle backgrounds */
+    --app-light-blue: 220 30% 12%;   /* Dark, desaturated blue for subtle backgrounds */
+    --app-text-dark: 210 40% 98%; /* Swap for dark mode */
+    --app-text-light: 222.2 84% 4.9%; /* Swap for dark mode */
   }
 }
 
@@ -90,14 +106,17 @@
   }
 
   body {
-    @apply bg-gradient-to-br from-app-light-blue to-app-light-purple dark:from-gray-900 dark:to-blue-950 text-foreground min-h-screen;
+    /* Use custom CSS variables for dynamic gradient background */
+    @apply bg-gradient-to-br from-[hsl(var(--app-light-blue))] to-[hsl(var(--app-light-purple))] text-foreground min-h-screen;
   }
 
   .gradient-text {
-    @apply bg-gradient-to-r from-app-blue to-app-purple text-transparent bg-clip-text;
+    /* Use custom CSS variables for dynamic gradient text */
+    @apply bg-gradient-to-r from-[hsl(var(--app-blue))] to-[hsl(var(--app-purple))] text-transparent bg-clip-text;
   }
 
   .gradient-button {
-    @apply bg-gradient-to-r from-app-blue to-app-purple text-white hover:from-app-purple hover:to-app-blue transition-all duration-200;
+    /* Use custom CSS variables for dynamic gradient button */
+    @apply bg-gradient-to-r from-[hsl(var(--app-blue))] to-[hsl(var(--app-purple))] text-white hover:from-[hsl(var(--app-purple))] hover:to-[hsl(var(--app-blue))] transition-all duration-200;
   }
 }

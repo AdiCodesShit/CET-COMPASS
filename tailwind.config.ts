@@ -62,13 +62,13 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        // Custom colors for the new theme
-        "app-purple": "hsl(250 80% 65%)", // A vibrant purple
-        "app-blue": "hsl(220 80% 60%)",   // A vibrant blue
-        "app-light-purple": "hsl(250 80% 95%)",
-        "app-light-blue": "hsl(220 80% 95%)",
-        "app-text-dark": "hsl(222.2 84% 4.9%)",
-        "app-text-light": "hsl(210 40% 98%)",
+        // Custom colors for the new theme, now referencing CSS variables
+        "app-purple": "hsl(var(--app-purple))",
+        "app-blue": "hsl(var(--app-blue))",
+        "app-light-purple": "hsl(var(--app-light-purple))",
+        "app-light-blue": "hsl(var(--app-light-blue))",
+        "app-text-dark": "hsl(var(--app-text-dark))",
+        "app-text-light": "hsl(var(--app-text-light))",
       },
       borderRadius: {
         lg: "var(--radius)",
