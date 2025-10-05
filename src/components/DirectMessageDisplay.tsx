@@ -12,7 +12,7 @@ import { toast } from "sonner";
 import { format } from "date-fns";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { getAllUsers } from "@/utils/auth";
-import UserYearTagDisplay from "./UserYearTagDisplay"; // Import the new component
+import UserYearTagDisplay, { yearTagConfig } from "./UserYearTagDisplay"; // Import the new component and yearTagConfig
 
 interface DirectMessageDisplayProps {
   conversation: DirectConversation;
@@ -108,6 +108,8 @@ const DirectMessageDisplay: React.FC<DirectMessageDisplayProps> = ({
     );
   }
 
+  const otherParticipantTextColorClass = otherParticipant.yearTag ? yearTagConfig[otherParticipant.yearTag].textColor : "";
+
   return (
     <Card className="h-full flex flex-col shadow-lg">
       <CardHeader className="border-b p-4">
@@ -117,7 +119,7 @@ const DirectMessageDisplay: React.FC<DirectMessageDisplayProps> = ({
             <AvatarFallback><UserCircle2 className="h-6 w-6" /></AvatarFallback>
           </Avatar>
           <div className="flex items-center gap-2">
-            {otherParticipant.username}
+            <span className={otherParticipantTextColorClass}>{otherParticipant.username}</span>
             {otherParticipant.yearTag && <UserYearTagDisplay yearTag={otherParticipant.yearTag} />}
           </div>
         </CardTitle>
@@ -148,7 +150,7 @@ const DirectMessageDisplay: React.FC<DirectMessageDisplayProps> = ({
                         : "bg-muted text-foreground rounded-bl-none"
                     }`}
                   >
-                    <p className="text-xs font-semibold mb-1">
+                    <p className={`text-xs font-semibold mb-1 ${msg.senderId === user?.id ? "" : otherParticipantTextColorClass}`}>
                       {msg.senderId === user?.id ? "You" : otherParticipant.username}
                     </p>
                     <p className="text-sm">{msg.content}</p>

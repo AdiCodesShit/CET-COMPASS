@@ -12,7 +12,7 @@ import { toast } from "sonner";
 import { format } from "date-fns";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import FriendRequestButton from "./FriendRequestButton";
-import UserYearTagDisplay from "./UserYearTagDisplay"; // Import the new component
+import UserYearTagDisplay, { yearTagConfig } from "./UserYearTagDisplay"; // Import the new component and yearTagConfig
 import { getAllUsers } from "@/utils/auth"; // Import getAllUsers to get user data
 
 interface ChatRoomDisplayProps {
@@ -83,6 +83,7 @@ const ChatRoomDisplay: React.FC<ChatRoomDisplayProps> = ({ chatRoom }) => {
             ) : (
               messages.map((msg) => {
                 const senderUser = allUsers.find(u => u.id === msg.userId); // Find sender's full user data
+                const usernameTextColorClass = senderUser?.yearTag ? yearTagConfig[senderUser.yearTag].textColor : "";
                 return (
                   <div
                     key={msg.id}
@@ -106,7 +107,7 @@ const ChatRoomDisplay: React.FC<ChatRoomDisplayProps> = ({ chatRoom }) => {
                     >
                       <div className="flex items-center justify-between mb-1">
                         <div className="flex items-center gap-2">
-                          <p className="text-xs font-semibold">
+                          <p className={`text-xs font-semibold ${usernameTextColorClass}`}>
                             {msg.userId === user?.id ? "You" : msg.username}
                           </p>
                           {senderUser?.yearTag && <UserYearTagDisplay yearTag={senderUser.yearTag} />}
