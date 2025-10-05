@@ -128,3 +128,20 @@ export interface ChatRoom {
   branchCode?: string; // For branch-specific chats
   description: string;
 }
+
+// New interfaces for Direct Messaging
+export interface DirectMessage {
+  id: string;
+  conversationId: string;
+  senderId: string;
+  receiverId: string; // The other participant in a 1-on-1 chat
+  content: string;
+  timestamp: string;
+}
+
+export interface DirectConversation {
+  id: string;
+  participants: string[]; // Array of two user IDs
+  lastMessageContent: string;
+  lastMessageTimestamp: string;
+}

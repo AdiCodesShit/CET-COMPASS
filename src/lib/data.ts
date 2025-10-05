@@ -1,4 +1,4 @@
-import { College, ILSRoundInfo, FormGuideSection, CollegeType, CasteCategory, Branch, CollegeUpdate, ChatRoom, ChatMessage, MeetUp } from "@/lib/types";
+import { College, ILSRoundInfo, FormGuideSection, CollegeType, CasteCategory, Branch, CollegeUpdate, ChatRoom, ChatMessage, MeetUp, DirectConversation, DirectMessage } from "@/lib/types";
 
 const generateGoogleMapsLink = (collegeName: string, city: string) => {
   return `https://www.google.com/maps/search/${encodeURIComponent(collegeName + ', ' + city)}`;
@@ -4080,5 +4080,78 @@ export const mockChatMessages: ChatMessage[] = [
     username: "Aditya Deshmukh",
     content: "I am! It seems like a great opportunity to learn about AWS and Azure.",
     timestamp: "2024-08-01T11:35:00Z",
+  },
+];
+
+// Mock Direct Message Data
+export const mockDirectConversations: DirectConversation[] = [
+  {
+    id: "dm-conv-1",
+    participants: ["user-1", "user-2"],
+    lastMessageContent: "See you at the tech fest!",
+    lastMessageTimestamp: "2024-08-01T10:10:00Z",
+  },
+  {
+    id: "dm-conv-2",
+    participants: ["user-3", "user-4"],
+    lastMessageContent: "Thanks for the DSA tips!",
+    lastMessageTimestamp: "2024-08-01T11:05:00Z",
+  },
+  {
+    id: "dm-conv-3",
+    participants: ["user-1", "user-6"],
+    lastMessageContent: "Thermodynamics review sounds good.",
+    lastMessageTimestamp: "2024-08-01T13:37:00Z",
+  },
+];
+
+export const mockDirectMessages: DirectMessage[] = [
+  {
+    id: "dm-msg-1",
+    conversationId: "dm-conv-1",
+    senderId: "user-1",
+    receiverId: "user-2",
+    content: "Hey Priya, are you going to the tech fest?",
+    timestamp: "2024-08-01T10:08:00Z",
+  },
+  {
+    id: "dm-msg-2",
+    conversationId: "dm-conv-1",
+    senderId: "user-2",
+    receiverId: "user-1",
+    content: "Yes Rahul! Looking forward to it. See you there!",
+    timestamp: "2024-08-01T10:10:00Z",
+  },
+  {
+    id: "dm-msg-3",
+    conversationId: "dm-conv-2",
+    senderId: "user-3",
+    receiverId: "user-4",
+    content: "Hey Karan, I saw your message in the VJTI chat. Need help with DSA?",
+    timestamp: "2024-08-01T11:03:00Z",
+  },
+  {
+    id: "dm-msg-4",
+    conversationId: "dm-conv-2",
+    senderId: "user-4",
+    receiverId: "user-3",
+    content: "Yeah, that would be great Anjali! Thanks for the DSA tips!",
+    timestamp: "2024-08-01T11:05:00Z",
+  },
+  {
+    id: "dm-msg-5",
+    conversationId: "dm-conv-3",
+    senderId: "user-6",
+    receiverId: "user-1",
+    content: "Hey Rahul, saw your message about the study session. I'm in for Thermodynamics.",
+    timestamp: "2024-08-01T13:36:00Z",
+  },
+  {
+    id: "dm-msg-6",
+    conversationId: "dm-conv-3",
+    senderId: "user-1",
+    receiverId: "user-6",
+    content: "Great Amit! Thermodynamics review sounds good. See you later.",
+    timestamp: "2024-08-01T13:37:00Z",
   },
 ];

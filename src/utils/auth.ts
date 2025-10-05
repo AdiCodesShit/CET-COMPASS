@@ -4,7 +4,7 @@ const USERS_STORAGE_KEY = "cet_compass_users";
 const CURRENT_USER_STORAGE_KEY = "cet_compass_current_user";
 
 // Helper to get all registered users
-function getAllUsers(): User[] {
+export function getAllUsers(): User[] {
   const usersJson = localStorage.getItem(USERS_STORAGE_KEY);
   return usersJson ? JSON.parse(usersJson) : [];
 }
