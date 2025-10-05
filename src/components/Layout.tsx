@@ -70,7 +70,7 @@ const Layout = () => {
             <Link to="/" className="flex items-center gap-2 font-semibold text-sidebar-primary-foreground">
               <img src="/cet-compass-logo.jpeg" alt="CET-COMPASS Logo" className="h-10 w-10 object-contain" />
               <div className="flex flex-col leading-tight">
-                <span className="text-base font-bold text-app-purple">CET-COMPASS</span>
+                <span className="text-base font-bold gradient-text">CET-COMPASS</span>
                 <span className="text-xs text-muted-foreground">Your Guide to Engineering<br />Admissions</span>
               </div>
             </Link>
@@ -101,7 +101,7 @@ const Layout = () => {
                 >
                   <img src="/cet-compass-logo.jpeg" alt="CET-COMPASS Logo" className="h-10 w-10 object-contain" />
                   <div className="flex flex-col leading-tight">
-                    <span className="text-base font-bold text-app-purple">CET-COMPASS</span>
+                    <span className="text-base font-bold gradient-text">CET-COMPASS</span>
                     <span className="text-xs text-muted-foreground">Your Guide to Engineering<br />Admissions</span>
                   </div>
                 </Link>
