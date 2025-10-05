@@ -1,51 +1,87 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { mockCollegeUpdates, mockMeetUps } from "@/lib/data";
+import { mockColleges, mockCollegeUpdates, mockMeetUps } from "@/lib/data";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
-import { MessageSquareText, Users, CalendarDays } from "lucide-react";
+import { MessageSquareText, Users, CalendarDays, ListFilter, ArrowDownWideNarrow } from "lucide-react";
 import CollegeUpdateCard from "@/components/CollegeUpdateCard";
 import AddCollegeUpdateForm from "@/components/AddCollegeUpdateForm";
-import AddMeetUpForm from "@/components/AddMeetUpForm"; // Import the new MeetUp form
-import MeetUpCard from "@/components/MeetUpCard"; // Import the new MeetUp card
+import AddMeetUpForm from "@/components/AddMeetUpForm";
+import MeetUpCard from "@/components/MeetUpCard";
 import { CollegeUpdate, MeetUp } from "@/lib/types";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Label } from "@/components/ui/label";
 
 const COLLEGE_UPDATES_STORAGE_KEY = "collegeUpdates";
-const MEET_UPS_STORAGE_KEY = "meetUps"; // New storage key for meet-ups
+const MEET_UPS_STORAGE_KEY = "meetUps";
 
 const CollegeNetwork = () => {
-  const [updates, setUpdates] = useState<CollegeUpdate[]>([]);
-  const [meetUps, setMeetUps] = useState<MeetUp[]>([]); // New state for meet-ups
+  const [allUpdates, setAllUpdates] = useState<CollegeUpdate[]>([]);
+  const [allMeetUps, setAllMeetUps] = useState<MeetUp[]>([]);
+  const [selectedCollegeFilter, setSelectedCollegeFilter] = useState<string>("all"); // 'all' or cetCollegeCode
+  const [sortOrder, setSortOrder] = useState<"newest" | "oldest">("newest");
 
   useEffect(() => {
-    // Load updates from local storage, falling back to mock data if none exist
     const storedUpdates = localStorage.getItem(COLLEGE_UPDATES_STORAGE_KEY);
     if (storedUpdates) {
-      setUpdates(JSON.parse(storedUpdates));
+      setAllUpdates(JSON.parse(storedUpdates));
     } else {
-      setUpdates(mockCollegeUpdates);
+      setAllUpdates(mockCollegeUpdates);
       localStorage.setItem(COLLEGE_UPDATES_STORAGE_KEY, JSON.stringify(mockCollegeUpdates));
     }
 
-    // Load meet-ups from local storage, falling back to mock data if none exist
     const storedMeetUps = localStorage.getItem(MEET_UPS_STORAGE_KEY);
     if (storedMeetUps) {
-      setMeetUps(JSON.parse(storedMeetUps));
+      setAllMeetUps(JSON.parse(storedMeetUps));
     } else {
-      setMeetUps(mockMeetUps);
+      setAllMeetUps(mockMeetUps);
       localStorage.setItem(MEET_UPS_STORAGE_KEY, JSON.stringify(mockMeetUps));
     }
   }, []);
 
   const handleNewUpdate = (newUpdate: CollegeUpdate) => {
-    setUpdates(prevUpdates => [newUpdate, ...prevUpdates]);
+    setAllUpdates(prevUpdates => [newUpdate, ...prevUpdates]);
   };
 
   const handleNewMeetUp = (newMeetUp: MeetUp) => {
-    setMeetUps(prevMeetUps => [newMeetUp, ...prevMeetUps]);
+    setAllMeetUps(prevMeetUps => [newMeetUp, ...prevMeetUps]);
   };
+
+  const collegeOptions = useMemo(() => {
+    const uniqueColleges = new Map<string, string>(); // cetCollegeCode -> collegeName
+    mockColleges.forEach(college => {
+      uniqueColleges.set(college.cetCollegeCode, college.name);
+    });
+    return Array.from(uniqueColleges.entries()).sort((a, b) => a[1].localeCompare(b[1]));
+  }, []);
+
+  const filteredAndSortedUpdates = useMemo(() => {
+    let filtered = allUpdates;
+    if (selectedCollegeFilter !== "all") {
+      filtered = filtered.filter(update => update.cetCollegeCode === selectedCollegeFilter);
+    }
+
+    return filtered.sort((a, b) => {
+      const dateA = new Date(a.timestamp).getTime();
+      const dateB = new Date(b.timestamp).getTime();
+      return sortOrder === "newest" ? dateB - dateA : dateA - dateB;
+    });
+  }, [allUpdates, selectedCollegeFilter, sortOrder]);
+
+  const filteredAndSortedMeetUps = useMemo(() => {
+    let filtered = allMeetUps;
+    if (selectedCollegeFilter !== "all") {
+      filtered = filtered.filter(meetUp => meetUp.cetCollegeCode === selectedCollegeFilter);
+    }
+
+    return filtered.sort((a, b) => {
+      const dateA = new Date(`${a.date}T${a.time}`).getTime();
+      const dateB = new Date(`${b.date}T${b.time}`).getTime();
+      return sortOrder === "newest" ? dateB - dateA : dateA - dateB;
+    });
+  }, [allMeetUps, selectedCollegeFilter, sortOrder]);
 
   return (
     <div className="space-y-6 max-w-4xl mx-auto">
@@ -53,6 +89,49 @@ const CollegeNetwork = () => {
       <p className="text-center text-muted-foreground mb-8">
         Connect with students and stay updated on events, news, announcements, and meet-ups from various colleges.
       </p>
+
+      {/* Filter and Sort Controls */}
+      <Card className="shadow-lg p-4 mb-6">
+        <CardHeader className="p-0 mb-4">
+          <CardTitle className="text-xl font-bold flex items-center">
+            <ListFilter className="h-5 w-5 mr-2 text-app-purple" /> Filter & Sort
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="p-0 grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <Label htmlFor="college-filter" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+              Filter by College
+            </Label>
+            <Select value={selectedCollegeFilter} onValueChange={setSelectedCollegeFilter}>
+              <SelectTrigger id="college-filter">
+                <SelectValue placeholder="All Colleges" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">All Colleges</SelectItem>
+                {collegeOptions.map(([code, name]) => (
+                  <SelectItem key={code} value={code}>
+                    {name} ({code})
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+          <div>
+            <Label htmlFor="sort-order" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+              Sort by Date
+            </Label>
+            <Select value={sortOrder} onValueChange={(value: "newest" | "oldest") => setSortOrder(value)}>
+              <SelectTrigger id="sort-order">
+                <SelectValue placeholder="Newest First" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="newest">Newest First</SelectItem>
+                <SelectItem value="oldest">Oldest First</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+        </CardContent>
+      </Card>
 
       {/* College Updates Section */}
       <AddCollegeUpdateForm onNewUpdate={handleNewUpdate} />
@@ -64,16 +143,16 @@ const CollegeNetwork = () => {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          {updates.length > 0 ? (
+          {filteredAndSortedUpdates.length > 0 ? (
             <ScrollArea className="h-[60vh] pr-4">
               <div className="grid gap-6">
-                {updates.map((update) => (
+                {filteredAndSortedUpdates.map((update) => (
                   <CollegeUpdateCard key={update.id} update={update} />
                 ))}
               </div>
             </ScrollArea>
           ) : (
-            <p className="text-center text-muted-foreground p-4">No college updates available yet.</p>
+            <p className="text-center text-muted-foreground p-4">No college updates available yet for the selected filters.</p>
           )}
         </CardContent>
       </Card>
@@ -90,16 +169,16 @@ const CollegeNetwork = () => {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          {meetUps.length > 0 ? (
+          {filteredAndSortedMeetUps.length > 0 ? (
             <ScrollArea className="h-[60vh] pr-4">
               <div className="grid gap-6">
-                {meetUps.map((meetUp) => (
+                {filteredAndSortedMeetUps.map((meetUp) => (
                   <MeetUpCard key={meetUp.id} meetUp={meetUp} />
                 ))}
               </div>
             </ScrollArea>
           ) : (
-            <p className="text-center text-muted-foreground p-4">No meet-ups or parties planned yet. Be the first to create one!</p>
+            <p className="text-center text-muted-foreground p-4">No meet-ups or parties planned yet for the selected filters. Be the first to create one!</p>
           )}
         </CardContent>
       </Card>
