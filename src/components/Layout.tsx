@@ -74,9 +74,8 @@ const Layout = () => {
 
     if (user) {
       const currentUserData = getUserById(user.id);
-      if (currentUserData) {
-        setPendingFriendRequestsCount(currentUserData.receivedFriendRequests.length);
-      }
+      // Safely access receivedFriendRequests.length, defaulting to 0 if undefined
+      setPendingFriendRequestsCount(currentUserData?.receivedFriendRequests?.length || 0);
     } else {
       setPendingFriendRequestsCount(0);
     }
