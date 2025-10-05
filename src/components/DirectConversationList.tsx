@@ -52,10 +52,16 @@ const DirectConversationList: React.FC<DirectConversationListProps> = ({
 
   const usersForNewConversation = useMemo(() => {
     if (!user || !currentUserData) return [];
+    
+    // Safely access friend-related arrays, defaulting to empty arrays if undefined
+    const friendIds = currentUserData.friendIds || [];
+    const sentFriendRequests = currentUserData.sentFriendRequests || [];
+    const receivedFriendRequests = currentUserData.receivedFriendRequests || [];
+
     const friendsAndPending = new Set([
-      ...currentUserData.friendIds,
-      ...currentUserData.sentFriendRequests,
-      ...currentUserData.receivedFriendRequests,
+      ...friendIds,
+      ...sentFriendRequests,
+      ...receivedFriendRequests,
     ]);
 
     return allUsers.filter(
@@ -73,7 +79,7 @@ const DirectConversationList: React.FC<DirectConversationListProps> = ({
     }
 
     // Only allow starting a conversation if they are already friends
-    if (!currentUserData.friendIds.includes(targetUser.id)) {
+    if (!(currentUserData.friendIds || []).includes(targetUser.id)) {
       toast.error("You can only start a direct message with a friend. Send a friend request first!");
       return;
     }
