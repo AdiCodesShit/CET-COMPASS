@@ -69,6 +69,7 @@ const AddMeetUpForm: React.FC<AddMeetUpFormProps> = ({ onNewMeetUp }) => {
       time: time.trim(),
       imageUrl: imageUrl.trim() || undefined,
       timestamp: new Date().toISOString(),
+      attendeeIds: [], // Initialize with an empty array
     };
 
     const existingMeetUps = JSON.parse(localStorage.getItem("meetUps") || "[]");

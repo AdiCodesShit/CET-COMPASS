@@ -3858,6 +3858,7 @@ export const mockMeetUps: MeetUp[] = [
     time: "18:00",
     imageUrl: "https://images.unsplash.com/photo-1533174072545-7bd46c006744?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     timestamp: "2024-08-20T10:00:00Z",
+    attendeeIds: ["user-1", "user-2", "user-5"], // Example attendees
   },
   {
     id: "meetup-2",
@@ -3871,6 +3872,7 @@ export const mockMeetUps: MeetUp[] = [
     date: "2024-09-01",
     time: "14:00",
     timestamp: "2024-08-25T11:30:00Z",
+    attendeeIds: ["user-2", "user-4"], // Example attendees
   },
   {
     id: "meetup-3",
@@ -3885,6 +3887,7 @@ export const mockMeetUps: MeetUp[] = [
     time: "19:30",
     imageUrl: "https://images.unsplash.com/photo-1542751371-adc38148e7fd?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     timestamp: "2024-08-22T16:00:00Z",
+    attendeeIds: ["user-8", "user-9"], // Example attendees
   },
   {
     id: "meetup-4",
@@ -3899,6 +3902,7 @@ export const mockMeetUps: MeetUp[] = [
     time: "06:00",
     imageUrl: "https://images.unsplash.com/photo-1501785888041-af3ba6f6064f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     timestamp: "2024-08-18T09:00:00Z",
+    attendeeIds: ["user-7"], // Example attendees
   },
 ];
 

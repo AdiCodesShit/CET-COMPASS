@@ -1,17 +1,66 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { MeetUp } from "@/lib/types";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { format, formatDistanceToNowStrict } from "date-fns";
-import { Building2, UserCircle2, Calendar, Clock, MapPin } from "lucide-react";
+import { Building2, UserCircle2, Calendar, Clock, MapPin, Users } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useAuth } from "@/components/AuthContext";
+import { toast } from "sonner";
 
 interface MeetUpCardProps {
   meetUp: MeetUp;
+  onUpdateMeetUp: (updatedMeetUp: MeetUp) => void; // Callback to update parent state
 }
 
-const MeetUpCard: React.FC<MeetUpCardProps> = ({ meetUp }) => {
+const MEET_UPS_STORAGE_KEY = "meetUps";
+
+const MeetUpCard: React.FC<MeetUpCardProps> = ({ meetUp, onUpdateMeetUp }) => {
+  const { user } = useAuth();
+  const [isAttending, setIsAttending] = useState(false);
+  const [attendeeCount, setAttendeeCount] = useState(meetUp.attendeeIds.length);
+
+  useEffect(() => {
+    if (user && meetUp.attendeeIds.includes(user.id)) {
+      setIsAttending(true);
+    } else {
+      setIsAttending(false);
+    }
+    setAttendeeCount(meetUp.attendeeIds.length);
+  }, [user, meetUp.attendeeIds]);
+
+  const handleToggleAttendance = () => {
+    if (!user) {
+      toast.error("You must be logged in to join a meet-up.");
+      return;
+    }
+
+    const updatedMeetUp = { ...meetUp };
+    if (isAttending) {
+      // Leave meet-up
+      updatedMeetUp.attendeeIds = updatedMeetUp.attendeeIds.filter(id => id !== user.id);
+      toast.info(`You have left "${meetUp.title}".`);
+    } else {
+      // Join meet-up
+      updatedMeetUp.attendeeIds.push(user.id);
+      toast.success(`You have joined "${meetUp.title}"!`);
+    }
+
+    // Update local storage
+    const allMeetUps: MeetUp[] = JSON.parse(localStorage.getItem(MEET_UPS_STORAGE_KEY) || "[]");
+    const updatedAllMeetUps = allMeetUps.map(m =>
+      m.id === updatedMeetUp.id ? updatedMeetUp : m
+    );
+    localStorage.setItem(MEET_UPS_STORAGE_KEY, JSON.stringify(updatedAllMeetUps));
+
+    // Update local state and notify parent
+    setIsAttending(!isAttending);
+    setAttendeeCount(updatedMeetUp.attendeeIds.length);
+    onUpdateMeetUp(updatedMeetUp);
+  };
+
   const timeAgo = formatDistanceToNowStrict(new Date(meetUp.timestamp), { addSuffix: true });
   const formattedDate = format(new Date(meetUp.date), "PPP"); // e.g., "Sep 1, 2024"
   const formattedTime = format(new Date(`2000-01-01T${meetUp.time}`), "p"); // e.g., "2:00 PM"
@@ -39,7 +88,7 @@ const MeetUpCard: React.FC<MeetUpCardProps> = ({ meetUp }) => {
           <img src={meetUp.imageUrl} alt={meetUp.title} className="w-full h-48 object-cover rounded-md mb-3" />
         )}
         <p className="text-sm text-gray-700 dark:text-gray-300 mb-3">{meetUp.description}</p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-muted-foreground">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-muted-foreground mb-4">
           <div className="flex items-center">
             <Calendar className="h-4 w-4 mr-2 text-app-blue" /> {formattedDate}
           </div>
@@ -48,6 +97,18 @@ const MeetUpCard: React.FC<MeetUpCardProps> = ({ meetUp }) => {
           </div>
           <div className="flex items-center sm:col-span-2">
             <MapPin className="h-4 w-4 mr-2 text-app-blue" /> {meetUp.location}
+          </div>
+        </div>
+        <div className="flex items-center justify-between">
+          <Button
+            onClick={handleToggleAttendance}
+            disabled={!user}
+            className={isAttending ? "bg-red-500 hover:bg-red-600 text-white" : "gradient-button"}
+          >
+            {isAttending ? "Leave Meet-Up" : "Join Meet-Up"}
+          </Button>
+          <div className="flex items-center text-sm text-muted-foreground">
+            <Users className="h-4 w-4 mr-1" /> {attendeeCount} {attendeeCount === 1 ? "person" : "people"} attending
           </div>
         </div>
       </CardContent>

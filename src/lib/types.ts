@@ -105,6 +105,7 @@ export interface MeetUp {
   time: string; // e.g., "18:00"
   imageUrl?: string;
   timestamp: string;
+  attendeeIds: string[]; // New field to store IDs of users who joined
 }
 
 // New interfaces for Chat

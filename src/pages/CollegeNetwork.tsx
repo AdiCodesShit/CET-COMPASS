@@ -49,6 +49,12 @@ const CollegeNetwork = () => {
     setAllMeetUps(prevMeetUps => [newMeetUp, ...prevMeetUps]);
   };
 
+  const handleUpdateMeetUp = (updatedMeetUp: MeetUp) => {
+    setAllMeetUps(prevMeetUps =>
+      prevMeetUps.map(meetUp => (meetUp.id === updatedMeetUp.id ? updatedMeetUp : meetUp))
+    );
+  };
+
   const collegeOptions = useMemo(() => {
     const uniqueColleges = new Map<string, string>(); // cetCollegeCode -> collegeName
     mockColleges.forEach(college => {
@@ -173,7 +179,7 @@ const CollegeNetwork = () => {
             <ScrollArea className="h-[60vh] pr-4">
               <div className="grid gap-6">
                 {filteredAndSortedMeetUps.map((meetUp) => (
-                  <MeetUpCard key={meetUp.id} meetUp={meetUp} />
+                  <MeetUpCard key={meetUp.id} meetUp={meetUp} onUpdateMeetUp={handleUpdateMeetUp} />
                 ))}
               </div>
             </ScrollArea>
